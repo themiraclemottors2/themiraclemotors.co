@@ -1,0 +1,6 @@
+export { default as Logo } from "./logo.svg"
+export { default as AppleStore } from "./apple-store.svg"
+export { default as PlayStore } from "./playstore.svg"
+export { default as Locator } from "./locator.svg"
+export { default as Calendar } from "./calendar.svg"
+export { default as ChevronDown } from "./chevron-down.svg"

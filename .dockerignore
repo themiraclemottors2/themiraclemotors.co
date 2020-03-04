@@ -1,0 +1,11 @@
+.git
+node_modules
+public/*
+*/static/*
+.cache
+.DS_Store
+.vscode
+
+#exception
+!public/static
+!*/static/receipts

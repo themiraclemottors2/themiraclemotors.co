@@ -1,0 +1,49 @@
+.Footer {
+    font-size: 1rem;
+    padding: 5.77em 6.05em 3.94em 6.05em;
+    background: #F1F2F6;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    &__About {
+        max-width: 40%;
+
+        &>svg {
+            width: 198px;
+            height: 63px;
+            margin-bottom: 40px;
+        }
+
+        &>p {
+            font-size: 14px;
+            line-height: 18px;
+            color: #425486;
+
+            &:nth-of-type(1) {
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+    &__UsefullLinks {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    &__LinksList {
+        list-style: none;
+
+        &:not(:last-child) {
+            margin-right: 72px;
+        }
+
+
+        &>li {
+            font-size: 16px;
+            line-height: 200%;
+            color: #425486;
+        }
+    }
+}

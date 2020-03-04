@@ -1,0 +1,293 @@
+@import "../../styles/variables";
+
+.Home {
+    width: 100%;
+    font-size: 1rem;
+
+    &__Fold {
+        width: 100%;
+        height: max-content;
+        background: rgba(64, 64, 64, 0.3) url("../../assets/images/banner.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        padding: 8.44em 6.05em 5.05em 6.05em;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+}
+
+.BookingForm,
+.NewsletterForm {
+    &__Submit {
+        height: 52px;
+        background: #FA6B6B !important;
+        color: $white !important;
+    }
+}
+
+.BookingForm {
+    font-size: 1em;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    width: 25.44em;
+    padding: 2.22em 1.66em;
+
+    &__Heading {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 1.77em;
+        line-height: 128%;
+        color: #425486;
+        margin-bottom: 1.09em;
+    }
+
+    &__Tab {
+        background: #f1f2f6;
+        border-radius: 5px;
+        width: 100%;
+        height: 2.88em;
+        display: flex;
+        flex-wrap: nowrap;
+        margin-bottom: 1.722em;
+
+        &__button {
+            width: 50%;
+            height: 100%;
+            border-radius: 5px;
+            background: transparent;
+            outline: 0;
+            border: 0;
+            display: block;
+            font-weight: 600;
+            font-size: 0.88em;
+            line-height: 125%;
+            color: #425486;
+
+            &__active {
+                background: $white;
+                border: 0.5px solid #425486;
+            }
+        }
+    }
+
+    &__Input {
+        margin-bottom: 1.55em;
+    }
+
+    &__Passanger {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        background: #425486;
+        border-radius: 5px;
+        margin-bottom: 45px;
+
+        &__select {
+            width: calc(50% - 0.5px);
+            min-width: 0 !important;
+
+            &:nth-of-type(1) {
+                border-right: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+
+            }
+
+
+            &:nth-of-type(2) {
+                border-left: 0;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+
+            }
+        }
+    }
+
+    &__Submit {
+        width: 100%;
+    }
+}
+
+.AppStoreAction {
+    font-size: 1em;
+    background: #FFFFFF;
+    border-radius: 5px;
+    width: 29.5em;
+    padding: 21px;
+    text-align: center;
+
+    &>h5 {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #425486;
+        margin-bottom: 20px;
+    }
+
+    &__button {
+        padding: 11px 14px;
+        background: #425486;
+        box-shadow: 10px 15px 4px rgba(210, 233, 233, 0.25);
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: nowrap;
+        width: 149.58px;
+        align-items: center;
+        cursor: pointer;
+
+        &>svg {
+            width: 21px;
+            height: 21px;
+            margin-right: 16px;
+        }
+
+        &:nth-of-type(1) {
+            margin-right: 25px;
+        }
+
+        &>p {
+            font-size: 14px;
+            line-height: 107.45%;
+            color: #FFFFFF;
+            text-align: start;
+        }
+    }
+
+    &__ActionWrapper {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.Features,
+.PorpularTrips,
+.Newsletter {
+    &__SubHeading {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+        text-transform: uppercase;
+        color: #5ACAFA;
+    }
+
+    &__Heading {
+        font-weight: 600;
+        font-size: 36px;
+        line-height: 46px;
+    }
+}
+
+.Newsletter,
+.Features {
+    font-size: 1rem;
+    padding: 6.5em 6.05em;
+
+    &__Heading {
+        color: #425486;
+    }
+}
+
+.Features {
+    &__Heading {
+        margin-bottom: 108px;
+    }
+
+    &__List {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__Item {
+        width: 300px;
+
+        &__Icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #F1F2F6;
+            margin-bottom: 21px;
+        }
+
+        &__Heading {
+            font-weight: 600;
+            font-size: 22px;
+            line-height: 28px;
+            color: #425486;
+            margin-bottom: 16px;
+        }
+
+        &__Text {
+            font-size: 16px;
+            line-height: 20px;
+            color: #425486;
+        }
+    }
+}
+
+.PorpularTrips {
+    background: #425486;
+    font-size: 1rem;
+    padding: 5.277em 6.05em;
+
+    &__Heading {
+        color: $white;
+        margin-bottom: 59px;
+    }
+
+    &__TripListWrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    &__TripList {
+        list-style: none;
+    }
+
+    &__Trip {
+        &:not(:last-child) {
+            margin-bottom: 19px;
+        }
+
+        &>a {
+            font-size: 16px;
+            line-height: 20px;
+            color: #FFFFFF;
+            padding-bottom: 2px;
+
+
+            &:hover {
+                border-bottom: 1px solid $white;
+            }
+        }
+    }
+}
+
+.Newsletter {
+    &__Heading {
+        margin-bottom: 68px;
+    }
+
+    &Form {
+        display: flex;
+        flex-wrap: nowrap;
+
+        &__Input {
+            margin-right: 21px;
+        }
+    }
+}

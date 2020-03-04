@@ -1,0 +1,52 @@
+@import "../../styles/variables";
+@import "../../styles/breakpoint";
+
+.Header {
+  font-size: 1rem;
+  width: 100%;
+  padding: 0 6.05em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: max-content;
+
+  &__logo {
+    font-size: 1em;
+    margin: 2.55em 0;
+    & > svg {
+      width: 6.11em;
+      height: 1.94em;
+    }
+  }
+
+  &__Sticky {
+    background-color: #425486;
+
+    &__logo {
+      margin: 1.55em 0;
+    }
+  }
+
+  &__NavList {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    color: $white;
+  }
+  &__NavItem {
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+
+    & > a {
+      font-size: 0.77em;
+      line-height: 128.5%;
+    }
+  }
+}
