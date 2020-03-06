@@ -12,6 +12,7 @@ const BookingForm = props => {
       <h2 className={styles.BookingForm__Heading}>
         Make a booking for your next trip.
       </h2>
+      <h2 className={styles.BookingForm__Heading}>Book a Seat, Hire a Bus.</h2>
       <div className={styles.BookingForm__Tab}>
         <button
           onClick={() => setActiveTab("seat")}

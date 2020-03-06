@@ -1,22 +1,31 @@
 @import "../../styles/variables";
+@import "../../styles/breakpoint";
 
 .Button {
-    min-width: 200px;
-    min-height: 40px;
+    min-width: 12.5em;
+    min-height: 2.5em;
     border-radius: 5px;
     background: $white;
     outline: 0;
     border: 0;
     display: block;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 0.88em;
     line-height: 125%;
     color: #425486;
+
+
+    @include sm {
+        height: 52px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+    }
 }
 
 .Input {
-    width: 401px;
-    height: 52.13px;
+    width: 22.27em;
+    height: 2.89em;
     background: #F1F2F6;
     border: 0.5px solid #425486;
     border-radius: 5px;
@@ -25,23 +34,42 @@
     align-items: center;
     padding: 0.72em 1.11em;
 
+    @include sm {
+        height: 52px;
+        width: 100%;
+        border-radius: 5px 5px 0px 0px;
+        background: $white;
+    }
+
     &>svg {
         width: 1.11em;
         height: 1.44em;
         margin-right: 0.66em;
         fill: #A1A9C3;
+
+        @include sm {
+            height: 25px;
+            width: 18px;
+            margin-right: 13px;
+        }
     }
 
     &>input {
         width: 100%;
         height: 100%;
         font-weight: 600;
-        font-size: 0.77em;
+        font-size: 0.78em;
         line-height: 128%;
         color: #425486;
         background: transparent;
         outline: 0;
         border: 0;
+
+        @include sm {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 18px;
+        }
 
 
         &::-ms-input-placeholder {
@@ -71,8 +99,9 @@
 }
 
 .Select {
-    min-width: 200px;
-    height: 52.13px;
+    font-size: 1em;
+    min-width: 11.11em;
+    height: 2.89em;
     background: #F1F2F6;
     border: 0.5px solid #425486;
     border-radius: 5px;
@@ -82,35 +111,65 @@
     padding: 0.72em 1.11em;
     color: #425486;
     position: relative;
+    outline: 0;
+
+    @include sm {
+        border-radius: 5px 5px 0px 0px;
+        background: $white;
+        height: 52px;
+    }
 
     &>span {
         font-weight: 600;
-        font-size: 0.77em;
+        font-size: 0.78em;
         line-height: 128%;
+
+        @include sm {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 18px;
+        }
     }
 
     &>svg {
-        width: 20px;
-        height: 10.5px;
+        width: 1.11em;
+        height: 0.58em;
+
+        @include sm {
+            width: 18px;
+            height: 12px;
+        }
     }
 
     &__options {
         background: #F1F2F6;
         position: absolute;
-        bottom: -55px;
+        bottom: -3.05em;
         left: 0;
         width: 100%;
         height: max-content;
         border: 0.5px solid #425486;
         border-radius: 5px;
+
+        @include sm {
+            bottom: -52px;
+            border-radius: 5px 5px 0px 0px;
+        }
     }
 
     &__option {
         font-weight: 600;
-        font-size: 0.77em;
+        font-size: 0.78em;
         line-height: 128%;
         display: block;
         width: 100%;
-        padding: 13px 20px;
+        padding: 0.93em 1.43em;
+
+
+        @include sm {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 18px;
+        }
     }
 }

@@ -18,6 +18,10 @@ const Select = ({ className, options, value, onChange }) => {
   return (
     <div
       onClick={() => setShowOptions(!showOptions)}
+      onKeyPress={() => null}
+      aria-expanded="true"
+      role="listbox"
+      tabIndex="0"
       className={cx(styles.Select, className)}
     >
       <span>{selectedOption.text}</span>
@@ -29,6 +33,10 @@ const Select = ({ className, options, value, onChange }) => {
               key={index}
               className={styles.Select__option}
               onClick={() => _handleOnChenge(value)}
+              onKeyPress={() => null}
+              role="option"
+              aria-selected={value === selectedOption.value}
+              tabIndex={index}
             >
               {text}
             </span>

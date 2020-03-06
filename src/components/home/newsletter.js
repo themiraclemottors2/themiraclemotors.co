@@ -1,7 +1,7 @@
 import React from "react"
 import styles from "./home.module.scss"
 
-import { Input, Select, Button } from "../../components/common"
+import { Input, Button } from "../../components/common"
 
 const Newsletter = () => {
   return (

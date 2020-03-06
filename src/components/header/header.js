@@ -10,7 +10,7 @@ import styles from "./header.module.scss"
 const Header = () => {
   return (
     <>
-      <Sticky topOffset={700}>
+      <Sticky topOffset={500}>
         {({ style, isSticky }) => (
           <header
             style={style}

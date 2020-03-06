@@ -1,4 +1,5 @@
 @import "../../styles/variables";
+@import "../../styles/breakpoint";
 
 .Home {
     width: 100%;
@@ -16,13 +17,21 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
+
+
+        @include sm {
+            display: block;
+            padding: 0;
+            padding-top: 125px;
+            padding-bottom: 242px;
+        }
     }
 }
 
 .BookingForm,
 .NewsletterForm {
     &__Submit {
-        height: 52px;
+        height: 3.25em;
         background: #FA6B6B !important;
         color: $white !important;
     }
@@ -36,6 +45,12 @@
     width: 25.44em;
     padding: 2.22em 1.66em;
 
+    @include sm {
+        width: 100%;
+        border-radius: 15px 15px 0px 0px;
+        padding: 33px 26px 53px 26px;
+    }
+
     &__Heading {
         font-style: normal;
         font-weight: bold;
@@ -43,9 +58,30 @@
         line-height: 128%;
         color: #425486;
         margin-bottom: 1.09em;
+
+        &:nth-of-type(1) {
+            @include sm {
+                display: none;
+            }
+        }
+
+        &:nth-of-type(2) {
+            display: none;
+
+            @include sm {
+                display: block;
+            }
+        }
+
+        @include sm {
+            font-size: 24px;
+            line-height: 31px;
+            margin-bottom: 20px;
+        }
     }
 
     &__Tab {
+        font-size: 1em;
         background: #f1f2f6;
         border-radius: 5px;
         width: 100%;
@@ -53,6 +89,12 @@
         display: flex;
         flex-wrap: nowrap;
         margin-bottom: 1.722em;
+
+        @include sm {
+            height: 52px;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 25px;
+        }
 
         &__button {
             width: 50%;
@@ -67,6 +109,13 @@
             line-height: 125%;
             color: #425486;
 
+            @include sm {
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 18px;
+                border-radius: 5px 5px 0 0;
+            }
+
             &__active {
                 background: $white;
                 border: 0.5px solid #425486;
@@ -79,16 +128,17 @@
     }
 
     &__Passanger {
+        font-size: 1em;
         width: 100%;
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
         background: #425486;
         border-radius: 5px;
-        margin-bottom: 45px;
+        margin-bottom: 2.5em;
 
         &__select {
-            width: calc(50% - 0.5px);
+            width: calc(50% - 0.03em);
             min-width: 0 !important;
 
             &:nth-of-type(1) {
@@ -118,44 +168,91 @@
     background: #FFFFFF;
     border-radius: 5px;
     width: 29.5em;
-    padding: 21px;
+    padding: 1.17em;
     text-align: center;
+
+    @include sm {
+        position: absolute;
+        bottom: 0;
+        padding: 54px 26px;
+        width: 100%;
+        border-radius: 0;
+
+        &::before {
+            content: '';
+            position: absolute;
+            height: 1px;
+            width: 86.4%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #A1A9C3;
+        }
+    }
 
     &>h5 {
         font-style: normal;
         font-weight: 500;
-        font-size: 16px;
-        line-height: 20px;
+        font-size: 0.89em;
+        line-height: 125%;
         color: #425486;
-        margin-bottom: 20px;
+        margin-bottom: 1.17em;
+
+
+        @include sm {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 23px;
+            margin-bottom: 33px;
+        }
     }
 
     &__button {
-        padding: 11px 14px;
+        padding: 0.61em 0.78em;
         background: #425486;
         box-shadow: 10px 15px 4px rgba(210, 233, 233, 0.25);
         border-radius: 5px;
         display: flex;
         flex-wrap: nowrap;
-        width: 149.58px;
+        width: 8.31em;
         align-items: center;
         cursor: pointer;
 
+        @include sm {
+            width: 149.58px;
+            height: 55px;
+        }
+
         &>svg {
-            width: 21px;
-            height: 21px;
-            margin-right: 16px;
+            width: 1.17em;
+            height: 1.17em;
+            margin-right: 0.89em;
+
+            @include sm {
+                height: 21px;
+                width: 21px;
+                margin-right: 16px;
+            }
         }
 
         &:nth-of-type(1) {
-            margin-right: 25px;
+            margin-right: 1.39em;
+
+            @include sm {
+                margin-right: 25px;
+            }
         }
 
         &>p {
-            font-size: 14px;
+            font-size: 0.78em;
             line-height: 107.45%;
             color: #FFFFFF;
             text-align: start;
+
+            @include sm {
+                font-size: 14px;
+                line-height: 107.45%;
+            }
         }
     }
 
@@ -171,24 +268,37 @@
 .Features,
 .PorpularTrips,
 .Newsletter {
+    font-size: 1rem;
+
     &__SubHeading {
         font-weight: 600;
-        font-size: 14px;
-        line-height: 18px;
+        font-size: 0.78em;
+        line-height: 129%;
         text-transform: uppercase;
         color: #5ACAFA;
+
+        @include sm {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 18px;
+        }
     }
 
     &__Heading {
         font-weight: 600;
-        font-size: 36px;
-        line-height: 46px;
+        font-size: 2em;
+        line-height: 144%;
+
+        @include sm {
+            font-weight: 600;
+            font-size: 30px;
+            line-height: 38px;
+        }
     }
 }
 
 .Newsletter,
 .Features {
-    font-size: 1rem;
     padding: 6.5em 6.05em;
 
     &__Heading {
@@ -197,8 +307,17 @@
 }
 
 .Features {
+    @include sm {
+        padding-top: 50px;
+        padding-bottom: 0;
+    }
+
     &__Heading {
-        margin-bottom: 108px;
+        margin-bottom: 3.37em;
+
+        @include sm {
+            margin-bottom: 72px;
+        }
     }
 
     &__List {
@@ -207,43 +326,78 @@
         flex-wrap: nowrap;
         justify-content: space-between;
         align-items: center;
+
+        @include sm {
+            display: block;
+        }
     }
 
     &__Item {
-        width: 300px;
+        width: 16.67em;
+
+        @include sm {
+            width: 100%;
+        }
 
         &__Icon {
-            width: 80px;
-            height: 80px;
+            width: 4.44em;
+            height: 4.44em;
             border-radius: 50%;
             background: #F1F2F6;
-            margin-bottom: 21px;
+            margin-bottom: 1.17em;
+
+            @include sm {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 21px;
+            }
         }
 
         &__Heading {
             font-weight: 600;
-            font-size: 22px;
-            line-height: 28px;
+            font-size: 1.22em;
+            line-height: 127%;
             color: #425486;
-            margin-bottom: 16px;
+            margin-bottom: 0.72em;
+
+            @include sm {
+                font-weight: 600;
+                font-size: 22px;
+                line-height: 28px;
+                margin-bottom: 12px;
+            }
         }
 
         &__Text {
-            font-size: 16px;
-            line-height: 20px;
+            font-size: 0.89em;
+            line-height: 125%;
             color: #425486;
+
+            @include sm {
+                font-size: 16px;
+                line-height: 20px;
+                margin-bottom: 72px;
+            }
         }
     }
 }
 
 .PorpularTrips {
     background: #425486;
-    font-size: 1rem;
     padding: 5.277em 6.05em;
+
+    @include sm {
+        padding-top: 58px;
+        padding-bottom: 0;
+    }
 
     &__Heading {
         color: $white;
-        margin-bottom: 59px;
+        margin-bottom: 1.84em;
+
+        @include sm {
+            margin-bottom: 39px;
+        }
     }
 
     &__TripListWrapper {
@@ -252,22 +406,43 @@
         justify-content: space-between;
         align-items: center;
         flex-wrap: nowrap;
+
+        @include sm {
+            flex-wrap: wrap;
+        }
     }
 
     &__TripList {
         list-style: none;
+
+        @include sm {
+            margin-bottom: 53px;
+
+            &:nth-of-type(odd) {
+                margin-right: 30px;
+            }
+        }
     }
 
     &__Trip {
         &:not(:last-child) {
-            margin-bottom: 19px;
+            margin-bottom: 1.06em;
+
+            @include sm {
+                margin-bottom: 21px;
+            }
         }
 
         &>a {
-            font-size: 16px;
-            line-height: 20px;
+            font-size: 0.89em;
+            line-height: 125%;
             color: #FFFFFF;
-            padding-bottom: 2px;
+            padding-bottom: 0.13em;
+
+            @include sm {
+                font-size: 16px;
+                line-height: 20px;
+            }
 
 
             &:hover {
@@ -279,15 +454,33 @@
 
 .Newsletter {
     &__Heading {
-        margin-bottom: 68px;
+        margin-bottom: 2.13em;
     }
 
     &Form {
         display: flex;
         flex-wrap: nowrap;
 
-        &__Input {
-            margin-right: 21px;
+        @include sm {
+            display: block;
         }
+
+        &__Input {
+            margin-right: 1.5em;
+
+            @include sm {
+                margin-right: 0;
+                margin-bottom: 21px;
+            }
+        }
+    }
+}
+
+.Features,
+.PorpularTrips,
+.Newsletter {
+    @include sm {
+        padding-right: 25px;
+        padding-left: 25px;
     }
 }

@@ -15,12 +15,26 @@
   z-index: 10;
   height: max-content;
 
+  @include sm {
+    padding: 0 25px;
+  }
+
   &__logo {
     font-size: 1em;
     margin: 2.55em 0;
-    & > svg {
+
+    @include sm {
+      margin: 51px 0 39px 0;
+    }
+
+    &>svg {
       width: 6.11em;
       height: 1.94em;
+
+      @include sm {
+        width: 110px;
+        height: 35px;
+      }
     }
   }
 
@@ -38,13 +52,18 @@
     flex-direction: row;
     flex-wrap: nowrap;
     color: $white;
+
+    @include sm {
+      display: none;
+    }
   }
+
   &__NavItem {
     &:not(:last-child) {
-      margin-right: 30px;
+      margin-right: 1.67em;
     }
 
-    & > a {
+    &>a {
       font-size: 0.77em;
       line-height: 128.5%;
     }

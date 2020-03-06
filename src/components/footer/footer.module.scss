@@ -1,3 +1,5 @@
+@import "../../styles/breakpoint";
+
 .Footer {
     font-size: 1rem;
     padding: 5.77em 6.05em 3.94em 6.05em;
@@ -7,43 +9,86 @@
     flex-wrap: nowrap;
     justify-content: space-between;
 
+    @include sm {
+        padding: 40px 25px;
+        display: block;
+    }
+
     &__About {
+        font-size: 1em;
         max-width: 40%;
 
+        @include sm {
+            max-width: 100%;
+            margin-bottom: 30px;
+        }
+
         &>svg {
-            width: 198px;
-            height: 63px;
-            margin-bottom: 40px;
+            width: 11em;
+            height: 3.5em;
+            margin-bottom: 2.22em;
+
+            @include sm {
+                width: 150px;
+                height: 40px;
+                margin-bottom: 21px;
+            }
         }
 
         &>p {
-            font-size: 14px;
-            line-height: 18px;
+            font-size: 0.78em;
+            line-height: 129%;
             color: #425486;
 
+            @include sm {
+                font-size: 14px;
+            }
+
             &:nth-of-type(1) {
-                margin-bottom: 30px;
+                margin-bottom: 2.14em;
+
+                @include sm {
+                    margin-bottom: 21px;
+                }
             }
         }
     }
 
     &__UsefullLinks {
+        font-size: 1em;
         display: flex;
         flex-wrap: nowrap;
+        justify-content: space-between;
+
+        @include sm {
+            flex-wrap: wrap;
+        }
     }
 
     &__LinksList {
         list-style: none;
 
         &:not(:last-child) {
-            margin-right: 72px;
+            margin-right: 4em;
+        }
+
+        @include sm {
+            margin-bottom: 21px;
+
+            &:nth-of-type(odd) {
+                margin-right: 50px;
+            }
         }
 
 
         &>li {
-            font-size: 16px;
+            font-size: 0.89em;
             line-height: 200%;
             color: #425486;
+
+            @include sm {
+                font-size: 14px;
+            }
         }
     }
 }
