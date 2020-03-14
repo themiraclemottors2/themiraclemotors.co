@@ -3,7 +3,7 @@
 .Footer {
     font-size: 1rem;
     padding: 5.77em 6.05em 3.94em 6.05em;
-    background: #F1F2F6;
+    background: #425486;
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
@@ -38,7 +38,7 @@
         &>p {
             font-size: 0.78em;
             line-height: 129%;
-            color: #425486;
+            color: #ffff;
 
             @include sm {
                 font-size: 14px;
@@ -84,7 +84,7 @@
         &>li {
             font-size: 0.89em;
             line-height: 200%;
-            color: #425486;
+            color: #ffff;
 
             @include sm {
                 font-size: 14px;

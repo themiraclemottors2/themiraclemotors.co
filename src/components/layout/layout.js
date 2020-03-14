@@ -12,13 +12,13 @@ import Footer from "../footer"
 import Header from "../header"
 import styles from "./layout.module.scss"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
   return (
     <StickyContainer className={styles.Layout}>
-      <Header />
+      <Header location={location} />
       <div>
         <main> {children} </main>
-        <Footer />
+        {location.pathname === "/" && <Footer />}
       </div>
     </StickyContainer>
   )

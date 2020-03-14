@@ -7,7 +7,8 @@ import { Logo } from "../../assets/svg"
 
 import styles from "./header.module.scss"
 
-const Header = () => {
+const Header = ({ location }) => {
+  const isHome = location.pathname === "/"
   return (
     <>
       <Sticky topOffset={500}>
@@ -15,29 +16,50 @@ const Header = () => {
           <header
             style={style}
             className={cx(styles.Header, {
-              [styles.Header__Sticky]: isSticky,
+              [styles.Header__Sticky]: isSticky || !isHome,
             })}
           >
             <Link
               aria-label="Logo"
               className={cx(styles.Header__logo, {
-                [styles.Header__Sticky__logo]: isSticky,
+                [styles.Header__Sticky__logo]: isSticky || !isHome,
               })}
               to="/"
             >
               <Logo />
             </Link>
-            <ul className={styles.Header__NavList}>
-              <li className={styles.Header__NavItem}>
-                <Link to="/">Track Bookings</Link>
-              </li>
-              <li className={styles.Header__NavItem}>
-                <Link to="/">Register</Link>
-              </li>
-              <li className={styles.Header__NavItem}>
-                <Link to="/">Sign In</Link>
-              </li>
-            </ul>
+            <div className={styles.Header__Nav}>
+              <input type="checkbox" id="menu" />
+              <label htmlFor="menu" className={styles.Header__Nav__icon} />
+              <ul className={styles.Header__NavList}>
+                <li className={styles.Header__NavItem}>
+                  <Link
+                    activeClassName={styles.Header__NavItem__Active}
+                    to="/track-bookings"
+                  >
+                    <p className={styles.Header__NavItem__text}>
+                      Track Bookings
+                    </p>
+                  </Link>
+                </li>
+                <li className={styles.Header__NavItem}>
+                  <Link
+                    activeClassName={styles.Header__NavItem__Active}
+                    to="/register"
+                  >
+                    <p className={styles.Header__NavItem__text}>Register</p>
+                  </Link>
+                </li>
+                <li className={styles.Header__NavItem}>
+                  <Link
+                    activeClassName={styles.Header__NavItem__Active}
+                    to="/sign-in"
+                  >
+                    <p className={styles.Header__NavItem__text}>Sign In</p>
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </header>
         )}
       </Sticky>

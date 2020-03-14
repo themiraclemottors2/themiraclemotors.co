@@ -4,31 +4,83 @@
 .Home {
     width: 100%;
     font-size: 1rem;
+    transition: all ease-in-out 0.2s;
 
     &__Fold {
         width: 100%;
         height: max-content;
-        background: rgba(64, 64, 64, 0.3) url("../../assets/images/banner.png");
+        background-image: url("../../assets/images/banner.png");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
         padding: 8.44em 6.05em 5.05em 6.05em;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        position: relative;
+        z-index: 0;
 
 
         @include sm {
             display: block;
             padding: 0;
-            padding-top: 125px;
+            padding-top: 127px;
             padding-bottom: 242px;
+        }
+
+        &__Overlay {
+            position: absolute;
+            background-color: rgba(64, 64, 64, 0.5);
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 1;
+
+            @include sm {
+                display: none;
+            }
+        }
+    }
+
+    &__Caption {
+        color: $white;
+        margin-top: 12.4em;
+        margin-bottom: 10.2em;
+        width: 29.5em;
+        z-index: 2;
+
+        &>h4 {
+            font-weight: bold;
+            font-size: 2em;
+            line-height: 133%;
+            margin-bottom: 0.36em;
+        }
+
+        &p {
+            font-size: 1em;
+            line-height: 133%;
+        }
+
+        @include sm {
+            margin: 0;
+            padding: 60px 50px 130px 50px;
+            width: 100%;
+            background-color: rgba(64, 64, 64, 0.5);
+
+            &>h4 {
+                font-size: 30px;
+            }
+
+            &>p {
+                font-size: 16px;
+            }
+
         }
     }
 }
 
-.BookingForm,
+.BookingCard,
 .NewsletterForm {
     &__Submit {
         height: 3.25em;
@@ -37,47 +89,15 @@
     }
 }
 
-.BookingForm {
-    font-size: 1em;
-    background: #ffffff;
+.BookingCard {
+    grid-row: 1 / span 2;
+    grid-column: 2 / span 1;
+    justify-self: end;
+    z-index: 2;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    width: 25.44em;
-    padding: 2.22em 1.66em;
 
-    @include sm {
-        width: 100%;
-        border-radius: 15px 15px 0px 0px;
-        padding: 33px 26px 53px 26px;
-    }
-
-    &__Heading {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 1.77em;
-        line-height: 128%;
-        color: #425486;
-        margin-bottom: 1.09em;
-
-        &:nth-of-type(1) {
-            @include sm {
-                display: none;
-            }
-        }
-
-        &:nth-of-type(2) {
-            display: none;
-
-            @include sm {
-                display: block;
-            }
-        }
-
-        @include sm {
-            font-size: 24px;
-            line-height: 31px;
-            margin-bottom: 20px;
-        }
+    &__Toggle {
+        margin: 26px 0 22px 0;
     }
 
     &__Tab {
@@ -164,104 +184,11 @@
 }
 
 .AppStoreAction {
-    font-size: 1em;
-    background: #FFFFFF;
-    border-radius: 5px;
-    width: 29.5em;
-    padding: 1.17em;
-    text-align: center;
+    z-index: 2;
 
     @include sm {
-        position: absolute;
+        position: absolute !important;
         bottom: 0;
-        padding: 54px 26px;
-        width: 100%;
-        border-radius: 0;
-
-        &::before {
-            content: '';
-            position: absolute;
-            height: 1px;
-            width: 86.4%;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #A1A9C3;
-        }
-    }
-
-    &>h5 {
-        font-style: normal;
-        font-weight: 500;
-        font-size: 0.89em;
-        line-height: 125%;
-        color: #425486;
-        margin-bottom: 1.17em;
-
-
-        @include sm {
-            font-weight: 600;
-            font-size: 18px;
-            line-height: 23px;
-            margin-bottom: 33px;
-        }
-    }
-
-    &__button {
-        padding: 0.61em 0.78em;
-        background: #425486;
-        box-shadow: 10px 15px 4px rgba(210, 233, 233, 0.25);
-        border-radius: 5px;
-        display: flex;
-        flex-wrap: nowrap;
-        width: 8.31em;
-        align-items: center;
-        cursor: pointer;
-
-        @include sm {
-            width: 149.58px;
-            height: 55px;
-        }
-
-        &>svg {
-            width: 1.17em;
-            height: 1.17em;
-            margin-right: 0.89em;
-
-            @include sm {
-                height: 21px;
-                width: 21px;
-                margin-right: 16px;
-            }
-        }
-
-        &:nth-of-type(1) {
-            margin-right: 1.39em;
-
-            @include sm {
-                margin-right: 25px;
-            }
-        }
-
-        &>p {
-            font-size: 0.78em;
-            line-height: 107.45%;
-            color: #FFFFFF;
-            text-align: start;
-
-            @include sm {
-                font-size: 14px;
-                line-height: 107.45%;
-            }
-        }
-    }
-
-    &__ActionWrapper {
-        width: 100%;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-items: center;
     }
 }
 

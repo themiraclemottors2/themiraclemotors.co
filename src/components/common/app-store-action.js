@@ -1,10 +1,11 @@
 import React from "react"
-import styles from "./home.module.scss"
+import styles from "./common.module.scss"
 import { PlayStore, AppleStore } from "../../assets/svg"
+import cx from "classnames"
 
-const AppStoreAction = () => {
+const AppStoreAction = ({ className }) => {
   return (
-    <div className={styles.AppStoreAction}>
+    <div className={cx(styles.AppStoreAction, className)}>
       <h5>Download our mobile app today for interesting discounts.</h5>
       <div className={styles.AppStoreAction__ActionWrapper}>
         <div className={styles.AppStoreAction__button}>

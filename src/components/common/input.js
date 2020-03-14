@@ -2,11 +2,11 @@ import React from "react"
 import styles from "./common.module.scss"
 import cx from "classnames"
 
-const Input = ({ type, className, icon: I, ...rest }) => {
+const Input = ({ className, icon: I, ...rest }) => {
   return (
     <div className={cx(styles.Input, className)}>
       {I && <I />}
-      <input type="text" {...rest} />
+      <input {...rest} />
     </div>
   )
 }

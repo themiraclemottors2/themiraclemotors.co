@@ -1,0 +1,97 @@
+@import '../../styles/generic.scss';
+@import '../../styles/breakpoint';
+
+.AuthLayout {
+    font-size: 1rem;
+    width: 100%;
+    background: #F1F2F6;
+    height: 100vh;
+    overflow-y: auto;
+    padding-top: 8.56em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include sm {
+        padding-top: 68px;
+    }
+}
+
+
+.FormContainer,
+.AppStoreAction {
+    font-size: 1em;
+    width: 30.78em;
+
+    @include sm {
+        width: 100%;
+    }
+}
+
+.SignInForm,
+.PasswordResetForm,
+.RegisterForm {
+    margin-bottom: 4.27em;
+
+    @include sm {
+        margin-bottom: 0;
+    }
+
+    &__Input,
+    &__container {
+        margin-bottom: 1.55em;
+        width: 100% !important;
+    }
+
+    &__Input {
+        &__half {
+            width: calc(50% - 12px) !important;
+        }
+    }
+
+    &__container {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    &__Submit {
+        height: 3.25em;
+        background: #FA6B6B !important;
+        color: $white !important;
+        width: 100%;
+    }
+
+    &>p {
+        margin: 2.06em 0;
+        font-weight: bold;
+        font-size: 0.89em;
+        line-height: 131%;
+        color: #425486;
+
+        @include sm {
+            margin: 33px 0 0 0;
+            font-size: 14px;
+        }
+
+        &>a {
+            color: #32BBFF;
+
+            &:hover {
+                border-bottom: 2px solid currentColor;
+            }
+        }
+    }
+}
+
+.SignInForm {
+    &+.AppStoreAction {
+        margin-bottom: 60px;
+    }
+}
+
+.PasswordResetForm {
+    &+.AppStoreAction {
+        margin-bottom: 136px;
+    }
+}

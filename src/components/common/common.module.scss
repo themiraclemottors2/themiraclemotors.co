@@ -150,6 +150,7 @@
         height: max-content;
         border: 0.5px solid #425486;
         border-radius: 5px;
+        outline: 0;
 
         @include sm {
             bottom: -52px;
@@ -164,12 +165,197 @@
         display: block;
         width: 100%;
         padding: 0.93em 1.43em;
+        outline: 0;
 
 
         @include sm {
             font-weight: 600;
             font-size: 14px;
             line-height: 18px;
+        }
+    }
+}
+
+.Toggle {
+    color: #425486;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 21px;
+    position: relative;
+
+    &>label {
+        color: currentColor;
+        position: relative;
+        padding-left: 53px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 39px;
+            height: 23px;
+            background-color: #A1A9C3;
+            left: 0;
+            top: -3px;
+            border-radius: 50px;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            background-color: $white;
+            border-radius: 50%;
+            left: 5px;
+            top: 2px;
+        }
+    }
+
+    &>input {
+        visibility: hidden;
+        position: absolute;
+
+        &:checked {
+            &+label {
+                &::before {
+                    background-color: #FA6B6B;
+                }
+
+                &::after {
+                    left: 21px;
+                }
+            }
+        }
+    }
+}
+
+
+.AppStoreAction {
+    font-size: 1em;
+    background: #FFFFFF;
+    border-radius: 5px;
+    width: 29.5em;
+    padding: 1.17em;
+    text-align: center;
+    position: relative;
+
+    @include sm {
+        padding: 54px 26px;
+        width: 100%;
+        border-radius: 0;
+
+        &::before {
+            content: '';
+            position: absolute;
+            height: 1px;
+            width: 86.4%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #A1A9C3;
+        }
+    }
+
+    &>h5 {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.89em;
+        line-height: 125%;
+        color: #425486;
+        margin-bottom: 1.17em;
+
+
+        @include sm {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 23px;
+            margin-bottom: 33px;
+        }
+    }
+
+    &__button {
+        padding: 0.61em 0.78em;
+        background: #425486;
+        box-shadow: 10px 15px 4px rgba(210, 233, 233, 0.25);
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: nowrap;
+        width: 8.31em;
+        align-items: center;
+        cursor: pointer;
+
+        @include sm {
+            width: 149.58px;
+            height: 55px;
+        }
+
+        &>svg {
+            width: 1.17em;
+            height: 1.17em;
+            margin-right: 0.89em;
+
+            @include sm {
+                height: 21px;
+                width: 21px;
+                margin-right: 16px;
+            }
+        }
+
+        &:nth-of-type(1) {
+            margin-right: 1.39em;
+
+            @include sm {
+                margin-right: 25px;
+            }
+        }
+
+        &>p {
+            font-size: 0.78em;
+            line-height: 107.45%;
+            color: #FFFFFF;
+            text-align: start;
+
+            @include sm {
+                font-size: 14px;
+                line-height: 107.45%;
+            }
+        }
+    }
+
+    &__ActionWrapper {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.FormContainer {
+    font-size: 1em;
+    background: #ffffff;
+    border-radius: 5px;
+    width: 25.44em;
+    padding: 2.22em 1.66em;
+
+    @include sm {
+        width: 100%;
+        border-radius: 0px;
+        padding: 33px 26px 53px 26px;
+    }
+
+    &__Heading {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 1.77em;
+        line-height: 128%;
+        color: #425486;
+        margin-bottom: 1.09em;
+
+        @include sm {
+            font-size: 24px;
+            line-height: 31px;
+            margin-bottom: 20px;
         }
     }
 }
