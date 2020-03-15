@@ -258,11 +258,12 @@
 
     &>h5 {
         font-style: normal;
-        font-weight: 500;
+        font-weight: bold;
         font-size: 0.89em;
         line-height: 125%;
         color: #425486;
         margin-bottom: 1.17em;
+
 
 
         @include sm {

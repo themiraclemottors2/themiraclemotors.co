@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import styles from "./home.module.scss"
 import { Input, Select, Button } from "../common"
 import { Locator, Calendar } from "../../assets/svg"
+import { navigate } from "gatsby"
 
 const SeatBookingForm = ({ roundTrip }) => {
   return (
@@ -41,7 +42,12 @@ const SeatBookingForm = ({ roundTrip }) => {
           options={[{ text: "0 Children", value: "0" }]}
         />
       </div>
-      <Button className={styles.BookingCard__Submit}>Search</Button>
+      <Button
+        onClick={() => navigate("/trip/search-results")}
+        className={styles.BookingCard__Submit}
+      >
+        Search
+      </Button>
     </form>
   )
 }
