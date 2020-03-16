@@ -14,6 +14,8 @@ const SearchResultHeader = ({ header }) => {
   )
 }
 
-SearchResultHeader.propTypes = {}
+SearchResultHeader.propTypes = {
+  header: PropTypes.string,
+}
 
 export default SearchResultHeader

@@ -1,3 +1,5 @@
+const path = require("path")
+
 module.exports = {
   siteMetadata: {
     title: `The Miracle Motors`,
@@ -46,6 +48,13 @@ module.exports = {
         rule: {
           include: /assets\/svg/,
         },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-root-import",
+      options: {
+        components: path.join(__dirname, "src/components"),
+        assets: path.join(__dirname, "src/assets"),
       },
     },
   ],

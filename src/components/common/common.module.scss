@@ -176,6 +176,7 @@
     }
 }
 
+.RadioButton,
 .Toggle {
     color: #425486;
     font-weight: bold;
@@ -186,6 +187,17 @@
     &>label {
         color: currentColor;
         position: relative;
+
+    }
+
+    &>input {
+        visibility: hidden;
+        position: absolute;
+    }
+}
+
+.Toggle {
+    &>label {
         padding-left: 53px;
 
         &::before {
@@ -212,17 +224,53 @@
     }
 
     &>input {
-        visibility: hidden;
-        position: absolute;
-
         &:checked {
             &+label {
                 &::before {
-                    background-color: #FA6B6B;
+                    background-color: #32BBFF;
                 }
 
                 &::after {
                     left: 21px;
+                }
+            }
+        }
+    }
+}
+
+.RadioButton {
+    &>label {
+        padding-left: 43px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 23px;
+            height: 23px;
+            background-color: #A1A9C3;
+            left: 0;
+            top: -3px;
+            border-radius: 50px;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            background-color: #425486;
+            border-radius: 50%;
+            left: 5px;
+            top: 2px;
+            visibility: hidden;
+        }
+    }
+
+    &>input {
+        &:checked {
+            &+label {
+                &::after {
+                    visibility: visible;
                 }
             }
         }
@@ -358,5 +406,95 @@
             line-height: 31px;
             margin-bottom: 20px;
         }
+    }
+}
+
+.WrapperCard,
+.Accordion {
+    min-width: 200px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    height: max-content;
+
+    &__header {
+        padding: 0 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 24px;
+        color: #425486;
+    }
+
+    &__content {
+        padding: 19px 24px;
+        border-top: 1px solid #F1F2F6;
+    }
+}
+
+.Accordion {
+    &__icon {
+        width: 18px;
+        height: 18px;
+        margin: 19px 0;
+        transition: all ease-in-out 0.2s;
+
+        &__opened {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.WrapperCard {
+    &__header {
+        padding: 19px 24px 11px;
+    }
+}
+
+.ProfileForm {
+    &__Input {
+        width: 100%;
+
+        &__group {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 27px;
+        }
+
+        &__half {
+            width: calc(50% - 17px);
+        }
+    }
+
+    &__header {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 24px;
+        color: #425486;
+        margin: 34px 0 15px;
+    }
+
+    &__header+&__Input__group {
+        padding: 26px 0 46px;
+        border-top: 1px solid #F1F2F6;
+        margin-bottom: 0;
+    }
+
+    &__Submit {
+        height: 38px;
+        background: #32BBFF !important;
+        color: $white !important;
+        width: 161px !important;
+        font-size: 16px;
+        line-height: 21px;
+        font-weight: normal;
+        min-width: initial;
+        margin-left: auto;
     }
 }

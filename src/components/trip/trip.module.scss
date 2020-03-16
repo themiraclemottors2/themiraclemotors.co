@@ -1,10 +1,13 @@
 @import '../../styles/generic.scss';
 
+.BookHeader,
 .SearchResultHeader {
     font-size: 1rem;
     padding: 6.83em 6.06em 0.72em 6.06em;
     background: $white;
+}
 
+.SearchResultHeader {
     &>h4 {
         font-weight: bold;
         font-size: 14px;
@@ -32,16 +35,36 @@
         display: block;
         margin-left: auto;
         height: 3.25em;
-        background: #FA6B6B !important;
+        background: #32BBFF !important;
         color: $white !important;
         width: 197px;
+    }
+}
+
+.BookHeader {
+    padding-bottom: 1.67em;
+    color: #A1A9C3;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+
+    &>svg {
+        height: 7px;
+        margin: 0 13px;
+    }
+
+    &__ActiveStage {
+        color: #425486;
     }
 }
 
 .ResultWrapper {
     font-size: 1em;
     padding: 2.11em 6.06em 2.11em 6.06em;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
     justify-content: space-between;
 }
 
@@ -159,7 +182,7 @@
 
     &__button {
         height: 38px;
-        background: #FA6B6B !important;
+        background: #32BBFF !important;
         color: $white !important;
         width: 161px !important;
         font-size: 16px;
@@ -252,7 +275,7 @@
         &__booked {
             &>svg {
                 path {
-                    fill: #FA6B6B !important;
+                    fill: #32BBFF !important;
                 }
             }
         }
@@ -264,5 +287,207 @@
                 }
             }
         }
+    }
+}
+
+.BookSidebar {
+    font-size: 1rem;
+
+    &__Card {
+        background: $white;
+        border-radius: 5px;
+        width: 418px;
+        padding: 0 26px;
+
+        &:not(:last-of-type) {
+            margin-bottom: 37px;
+        }
+
+    }
+
+    &__TripDetails,
+    &__Cost {
+        padding: 24px 0;
+
+        &:not(:last-of-type) {
+            border-bottom: 0.5px solid #a1a9c3cc;
+        }
+    }
+
+    &__TripDetails {
+        &>h2 {
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 19px;
+            color: #A1A9C3;
+            margin-bottom: 11px;
+        }
+
+        &>h3 {
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 21px;
+            color: #425486;
+            margin-bottom: 4px;
+        }
+
+        &>p {
+            font-size: 16px;
+            line-height: 21px;
+            color: #425486;
+        }
+    }
+
+    &__Cost {
+        &>div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            line-height: 21px;
+            color: #425486;
+
+            &:not(:last-of-type) {
+                margin-bottom: 15px;
+            }
+        }
+
+        &:nth-of-type(2) {
+            &>div {
+                font-weight: bold;
+                font-size: 22px;
+
+                &>p {
+                    &>span {
+                        font-weight: normal;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.CompletingBookingContent,
+.PassengerDetailsContent {
+    width: 740px;
+}
+
+.PassengerDetailsContent {
+
+
+    &__accordion {
+        width: 100%;
+        margin-bottom: 39px;
+    }
+
+    &__info {
+        background: #F1F2F6;
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: nowrap;
+        padding: 12px 22px;
+        margin-bottom: 32px;
+
+        &>svg {
+            width: 21px;
+            height: 21px;
+            margin-right: 9px;
+        }
+
+        &>p {
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 19px;
+            color: #425486;
+        }
+    }
+
+    &__Submit {
+        height: 38px;
+        background: #32BBFF !important;
+        color: $white !important;
+        font-size: 16px;
+        line-height: 21px;
+        font-weight: normal;
+        min-width: initial;
+        margin-left: auto;
+        padding: 0 28px;
+    }
+}
+
+.CompletingBookingContent {
+    &__wrapperCard {
+        width: 100%;
+
+        &:not(:last-of-type) {
+            margin-bottom: 39px;
+        }
+    }
+
+    &__profile {
+        &__info {
+            width: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            font-size: 16px;
+            line-height: 21px;
+            color: #425486;
+
+            &:not(:last-of-type) {
+                margin-bottom: 16px;
+            }
+
+            &__text {
+                width: 30%;
+                font-weight: bold;
+            }
+        }
+    }
+
+    &__payment {
+        margin-bottom: 27px;
+
+        &__selection {
+            width: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+
+            &>img {
+                width: 98px;
+            }
+
+        }
+    }
+}
+
+.BookingFooter {
+    width: 100%;
+
+    &>p {
+        margin-left: 33px;
+        color: #425486;
+
+        &>strong {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__button {
+        height: 38px;
+        background: #32BBFF !important;
+        color: $white !important;
+        font-size: 16px;
+        line-height: 21px;
+        font-weight: normal;
+        min-width: 196px;
+        margin-left: auto;
+        padding: 0 28px;
+        margin-top: 29px;
     }
 }
