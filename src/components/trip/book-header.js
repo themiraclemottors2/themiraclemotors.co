@@ -1,33 +1,38 @@
-import React from "react"
+import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 import styles from "./trip.module.scss"
 import { ChevronRight } from "assets/svg"
 import cx from "classnames"
 
-const BookHeader = ({ stage }) => {
+const BookHeader = ({ stage, breadCrumbs }) => {
   return (
     <div className={styles.BookHeader}>
-      <p
-        className={cx({
-          [`${styles.BookHeader__ActiveStage}`]: true,
-        })}
-      >
-        Passengers Details
-      </p>
-      <ChevronRight />
-      <p
-        className={cx({
-          [`${styles.BookHeader__ActiveStage}`]: stage === "book",
-        })}
-      >
-        Complete Booking
-      </p>
+      {breadCrumbs.map((item, index) => {
+        return (
+          <Fragment key={index}>
+            <p
+              className={cx({
+                [`${styles.BookHeader__ActiveStage}`]: index <= stage,
+              })}
+            >
+              {item}
+            </p>
+            {index !== breadCrumbs.length - 1 && <ChevronRight />}
+          </Fragment>
+        )
+      })}
     </div>
   )
 }
 
+BookHeader.defaultProps = {
+  breadCrumbs: [],
+  stage: "",
+}
+
 BookHeader.propTypes = {
-  stage: PropTypes.string,
+  stage: PropTypes.number,
+  breadCrumbs: PropTypes.array,
 }
 
 export default BookHeader

@@ -35,16 +35,6 @@ const Header = ({ location }) => {
                 <li className={styles.Header__NavItem}>
                   <Link
                     activeClassName={styles.Header__NavItem__Active}
-                    to="/track-bookings"
-                  >
-                    <p className={styles.Header__NavItem__text}>
-                      Track Bookings
-                    </p>
-                  </Link>
-                </li>
-                <li className={styles.Header__NavItem}>
-                  <Link
-                    activeClassName={styles.Header__NavItem__Active}
                     to="/register"
                   >
                     <p className={styles.Header__NavItem__text}>Register</p>
@@ -56,6 +46,22 @@ const Header = ({ location }) => {
                     to="/sign-in"
                   >
                     <p className={styles.Header__NavItem__text}>Sign In</p>
+                  </Link>
+                </li>
+                <li className={styles.Header__NavItem}>
+                  <Link
+                    activeClassName={styles.Header__NavItem__Active}
+                    to="/profile"
+                  >
+                    <p className={styles.Header__NavItem__text}>Profile</p>
+                  </Link>
+                </li>
+                <li className={styles.Header__NavItem}>
+                  <Link
+                    activeClassName={styles.Header__NavItem__Active}
+                    to="/bookings"
+                  >
+                    <p className={styles.Header__NavItem__text}>Bookings</p>
                   </Link>
                 </li>
               </ul>

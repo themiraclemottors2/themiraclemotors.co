@@ -1,10 +1,8 @@
-import React, { Fragment, Component } from "react"
+import React, { Component } from "react"
 import Layout from "components/layout/layout"
 import SEO from "components/seo"
 import {
   ResultWrapper,
-  NoResult,
-  Results,
   BookHeader,
   BookSidebar,
   PassengerDetailsContent,
@@ -16,12 +14,13 @@ class PassengersDetails extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      stage: "details",
+      stage: 0,
       paymentMethod: "card",
+      breadCrumbs: ["Passengers Details", "Complete Booking"],
     }
   }
 
-  _handleStateChange = ({ state, value }) => {
+  _handleStateChange = (state, value) => {
     return this.setState({
       [state]: value,
     })
@@ -36,16 +35,33 @@ class PassengersDetails extends Component {
   }
 
   render() {
+    const { breadCrumbs, stage, paymentMethod } = this.state
+
     return (
       <Layout {...this.props}>
-        <SEO title="Passengers Details" />
-        <BookHeader stage="details" />
+        <SEO title={breadCrumbs[stage]} />
+        <BookHeader stage={stage} breadCrumbs={breadCrumbs} />
         <ResultWrapper
           sidebar={<BookSidebar />}
-          footer={<BookingFooter buttonText="Pay Now" />}
+          footer={
+            stage === breadCrumbs.length - 1 && (
+              <BookingFooter
+                buttonText={
+                  paymentMethod === "card" ? "Pay Now" : "Finish Booking"
+                }
+              />
+            )
+          }
         >
-          {false && <PassengerDetailsContent />}
-          {true && <CompletingBookingContent />}
+          {stage === 0 && (
+            <PassengerDetailsContent onDone={() => this.changeStage(1)} />
+          )}
+          {stage === 1 && (
+            <CompletingBookingContent
+              paymentMethod={paymentMethod}
+              changePaymentMethod={this.changePaymentMethod}
+            />
+          )}
         </ResultWrapper>
       </Layout>
     )

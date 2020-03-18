@@ -6,7 +6,7 @@ const BookingFooter = ({ onClick, buttonText }) => {
   return (
     <div className={styles.BookingFooter}>
       <p>
-        <strong>By clicking "Pay Now":</strong>
+        <strong>By clicking "{buttonText}":</strong>
         <br />- I accept the terms and conditions of The Miracle Motors.
       </p>
       <Button className={styles.BookingFooter__button} onClick={onClick}>

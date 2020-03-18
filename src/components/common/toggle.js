@@ -15,7 +15,7 @@ const Toggle = ({ label, className, ...rest }) => {
 
 Toggle.propTypes = {
   label: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
 }
 
 export default Toggle

@@ -5,7 +5,7 @@ import { WrapperCard, ProfileForm, Button, RadioButton } from "../common"
 import { Info } from "../../assets/svg"
 import card_vendors from "../../assets/images/cards-vendo.png"
 
-const CompletingBookingContent = props => {
+const CompletingBookingContent = ({ paymentMethod, changePaymentMethod }) => {
   return (
     <div className={styles.CompletingBookingContent}>
       <WrapperCard
@@ -64,17 +64,18 @@ const CompletingBookingContent = props => {
           <div className={styles.CompletingBookingContent__payment__selection}>
             <RadioButton
               name="payment"
-              onChange={() => null}
+              onChange={() => changePaymentMethod("card")}
               label="Debit / Credit Card"
-              checked={true}
+              checked={paymentMethod === "card"}
               className={styles.CompletingBookingContent__payment__radio}
             />
             <img src={card_vendors} alt="Card Vendors" />
           </div>
           <RadioButton
             name="payment"
-            onChange={() => null}
-            label="Pay on arrival"
+            label="Pay on Arrival"
+            onChange={() => changePaymentMethod("arrival")}
+            checked={paymentMethod === "arrival"}
             className={styles.CompletingBookingContent__payment__radio}
           />
         </form>

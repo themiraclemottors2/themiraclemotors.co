@@ -23,7 +23,7 @@ const WrapperCard = ({
 WrapperCard.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.node,
 }
 
 export default WrapperCard

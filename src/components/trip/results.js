@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import styles from "./trip.module.scss"
-import { Road, AlarmClock, Bus, Seat } from "../../assets/svg"
+import { AlarmClock, Bus, Seat } from "../../assets/svg"
 import car from "../../assets/images/car.png"
 import { Button } from "../common"
 import cx from "classnames"

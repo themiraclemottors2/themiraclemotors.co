@@ -15,7 +15,7 @@ const RadioButton = ({ label, className, ...rest }) => {
 
 RadioButton.propTypes = {
   label: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
 }
 
 export default RadioButton
