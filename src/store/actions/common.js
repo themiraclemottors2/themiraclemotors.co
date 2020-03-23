@@ -1,15 +1,18 @@
 import { window } from "browser-monads"
-import { APP_LOAD, REDIRECT } from "../types"
+import { APP_LOAD, REDIRECTED } from "../types"
 import { setToken } from "../../lib"
 
-export const onAppLoad = () => {
-  const token = window.localStorage.getItem("jwt")
-  if (token) {
-    setToken(token)
+export const onAppLoad = () => dispatch => {
+  const accessToken = window.localStorage.getItem("accessToken")
+  let isAuthenticated = false
+  if (accessToken) {
+    setToken(accessToken)
+    isAuthenticated = true
   }
-  return {
+  return dispatch({
     type: APP_LOAD,
-  }
+    isAuthenticated,
+  })
 }
 
-export const onRedirect = () => ({ type: REDIRECT })
+export const onRedirect = () => dispatch => dispatch({ type: REDIRECTED })

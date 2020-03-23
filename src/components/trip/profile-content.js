@@ -1,7 +1,7 @@
 import React from "react"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 import styles from "./trip.module.scss"
-import { Accordion, ProfileForm, Button, WrapperCard } from "../common"
+import { ProfileForm, Button, WrapperCard } from "../common"
 import { Info } from "../../assets/svg"
 import cx from "classnames"
 

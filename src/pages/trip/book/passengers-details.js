@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import Layout from "components/layout/layout"
+import { AuthenticatedLayout } from "components/layout"
 import SEO from "components/seo"
 import {
   ResultWrapper,
@@ -38,7 +38,7 @@ class PassengersDetails extends Component {
     const { breadCrumbs, stage, paymentMethod } = this.state
 
     return (
-      <Layout {...this.props}>
+      <AuthenticatedLayout {...this.props}>
         <SEO title={breadCrumbs[stage]} />
         <BookHeader stage={stage} breadCrumbs={breadCrumbs} />
         <ResultWrapper
@@ -63,7 +63,7 @@ class PassengersDetails extends Component {
             />
           )}
         </ResultWrapper>
-      </Layout>
+      </AuthenticatedLayout>
     )
   }
 }

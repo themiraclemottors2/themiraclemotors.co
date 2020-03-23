@@ -1,1 +1,1 @@
-export const serviceRoot = "https://..."
+export const serviceRoot = "https://miraclemotors.herokuapp.com/api/v1"

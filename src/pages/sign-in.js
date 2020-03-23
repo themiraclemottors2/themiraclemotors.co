@@ -1,15 +1,15 @@
 import React from "react"
-import Layout from "../components/layout/layout"
+import { UnauthenticatedLayout } from "components/layout"
 import SEO from "../components/seo"
 import { AuthLayout, SignInForm } from "../components/auth"
 
 const SignIn = props => (
-  <Layout {...props}>
+  <UnauthenticatedLayout {...props}>
     <SEO title="Sign In" />
     <AuthLayout>
       <SignInForm />
     </AuthLayout>
-  </Layout>
+  </UnauthenticatedLayout>
 )
 
 export default SignIn

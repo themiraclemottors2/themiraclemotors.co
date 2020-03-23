@@ -1,9 +1,5 @@
 import React, { Fragment } from "react"
-import PropTypes from "prop-types"
-import styles from "./trip.module.scss"
-import { Accordion, ProfileForm, Button, WrapperCard } from "../common"
-import { Info, Book } from "../../assets/svg"
-import cx from "classnames"
+import { Book } from "../../assets/svg"
 import NoResult from "./no-result"
 import BookItem from "./book-item"
 

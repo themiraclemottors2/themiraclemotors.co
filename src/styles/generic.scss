@@ -20,7 +20,7 @@ html {
 }
 
 body {
-    font-family: "BRFirma", sans-serif;
+    font-family: $font-family;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;

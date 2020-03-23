@@ -1,8 +1,7 @@
 import React from "react"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 import styles from "./trip.module.scss"
-import { WrapperCard, ProfileForm, Button, RadioButton } from "../common"
-import { Info } from "../../assets/svg"
+import { WrapperCard, RadioButton } from "../common"
 import card_vendors from "../../assets/images/cards-vendo.png"
 
 const CompletingBookingContent = ({ paymentMethod, changePaymentMethod }) => {

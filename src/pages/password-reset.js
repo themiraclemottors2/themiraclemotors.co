@@ -1,15 +1,15 @@
 import React from "react"
-import Layout from "../components/layout/layout"
+import { UnauthenticatedLayout } from "components/layout"
 import SEO from "../components/seo"
 import { AuthLayout, PasswordResetForm } from "../components/auth"
 
 const PasswordReset = props => (
-  <Layout {...props}>
+  <UnauthenticatedLayout {...props}>
     <SEO title="Password Reset" />
     <AuthLayout>
       <PasswordResetForm />
     </AuthLayout>
-  </Layout>
+  </UnauthenticatedLayout>
 )
 
 export default PasswordReset

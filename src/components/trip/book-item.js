@@ -1,9 +1,7 @@
-import React, { useState } from "react"
+import React from "react"
 import styles from "./trip.module.scss"
-import { Road, AlarmClock, Bus, Seat } from "../../assets/svg"
-import car from "../../assets/images/car.png"
+import { AlarmClock } from "../../assets/svg"
 import { Button } from "../common"
-import cx from "classnames"
 
 const BookItem = () => {
   return (

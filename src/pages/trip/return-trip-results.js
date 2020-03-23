@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import Layout from "../../components/layout/layout"
+import { AuthenticatedLayout } from "components/layout"
 import SEO from "../../components/seo"
 import {
   SearchResultHeader,
@@ -10,7 +10,7 @@ import {
 import { Road } from "assets/svg"
 
 const SearchResult = props => (
-  <Layout {...props}>
+  <AuthenticatedLayout {...props}>
     <SEO title="Return Trip Result" />
     <SearchResultHeader header="Showing return trips from Lagos to Benin" />
     <ResultWrapper>
@@ -29,7 +29,7 @@ const SearchResult = props => (
         </Fragment>
       )}
     </ResultWrapper>
-  </Layout>
+  </AuthenticatedLayout>
 )
 
 export default SearchResult

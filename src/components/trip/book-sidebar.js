@@ -1,6 +1,5 @@
 import React from "react"
 import styles from "./trip.module.scss"
-import cx from "classnames"
 
 const BookSidebar = () => {
   return (
