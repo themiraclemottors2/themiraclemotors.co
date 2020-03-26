@@ -1,11 +1,4 @@
-import {
-  APP_LOAD,
-  REDIRECTED,
-  REDIRECT,
-  LOGOUT,
-  LOGIN,
-  LOG_ERROR,
-} from "../types"
+import { APP_LOAD, REDIRECTED, REDIRECT, LOGOUT, LOGIN } from "../types"
 
 const initState = {
   appLoaded: false,
@@ -47,11 +40,6 @@ export default (
       return {
         ...initState,
         redirectTo: "/",
-      }
-    case LOG_ERROR:
-      return {
-        ...state,
-        error,
       }
     default:
       return state

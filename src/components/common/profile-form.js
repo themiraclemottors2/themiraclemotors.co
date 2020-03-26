@@ -9,43 +9,49 @@ const ProfileForm = ({ className, onSubmit, buttonText }) => {
       <div className={styles.ProfileForm__Input__group}>
         <Input
           className={styles.ProfileForm__Input__half}
-          placeholder="First Name"
+          label="First Name"
+          placeholder="Enter your first name"
         />
         <Input
           className={styles.ProfileForm__Input__half}
-          placeholder="Last Name"
+          label="Last Name"
+          placeholder="Enter your last name"
         />
       </div>
       <div className={styles.ProfileForm__Input__group}>
         <Input
           type="email"
           className={styles.ProfileForm__Input__half}
-          placeholder="Email Address"
+          label="Email Address"
+          placeholder="Enter your email address"
         />
         <Input
           type="phone"
           className={styles.ProfileForm__Input__half}
-          placeholder="Phone Number"
+          label="Phone Number"
+          placeholder="Enter your phone number"
         />
       </div>
       <div className={styles.ProfileForm__Input__group}>
         <Select
           className={styles.ProfileForm__Input__half}
           options={[
-            { text: "Gender", value: "" },
             { text: "Female", value: "female" },
             { text: "Male", value: "male" },
           ]}
+          label="Gender"
         />
         <Input
           className={styles.ProfileForm__Input__half}
-          placeholder="City/Region"
+          label="City/Region"
+          placeholder="Enter your city/region"
         />
       </div>
       <Input
         type="address"
         className={styles.ProfileForm__Input}
-        placeholder="Address"
+        label="Address"
+        placeholder="Enter your address"
       />
       <p className={styles.ProfileForm__header}>
         Emergency Contact(Next of Kin)
@@ -53,12 +59,14 @@ const ProfileForm = ({ className, onSubmit, buttonText }) => {
       <div className={styles.ProfileForm__Input__group}>
         <Input
           className={styles.ProfileForm__Input__half}
-          placeholder="Full Name"
+          label="Full Name"
+          placeholder="Enter your next of kin full name"
         />
         <Input
           type="phone"
           className={styles.ProfileForm__Input__half}
-          placeholder="Phone Number"
+          label="Phone Number"
+          placeholder="Enter your next of kin phone number"
         />
       </div>
       {buttonText && (

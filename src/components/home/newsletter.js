@@ -18,7 +18,8 @@ const Newsletter = () => {
       >
         <Input
           className={styles.NewsletterForm__Input}
-          placeholder="Email Address"
+          label="Email Address"
+          placeholder="Enter your email address"
         />
         <Button className={styles.NewsletterForm__Submit}>Subscribe</Button>
       </form>

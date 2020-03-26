@@ -7,7 +7,6 @@ import { Link } from "gatsby"
 import { useDispatch } from "react-redux"
 import { registerRequest } from "../../store/actions/auth"
 import { toast } from "react-toastify"
-import { window } from "browser-monads"
 
 const RegisterForm = props => {
   const dispatch = useDispatch()
@@ -66,7 +65,8 @@ const RegisterForm = props => {
             onChange={({ target }) => setFirstName(target.value)}
             value={firstName}
             className={styles.RegisterForm__Input__half}
-            placeholder="First Name"
+            label="First Name"
+            placeholder="Enter your first name"
             required
           />
           <Input
@@ -74,7 +74,8 @@ const RegisterForm = props => {
             onChange={({ target }) => setLastName(target.value)}
             value={lastName}
             className={styles.RegisterForm__Input__half}
-            placeholder="Last Name"
+            label="Last Name"
+            placeholder="Enter your last name"
             required
           />
         </div>
@@ -83,7 +84,8 @@ const RegisterForm = props => {
           onChange={({ target }) => setEmail(target.value)}
           value={email}
           className={styles.RegisterForm__Input}
-          placeholder="Email Address"
+          label="Email Address"
+          placeholder="Enter your email address"
           required
         />
         <Input
@@ -91,7 +93,8 @@ const RegisterForm = props => {
           onChange={_handlePhoneInput}
           value={phone}
           className={styles.RegisterForm__Input}
-          placeholder="Phone Number"
+          label="Phone Number"
+          placeholder="Enter your hone number"
           required
         />
         <Input
@@ -99,7 +102,8 @@ const RegisterForm = props => {
           onChange={({ target }) => setPassword(target.value)}
           value={password}
           className={styles.RegisterForm__Input}
-          placeholder="Password"
+          label="Password"
+          placeholder="******"
           required
         />
         <Button loading={loading} className={styles.RegisterForm__Submit}>

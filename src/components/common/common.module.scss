@@ -11,10 +11,11 @@
     font-weight: 600;
     font-size: 0.88em;
     line-height: 125%;
+    transition: all 0.2s ease-in-out;
 
-    &__disabled {
-        background: #A1A9C3 !important;
-        color: #425486 !important;
+    &__disabled,
+    &:disabled {
+        background: rgba(50, 187, 255, 0.5) !important;
     }
 
 
@@ -35,13 +36,131 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    padding: 0.72em 1.11em;
+    padding: 0.55em 1.11em;
 
     @include sm {
         height: 52px;
         width: 100%;
         border-radius: 5px 5px 0px 0px;
         background: $white;
+    }
+
+    &__wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        &>label {
+            font-size: 0.78em;
+            color: #425486;
+            font-weight: bold;
+            position: absolute;
+            transition: all 0.25s ease-in-out;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            padding-top: 0.57em;
+            padding-bottom: 0.57em;
+        }
+
+        &>input {
+            font-weight: 500;
+            font-size: 0.78em;
+            line-height: 128%;
+            background: transparent;
+            outline: 0;
+            border: 0;
+            height: 1.14em;
+            color: #425486;
+            width: 100%;
+
+
+            @include sm {
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 18px;
+            }
+
+
+            &::-ms-input-placeholder {
+                line-height: 128%;
+                color: #425486;
+                font-size: 1em;
+                opacity: 0;
+                transition: inherit;
+            }
+
+            &::placeholder {
+                line-height: 128%;
+                color: #425486;
+                font-size: 1em;
+                opacity: 0;
+                transition: inherit;
+            }
+
+            &::-moz-placeholder {
+                line-height: 128%;
+                color: #425486;
+                font-size: 1em;
+                opacity: 0;
+                transition: inherit;
+            }
+
+            &::-webkit-input-placeholder {
+                line-height: 128%;
+                color: #425486;
+                font-size: 1em;
+                opacity: 0;
+                transition: inherit;
+            }
+
+            &:focus,
+            &:visited,
+            &:active,
+            &:link {
+                outline: 0;
+            }
+
+            &:focus,
+            &:valid,
+            &:invalid {
+                padding-top: 1.857em;
+                padding-bottom: 0.714em;
+            }
+
+            &:placeholder-shown+label {
+                cursor: text;
+                white-space: nowrap;
+            }
+
+            &:focus::-webkit-input-placeholder {
+                opacity: 1;
+            }
+
+            &:focus::-moz-placeholder {
+                opacity: 1;
+            }
+
+            &:focus:-ms-input-placeholder {
+                opacity: 1;
+            }
+
+            &:focus:-moz-placeholder {
+                opacity: 1;
+            }
+
+            &:not(:placeholder-shown),
+            &:focus {
+                &+label {
+                    cursor: pointer;
+                    font-size: 0.55em;
+                    line-height: 130%;
+                    top: 12%;
+                }
+            }
+
+        }
     }
 
     &>svg {
@@ -57,48 +176,7 @@
         }
     }
 
-    &>input {
-        width: 100%;
-        height: 100%;
-        font-weight: 600;
-        font-size: 0.78em;
-        line-height: 128%;
-        color: #425486;
-        background: transparent;
-        outline: 0;
-        border: 0;
 
-        @include sm {
-            font-weight: 600;
-            font-size: 14px;
-            line-height: 18px;
-        }
-
-
-        &::-ms-input-placeholder {
-            line-height: 128%;
-            color: #425486;
-            font-size: 1em;
-        }
-
-        &::placeholder {
-            line-height: 128%;
-            color: #425486;
-            font-size: 1em;
-        }
-
-        &::-moz-placeholder {
-            line-height: 128%;
-            color: #425486;
-            font-size: 1em;
-        }
-
-        &::-webkit-input-placeholder {
-            line-height: 128%;
-            color: #425486;
-            font-size: 1em;
-        }
-    }
 }
 
 .Select {
@@ -111,7 +189,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.72em 1.11em;
+    padding: 0.55em 1.11em;
     color: #425486;
     position: relative;
     outline: 0;
@@ -122,8 +200,63 @@
         height: 52px;
     }
 
-    &>span {
+    &__value {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+
+        &>svg {
+            width: 1.11em;
+            height: 1.44em;
+            margin-right: 0.66em;
+            fill: #A1A9C3;
+
+            @include sm {
+                height: 25px;
+                width: 18px;
+                margin-right: 13px;
+            }
+        }
+
+        &__wrapper {
+            position: relative;
+            height: 100%;
+            width: 100%;
+
+            &>span {
+                display: block;
+            }
+        }
+
+    }
+
+    &__label {
         font-weight: 600;
+        position: absolute;
+        transition: all 0.25s ease-in-out;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
+        padding-top: 0.57em;
+        padding-bottom: 0.57em;
+        font-size: 0.78em;
+        line-height: 128%;
+
+        &__filled {
+            cursor: pointer;
+            font-size: 0.55em;
+            line-height: 130%;
+            top: 12%;
+        }
+
+    }
+
+    &__text {
+        height: 1.14em;
+        font-weight: 500;
+        padding-top: 1.2em;
         font-size: 0.78em;
         line-height: 128%;
 
@@ -147,13 +280,14 @@
     &__options {
         background: #F1F2F6;
         position: absolute;
-        bottom: -3.05em;
+        top: 112%;
         left: 0;
         width: 100%;
         height: max-content;
         border: 0.5px solid #425486;
         border-radius: 5px;
         outline: 0;
+        z-index: 2;
 
         @include sm {
             bottom: -52px;
@@ -169,7 +303,12 @@
         width: 100%;
         padding: 0.93em 1.43em;
         outline: 0;
+        cursor: pointer;
 
+        &:hover,
+        &__active {
+            background-color: rgba($color: #425486, $alpha: 0.2);
+        }
 
         @include sm {
             font-weight: 600;

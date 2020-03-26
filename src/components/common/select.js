@@ -1,55 +1,106 @@
-import React, { useState } from "react"
+import React, { Component } from "react"
 import styles from "./common.module.scss"
 import cx from "classnames"
 import { ChevronDown } from "../../assets/svg"
+import ReactDOM from "react-dom"
+import { document } from "browser-monads"
 
-const OPTIONS = [{ text: "Select", value: "" }]
-
-const Select = ({ className, options, value, onChange }) => {
-  const [selectedValue, setSelectedValue] = useState(value)
-  const [showOptions, setShowOptions] = useState(false)
-  const selectedOption = [...OPTIONS, ...options].find(
-    ({ value: optionValue }) => optionValue === selectedValue
-  )
-  const _handleOnChenge = value => {
-    setSelectedValue(value)
-    return onChange(value)
+class Select extends Component {
+  static defaultProps = {
+    options: [],
+    onChange: () => null,
   }
-  return (
-    <div
-      onClick={() => setShowOptions(!showOptions)}
-      onKeyPress={() => null}
-      aria-expanded="true"
-      role="listbox"
-      tabIndex="0"
-      className={cx(styles.Select, className)}
-    >
-      <span>{selectedOption.text}</span>
-      <ChevronDown />
-      {showOptions && (
-        <div className={styles.Select__options}>
-          {options.map(({ text, value }, index) => (
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedValue: null,
+      showOptions: false,
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener("mousedown", this._handleClickOutside)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this._handleClickOutside)
+  }
+
+  _handleClickOutside = event => {
+    const domNode = ReactDOM.findDOMNode(this)
+
+    if (!domNode || !domNode.contains(event.target)) {
+      this.setState({
+        showOptions: false,
+      })
+    }
+  }
+
+  _handleOnChange = value => {
+    this.setState({ selectedValue: value })
+    return this.props.onChange(value)
+  }
+
+  _handleShowOption = () =>
+    this.setState(({ showOptions }) => ({ showOptions: !showOptions }))
+
+  render() {
+    const { className, options, icon: I, label } = this.props
+    const { selectedValue, showOptions } = this.state
+
+    const selectedOption = [...options].find(
+      ({ value: optionValue }) => optionValue === selectedValue
+    )
+
+    return (
+      <div
+        onClick={() => this._handleShowOption()}
+        onKeyPress={() => null}
+        aria-expanded="true"
+        role="listbox"
+        tabIndex="0"
+        className={cx(styles.Select, className)}
+      >
+        <div className={styles.Select__value}>
+          {I && <I />}
+          <div className={styles.Select__value__wrapper}>
             <span
-              key={index}
-              className={styles.Select__option}
-              onClick={() => _handleOnChenge(value)}
-              onKeyPress={() => null}
-              role="option"
-              aria-selected={value === selectedOption.value}
-              tabIndex={index}
+              className={cx(styles.Select__label, {
+                [`${styles.Select__label__filled}`]: !!selectedOption,
+              })}
             >
-              {text}
+              {label}
             </span>
-          ))}
+            <span className={styles.Select__text}>
+              {selectedOption && selectedOption.text}
+            </span>
+          </div>
         </div>
-      )}
-    </div>
-  )
-}
-Select.defaultProps = {
-  options: OPTIONS,
-  value: OPTIONS[0].value,
-  onChange: () => null,
+        <ChevronDown />
+        {showOptions && (
+          <div className={styles.Select__options}>
+            {options.map(({ text, value }, index) => (
+              <span
+                key={index}
+                className={cx(styles.Select__option, {
+                  [`${styles.Select__option__active}`]:
+                    selectedOption && value === selectedOption.value,
+                })}
+                onClick={() => this._handleOnChange(value)}
+                onKeyPress={() => null}
+                role="option"
+                aria-selected={selectedOption && value === selectedOption.value}
+                tabIndex={index}
+              >
+                {text}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    )
+  }
 }
 
 export default Select

@@ -54,7 +54,8 @@ const SignInForm = props => {
           type="phone"
           value={phone}
           className={styles.SignInForm__Input}
-          placeholder="Phone Number"
+          label="Phone Number"
+          placeholder="Enter your phone number"
           onChange={_handlePhoneInput}
           required
         />
@@ -62,7 +63,8 @@ const SignInForm = props => {
           type="password"
           value={password}
           className={styles.SignInForm__Input}
-          placeholder="Password"
+          label="Password"
+          placeholder="*****"
           onChange={({ target }) => setPassword(target.value)}
           required
         />

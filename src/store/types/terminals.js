@@ -1,0 +1,1 @@
+export const GET_TERMINALS = "GET_TERMINALS"

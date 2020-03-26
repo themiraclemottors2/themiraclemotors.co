@@ -1,34 +1,41 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styles from "./home.module.scss"
-import { Input, Button } from "../common"
+import { Input, Button, Select } from "../common"
 import { Locator, Calendar } from "../../assets/svg"
+import { capitalize } from "lib"
 
-const HireBusForm = ({ roundTrip }) => {
+const HireBusForm = ({ roundTrip, terminals }) => {
+  terminals = terminals.map(item => ({
+    text: capitalize(item.name),
+    value: item.id,
+  }))
   return (
     <form action="" onSubmit={e => e.preventDefault()}>
-      <Input
-        icon={Locator}
+      <Select
         className={styles.BookingCard__Input}
-        placeholder="Departure Point"
+        options={terminals}
+        label="Departure Point"
+        icon={Locator}
       />
-      <Input
-        icon={Locator}
+      <Select
         className={styles.BookingCard__Input}
-        placeholder="Destination"
+        options={terminals}
+        label="Destination"
+        icon={Locator}
       />
       <Input
         icon={Calendar}
         className={styles.BookingCard__Input}
-        placeholder="Departure Date"
-        type="date"
+        label="Departure Date"
+        type="datetime-local"
       />
       {roundTrip && (
         <Input
           icon={Calendar}
           className={styles.BookingCard__Input}
-          placeholder="Return Date"
-          type="date"
+          label="Return Date"
+          type="datetime-local"
         />
       )}
       <Button className={styles.BookingCard__Submit}>Continue</Button>
@@ -36,8 +43,14 @@ const HireBusForm = ({ roundTrip }) => {
   )
 }
 
+HireBusForm.defaultProps = {
+  roundTrip: false,
+  terminals: [],
+}
+
 HireBusForm.propTypes = {
   roundTrip: PropTypes.bool.isRequired,
+  terminals: PropTypes.array,
 }
 
 export default HireBusForm

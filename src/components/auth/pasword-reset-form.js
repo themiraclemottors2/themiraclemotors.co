@@ -16,7 +16,8 @@ const PasswordResetForm = props => {
         <Input
           type="email"
           className={styles.PasswordResetForm__Input}
-          placeholder="Email Address"
+          label="Email Address"
+          placeholder="Enter your email address"
         />
         <Button className={styles.PasswordResetForm__Submit}>
           Send Reset Link

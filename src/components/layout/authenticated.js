@@ -15,7 +15,7 @@ const AuthenticatedLayout = ({ children, location }) => {
     if (!isAuthenticated) {
       navigate(`/sign-in?redirect=${pathname}`)
     }
-  }, [navigate, isAuthenticated, pathname])
+  }, [isAuthenticated, pathname])
 
   return (
     <Layout location={location} type="authenticated">

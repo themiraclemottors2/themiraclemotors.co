@@ -5,7 +5,6 @@ import cx from "classnames"
 import { useSelector, useDispatch } from "react-redux"
 import { Logo } from "../../assets/svg"
 import styles from "./header.module.scss"
-import { window } from "browser-monads"
 import { logout } from "store/actions/auth"
 
 const Header = ({ location, layout }) => {

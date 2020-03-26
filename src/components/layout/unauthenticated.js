@@ -12,7 +12,7 @@ const UnauthenticatedLayout = ({ children, location }) => {
     if (isAuthenticated) {
       navigate("/")
     }
-  }, [navigate, isAuthenticated])
+  }, [isAuthenticated])
 
   return (
     <Layout location={location} type="unauthenticated">
