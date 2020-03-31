@@ -10039,6 +10039,10 @@ react-loading-skeleton@^2.0.1:
   dependencies:
     "@emotion/core" "^10.0.22"
 
+react-paystack@iamraphson/react-paystack#master:
+  version "3.0.0"
+  resolved "https://codeload.github.com/iamraphson/react-paystack/tar.gz/1732da80eb89a679c7135082fa36f01cc5917b86"
+
 react-reconciler@^0.24.0:
   version "0.24.0"
   resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.24.0.tgz#5a396b2c2f5efe8554134a5935f49f546723f2dd"

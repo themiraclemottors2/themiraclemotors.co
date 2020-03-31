@@ -5,18 +5,36 @@ import { Input, Select, Button } from "../common"
 import { Locator, Calendar, User } from "../../assets/svg"
 import { capitalize } from "lib"
 import { toast } from "react-toastify"
+import moment from "moment"
 
-const SeatBookingForm = ({ roundTrip, terminals, onSubmit }) => {
+const SeatBookingForm = ({ roundTrip, terminals, onSubmit, searchData }) => {
   terminals = terminals.map(item => ({
     text: capitalize(item.name),
     value: item.id,
   }))
 
-  const [departureTerminalId, setDepartureTerminalId] = useState("")
-  const [arrivalTerminalId, setArrivalTerminalId] = useState("")
-  const [departureTimestamp, setDepartureTimestamp] = useState("")
-  const [returnTimestamp, setReturnTimestamp] = useState("")
-  const [numberOfTravellers, setNumberOfTravellers] = useState(1)
+  const [departureTerminalId, setDepartureTerminalId] = useState(
+    searchData.departureTerminalId
+  )
+  const [arrivalTerminalId, setArrivalTerminalId] = useState(
+    searchData.arrivalTerminalId
+  )
+  const [departureTimestamp, setDepartureTimestamp] = useState(
+    searchData.departureTimestamp
+  )
+  const [returnTimestamp, setReturnTimestamp] = useState(
+    searchData.returnTimestamp
+  )
+  const [numberOfTravellers, setNumberOfTravellers] = useState(
+    searchData.numberOfTravellers
+  )
+
+  const passengersInputData = Array(6)
+    .fill(1)
+    .map((item, index) => {
+      const value = item + index
+      return { text: `${value} Passenger${value > 1 ? "s" : ""}`, value }
+    })
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -43,6 +61,7 @@ const SeatBookingForm = ({ roundTrip, terminals, onSubmit }) => {
         label="Departure Terminal"
         icon={Locator}
         onChange={value => setDepartureTerminalId(value)}
+        value={departureTerminalId}
       />
       <Select
         className={styles.BookingCard__Input}
@@ -50,6 +69,7 @@ const SeatBookingForm = ({ roundTrip, terminals, onSubmit }) => {
         label="Arrival Terminal"
         icon={Locator}
         onChange={value => setArrivalTerminalId(value)}
+        value={arrivalTerminalId}
       />
       <Input
         icon={Calendar}
@@ -57,8 +77,9 @@ const SeatBookingForm = ({ roundTrip, terminals, onSubmit }) => {
         label="Departure Date"
         type="datetime-local"
         onChange={({ target }) =>
-          setDepartureTimestamp(new Date(target.value).toISOString())
+          setDepartureTimestamp(moment(target.value).format("YYYY-MM-DDTHH:mm"))
         }
+        value={departureTimestamp}
       />
       {roundTrip && (
         <Input
@@ -67,21 +88,18 @@ const SeatBookingForm = ({ roundTrip, terminals, onSubmit }) => {
           label="Return Date"
           type="datetime-local"
           onChange={({ target }) =>
-            setReturnTimestamp(new Date(target.value).toISOString())
+            setReturnTimestamp(moment(target.value).format("YYYY-MM-DDTHH:mm"))
           }
+          value={returnTimestamp}
         />
       )}
       <Select
         className={styles.BookingCard__Input}
-        options={Array(6)
-          .fill(1)
-          .map((item, index) => {
-            const value = item + index
-            return { text: `${value} Passenger${value > 1 ? "s" : ""}`, value }
-          })}
+        options={passengersInputData}
         label="Passengers"
         onChange={value => setNumberOfTravellers(value)}
         icon={User}
+        value={numberOfTravellers}
       />
       <Button onClick={() => null} className={styles.BookingCard__Submit}>
         Search

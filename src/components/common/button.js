@@ -3,14 +3,22 @@ import styles from "./common.module.scss"
 import cx from "classnames"
 import Loader from "react-loader-spinner"
 
-const Button = ({ className, onClick, children, loading, ...rest }) => {
+const Button = ({
+  className,
+  onClick,
+  children,
+  loading,
+  disabled,
+  ...rest
+}) => {
   return (
     <button
       onClick={onClick}
       className={cx(styles.Button, className, {
-        [`${styles.Button__disabled}`]: loading,
+        [`${styles.Button__disabled}`]: disabled,
+        [`${styles.Button__loading}`]: loading,
       })}
-      disabled={loading}
+      disabled={disabled}
       {...rest}
     >
       {!loading && children}

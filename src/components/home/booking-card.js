@@ -9,31 +9,50 @@ import HireBusForm from "./hire-bus-form"
 import FormContainer from "../common/form-container"
 import { fetchTerminalsRequest } from "store/actions/terminals"
 import BookingCardLoader from "./booking-card-loader"
+import { getSearchData } from "../../store/actions/trips"
+import { toast } from "react-toastify"
 
 const BookingCard = props => {
+  const stateExtractor = ({
+    terminals,
+    common: { isAuthenticated },
+    trips: { searchData },
+  }) => ({
+    ...terminals,
+    isAuthenticated,
+    searchData,
+  })
   const dispatch = useDispatch()
   const {
     data: terminalsList,
     loading: terminalsListLoading,
     isAuthenticated,
-  } = useSelector(
-    ({ terminals, common: { isAuthenticated } }) => ({
-      ...terminals,
-      isAuthenticated,
-    }),
-    shallowEqual
-  )
+    searchData,
+  } = useSelector(stateExtractor, shallowEqual)
   const [activeTab, setActiveTab] = useState("seat")
-  const [roundTrip, setRoundTrip] = useState(false)
+  const [bookingType, setBookingType] = useState("one_way")
 
   useEffect(() => {
-    dispatch(fetchTerminalsRequest())
+    try {
+      dispatch(fetchTerminalsRequest())
+    } catch (error) {
+      toast.error("Error fetching terminals")
+    }
   }, [dispatch])
 
-  const handleSubmit = formDate => {
+  const handleSubmit = async formData => {
     if (!isAuthenticated && activeTab === "seat")
       return navigate("/sign-in?redirect=/trip/search-results")
-    console.log(formDate)
+
+    if (activeTab === "seat") {
+      await dispatch(getSearchData({ ...formData, bookingType }))
+      return navigate("/trip/search-results")
+    }
+  }
+
+  const handleBookingType = () => {
+    if (bookingType === "one_way") return setBookingType("round_trip")
+    if (bookingType === "round_trip") return setBookingType("one_way")
   }
 
   return (
@@ -45,7 +64,7 @@ const BookingCard = props => {
         <button
           onClick={() => {
             setActiveTab("seat")
-            setRoundTrip(false)
+            handleBookingType()
           }}
           className={cx(styles.BookingCard__Tab__button, {
             [styles.BookingCard__Tab__button__active]: activeTab === "seat",
@@ -55,8 +74,9 @@ const BookingCard = props => {
         </button>
         <button
           onClick={() => {
-            setActiveTab("bus")
-            setRoundTrip(false)
+            // setActiveTab("bus")
+            // handleBookingType()
+            return null
           }}
           className={cx(styles.BookingCard__Tab__button, {
             [styles.BookingCard__Tab__button__active]: activeTab === "bus",
@@ -66,21 +86,22 @@ const BookingCard = props => {
         </button>
       </div>
       <Toggle
-        checked={roundTrip}
-        onChange={() => setRoundTrip(!roundTrip)}
+        checked={bookingType === "round_trip"}
+        onChange={handleBookingType}
         label="Round Trip?"
         className={styles.BookingCard__Toggle}
       />
       {activeTab === "seat" && !terminalsListLoading && (
         <SeatBookingForm
-          roundTrip={roundTrip}
+          roundTrip={bookingType === "round_trip"}
           terminals={terminalsList}
           onSubmit={handleSubmit}
+          searchData={searchData}
         />
       )}
       {activeTab === "bus" && !terminalsListLoading && (
         <HireBusForm
-          roundTrip={roundTrip}
+          roundTrip={bookingType === "round_trip"}
           terminals={terminalsList}
           onSubmit={handleSubmit}
         />

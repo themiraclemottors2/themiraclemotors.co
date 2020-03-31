@@ -39,7 +39,7 @@ const Header = ({ location, layout }) => {
             <Logo />
           </Link>
           <div className={styles.Header__Nav}>
-            <input type="checkbox" id="menu" />
+            <input type="checkbox" id="menu" onClick={() => null} />
             <label htmlFor="menu" className={styles.Header__Nav__icon} />
             <ul className={styles.Header__NavList}>
               {!isAuthenticated && (

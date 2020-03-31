@@ -1,0 +1,5 @@
+export const GET_TRIPS = "GET_TRIPS"
+export const SET_TRIP = "SET_TRIP"
+export const GET_SEARCH_DATA = "GET_SEARCH_DATA"
+export const RESET_TRIPS = "RESET_TRIPS"
+export const SET_PASSENGERS = "SET_PASSENGERS"

@@ -1,30 +1,46 @@
 import React from "react"
 import styles from "./trip.module.scss"
+import moment from "moment"
+import { formatCurrency } from "lib"
 
-const BookSidebar = () => {
+const BookSidebar = ({ trip }) => {
   return (
     <div className={styles.BookSidebar}>
       <div className={styles.BookSidebar__Card}>
         <div className={styles.BookSidebar__TripDetails}>
           <h2>OUTGOING</h2>
-          <h3>Thurs, March 12, 2020 - 8:00AM</h3>
-          <p>Benin - Lagos</p>
+          <h3>
+            {moment(trip.outgoing.departureTimestamp).format(
+              "ddd, MMMM DD, YYYY - hh:mm A"
+            )}
+          </h3>
+          <p>
+            {trip.outgoing.departureTerminal} - {trip.outgoing.arrivalTerminal}
+          </p>
         </div>
-        <div className={styles.BookSidebar__TripDetails}>
-          <h2>RETURN</h2>
-          <h3>Thurs, March 12, 2020 - 8:00AM</h3>
-          <p>Lagos - Benin</p>
-        </div>
+        {trip.return && (
+          <div className={styles.BookSidebar__TripDetails}>
+            <h2>RETURN</h2>
+            <h3>
+              {moment(trip.return.departureTimestamp).format(
+                "ddd, MMMM DD, YYYY - hh:mm A"
+              )}
+            </h3>
+            <p>
+              {trip.return.departureTerminal} - {trip.return.arrivalTerminal}
+            </p>
+          </div>
+        )}
       </div>
       <div className={styles.BookSidebar__Card}>
         <div className={styles.BookSidebar__Cost}>
           <div>
-            <p>Tickets(1 Adult)</p>
-            <p>NGN 3,999</p>
+            <p>Tickets({trip.ticketsCount} Passengers)</p>
+            <p>NGN {formatCurrency(trip.ticketsCost)}</p>
           </div>
           <div>
             <p>Service Fee</p>
-            <p>NGN 450</p>
+            <p>NGN {formatCurrency(trip.serviceCharge)}</p>
           </div>
         </div>
         <div className={styles.BookSidebar__Cost}>
@@ -34,7 +50,7 @@ const BookSidebar = () => {
               <br />
               <span>(tax included)</span>
             </p>
-            <p>NGN 3,999</p>
+            <p>NGN {formatCurrency(trip.serviceCharge + trip.ticketsCost)}</p>
           </div>
         </div>
       </div>

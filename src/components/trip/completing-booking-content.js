@@ -4,56 +4,88 @@ import styles from "./trip.module.scss"
 import { WrapperCard, RadioButton } from "../common"
 import card_vendors from "../../assets/images/cards-vendo.png"
 
-const CompletingBookingContent = ({ paymentMethod, changePaymentMethod }) => {
+const CompletingBookingContent = ({
+  paymentMethod,
+  changePaymentMethod,
+  passengers,
+}) => {
   return (
     <div className={styles.CompletingBookingContent}>
-      <WrapperCard
-        title="Passenger Details"
-        className={styles.CompletingBookingContent__wrapperCard}
-      >
-        <div className={styles.CompletingBookingContent__profile}>
-          <div className={styles.CompletingBookingContent__profile__info}>
-            <p className={styles.CompletingBookingContent__profile__info__text}>
-              Full Name:
-            </p>
-            <p
-              className={styles.CompletingBookingContent__profile__info__value}
-            >
-              Philip Obosi
-            </p>
-          </div>
-          <div className={styles.CompletingBookingContent__profile__info}>
-            <p className={styles.CompletingBookingContent__profile__info__text}>
-              Phone Number:
-            </p>
-            <p
-              className={styles.CompletingBookingContent__profile__info__value}
-            >
-              08136353650
-            </p>
-          </div>
-          <div className={styles.CompletingBookingContent__profile__info}>
-            <p className={styles.CompletingBookingContent__profile__info__text}>
-              Email Address:
-            </p>
-            <p
-              className={styles.CompletingBookingContent__profile__info__value}
-            >
-              philip.c.obosi@gmail.com
-            </p>
-          </div>
-          <div className={styles.CompletingBookingContent__profile__info}>
-            <p className={styles.CompletingBookingContent__profile__info__text}>
-              Address:
-            </p>
-            <p
-              className={styles.CompletingBookingContent__profile__info__value}
-            >
-              8 Odoh lane, Benin, Nigeria
-            </p>
-          </div>
-        </div>
-      </WrapperCard>
+      {passengers &&
+        passengers.map((item, index) => (
+          <WrapperCard
+            key={index}
+            title={index === 0 ? "Main Passenger" : `Other Passenger ${index}`}
+            className={styles.CompletingBookingContent__wrapperCard}
+          >
+            <div className={styles.CompletingBookingContent__profile}>
+              <div className={styles.CompletingBookingContent__profile__info}>
+                <p
+                  className={
+                    styles.CompletingBookingContent__profile__info__text
+                  }
+                >
+                  Full Name:
+                </p>
+                <p
+                  className={
+                    styles.CompletingBookingContent__profile__info__value
+                  }
+                >
+                  {`${item.firstName} ${item.lastName}`}
+                </p>
+              </div>
+              <div className={styles.CompletingBookingContent__profile__info}>
+                <p
+                  className={
+                    styles.CompletingBookingContent__profile__info__text
+                  }
+                >
+                  Phone Number:
+                </p>
+                <p
+                  className={
+                    styles.CompletingBookingContent__profile__info__value
+                  }
+                >
+                  {item.phoneNumber}
+                </p>
+              </div>
+              <div className={styles.CompletingBookingContent__profile__info}>
+                <p
+                  className={
+                    styles.CompletingBookingContent__profile__info__text
+                  }
+                >
+                  Email Address:
+                </p>
+                <p
+                  className={
+                    styles.CompletingBookingContent__profile__info__value
+                  }
+                >
+                  {item.email}
+                </p>
+              </div>
+              <div className={styles.CompletingBookingContent__profile__info}>
+                <p
+                  className={
+                    styles.CompletingBookingContent__profile__info__text
+                  }
+                >
+                  Address:
+                </p>
+                <p
+                  className={
+                    styles.CompletingBookingContent__profile__info__value
+                  }
+                >
+                  {`${item.address}, ${item.region}`}
+                </p>
+              </div>
+            </div>
+          </WrapperCard>
+        ))}
 
       <WrapperCard
         title="Payment Method"
@@ -83,6 +115,8 @@ const CompletingBookingContent = ({ paymentMethod, changePaymentMethod }) => {
   )
 }
 
-CompletingBookingContent.propTypes = {}
+CompletingBookingContent.defaultProps = {
+  passengers: [],
+}
 
 export default CompletingBookingContent

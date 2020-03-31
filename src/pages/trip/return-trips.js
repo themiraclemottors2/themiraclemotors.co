@@ -25,8 +25,7 @@ const SearchResult = props => {
       data: searchResult,
       loading,
       searchData: {
-        bookingType,
-        departureTimestamp,
+        returnTimestamp: departureTimestamp,
         departureTerminalId,
         arrivalTerminalId,
         numberOfTravellers,
@@ -36,11 +35,10 @@ const SearchResult = props => {
   }) => ({
     searchResult,
     loading,
-    bookingType,
     returnTrip,
     departureTimestamp,
-    departureTerminalId,
-    arrivalTerminalId,
+    departureTerminalId: arrivalTerminalId,
+    arrivalTerminalId: departureTerminalId,
     terminals,
     numberOfTravellers,
   })
@@ -50,7 +48,6 @@ const SearchResult = props => {
   const {
     searchResult,
     loading,
-    bookingType,
     returnTrip,
     departureTimestamp,
     departureTerminalId,
@@ -62,19 +59,15 @@ const SearchResult = props => {
   useEffect(() => {
     try {
       dispatch(resetTrips({ data: [] }))
-      dispatch(searchTripsRequest())
+      dispatch(searchTripsRequest({ departureTerminalId, arrivalTerminalId }))
     } catch (error) {
       toast.error("Can not search for trips at the moment")
     }
-  }, [dispatch, departureTerminalId])
+  }, [dispatch, departureTerminalId, arrivalTerminalId])
 
   const handleSubmit = data => {
-    dispatch(setTrip(data, "outgoingTrip"))
-    if (bookingType === "one_way") {
-      return navigate("/trip/book/passengers-details")
-    } else if (bookingType === "round_trip") {
-      return navigate("/trip/return-trips")
-    }
+    dispatch(setTrip(data, "returnTrip"))
+    return navigate("/trip/book/passengers-details")
   }
 
   if (!departureTerminalId.length) {
@@ -84,14 +77,14 @@ const SearchResult = props => {
 
   return (
     <AuthenticatedLayout {...props}>
-      <SEO title="Trip Search Result" />
+      <SEO title="Return Trips" />
       <SearchResultHeader
         header={`Showing trips from ${extractTerminalName(
           terminals,
           departureTerminalId
         )} to ${extractTerminalName(terminals, arrivalTerminalId)}`}
         date={moment(departureTimestamp).format("MMMM D, YYYY")}
-        btnOnClick={() => navigate("../")}
+        btnOnClick={() => navigate("/")}
       />
       <ResultWrapper>
         {searchResult.length <= 0 && !loading && (

@@ -4,6 +4,7 @@ import { setToken } from "../../lib"
 
 export const onAppLoad = () => dispatch => {
   const accessToken = window.localStorage.getItem("accessToken")
+  const user = window.localStorage.getItem("user")
   let isAuthenticated = false
   if (accessToken) {
     setToken(accessToken)
@@ -12,6 +13,7 @@ export const onAppLoad = () => dispatch => {
   return dispatch({
     type: APP_LOAD,
     isAuthenticated,
+    user: JSON.parse(user),
   })
 }
 

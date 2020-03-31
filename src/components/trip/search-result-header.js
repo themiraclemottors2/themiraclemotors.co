@@ -3,13 +3,13 @@ import PropTypes from "prop-types"
 import styles from "./trip.module.scss"
 import { Button } from "../common"
 
-const SearchResultHeader = ({ header }) => {
+const SearchResultHeader = ({ header, btnOnClick, date, returnTrip }) => {
   return (
     <div className={styles.SearchResultHeader}>
       <h4>SEARCH RESULT</h4>
       <h2>{header}</h2>
-      <p>Thursday, March 12, 2020</p>
-      <Button>Modify Search</Button>
+      <p>{date}</p>
+      {!returnTrip && <Button onClick={btnOnClick}>Modify Search</Button>}
     </div>
   )
 }

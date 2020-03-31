@@ -13,3 +13,8 @@ export const capitalize = text => {
     )
     .join(" ")
 }
+
+export const extractTerminalName = (terminals, id) => {
+  if (!terminals.length) return null
+  return capitalize(terminals.filter(item => item.id === id)[0].name)
+}

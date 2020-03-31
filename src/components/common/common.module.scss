@@ -13,9 +13,14 @@
     line-height: 125%;
     transition: all 0.2s ease-in-out;
 
+    &__loading {
+        background: rgba(50, 187, 255, 0.5) !important;
+    }
+
     &__disabled,
     &:disabled {
-        background: rgba(50, 187, 255, 0.5) !important;
+        background: #A1A9C3 !important;
+        color: #546698 !important;
     }
 
 
@@ -636,7 +641,6 @@
         color: $white !important;
         line-height: 131%;
         font-weight: normal;
-        min-width: initial;
         margin-left: auto;
     }
 }

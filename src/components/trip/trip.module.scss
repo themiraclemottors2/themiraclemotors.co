@@ -133,7 +133,8 @@
 .BookItem {
 
     &__Details,
-    &__Seat {
+    &__Seat,
+    &__Loading {
         width: 100%;
         padding: 1.11em 1.39em;
         justify-content: space-between;
@@ -235,6 +236,7 @@
             &>div {
                 height: 1.72em;
                 width: 1.72em;
+                cursor: pointer;
 
                 &>svg {
                     width: 100%;
@@ -405,6 +407,7 @@
         flex-wrap: nowrap;
         padding: 0.67em 1.22em;
         margin-bottom: 1.78em;
+        align-items: center;
 
         &>svg {
             width: 1.67em;

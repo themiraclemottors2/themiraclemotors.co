@@ -5,11 +5,12 @@ const initState = {
   isAuthenticated: false,
   redirectTo: null,
   error: null,
+  user: {},
 }
 
 export default (
   state = initState,
-  { type, isAuthenticated, redirectTo, error }
+  { type, isAuthenticated, redirectTo, user }
 ) => {
   switch (type) {
     case APP_LOAD:
@@ -17,6 +18,7 @@ export default (
         ...state,
         appLoaded: true,
         isAuthenticated,
+        user,
         redirectTo,
       }
     case REDIRECTED:
@@ -34,6 +36,7 @@ export default (
         ...state,
         isAuthenticated,
         redirectTo,
+        user,
         error: null,
       }
     case LOGOUT:

@@ -21,6 +21,9 @@ class Select extends Component {
 
   componentDidMount() {
     document.addEventListener("mousedown", this._handleClickOutside)
+    if (this.props.value && (this.props.value.length || this.props.value)) {
+      this.setState({ selectedValue: this.props.value })
+    }
   }
 
   componentWillUnmount() {
