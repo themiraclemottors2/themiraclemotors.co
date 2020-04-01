@@ -49,7 +49,7 @@ class Layout extends Component {
     const { children, location, type } = this.props
     return (
       <StickyContainer className={styles.Layout}>
-        <Header location={location} layout={type} />
+        <Header {...this.props} layout={type} />
         <main>
           {children}
           {type === "applied" && <Footer />}

@@ -37,7 +37,6 @@ const SearchResult = props => {
     searchResult,
     loading,
     bookingType,
-    returnTrip,
     departureTimestamp,
     departureTerminalId,
     arrivalTerminalId,
@@ -51,7 +50,6 @@ const SearchResult = props => {
     searchResult,
     loading,
     bookingType,
-    returnTrip,
     departureTimestamp,
     departureTerminalId,
     arrivalTerminalId,
@@ -66,6 +64,11 @@ const SearchResult = props => {
     } catch (error) {
       toast.error("Can not search for trips at the moment")
     }
+
+    if (!departureTerminalId.length) {
+      navigate("../")
+      return null
+    }
   }, [dispatch, departureTerminalId])
 
   const handleSubmit = data => {
@@ -75,11 +78,6 @@ const SearchResult = props => {
     } else if (bookingType === "round_trip") {
       return navigate("/trip/return-trips")
     }
-  }
-
-  if (!departureTerminalId.length) {
-    navigate("../")
-    return null
   }
 
   return (

@@ -31,7 +31,14 @@ class PassengersDetails extends Component {
   }
 
   componentDidMount() {
+    const {
+      searchData: { departureTerminalId },
+    } = this.props
     this._prepStateFromProps()
+    if (!departureTerminalId.length) {
+      navigate("../")
+      return null
+    }
   }
 
   _prepStateFromProps = () => {
@@ -123,16 +130,7 @@ class PassengersDetails extends Component {
       trip,
       numberOfTravellers,
     } = this.state
-    const {
-      searchData: { departureTerminalId },
-      user,
-      passengers,
-    } = this.props
-
-    if (!departureTerminalId.length) {
-      navigate("../")
-      return null
-    }
+    const { user, passengers } = this.props
 
     const paymentConfig = {
       publicKey: "pk_test_eb313e7bdda49dc2cb9e93617350bb4f3ee0b8a3",

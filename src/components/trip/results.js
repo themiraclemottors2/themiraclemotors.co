@@ -52,8 +52,11 @@ const Results = ({ loading, data, onContinue, numberOfTravellers }) => {
               <h3>NGN {formatCurrency(Number(data.price))}</h3>
               <p>{availableSeats - selectedSeats.length} seat(s) remaining</p>
               <Button
-                onClick={() => setOpenSeats(!openSeats)}
+                onClick={() =>
+                  !!availableSeats ? setOpenSeats(!openSeats) : null
+                }
                 className={styles.Result__button}
+                disabled={!availableSeats}
               >
                 View seats
               </Button>

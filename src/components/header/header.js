@@ -95,4 +95,8 @@ const Header = ({ location, layout }) => {
   )
 }
 
+Header.defaultProps = {
+  location: { pathname: "" },
+}
+
 export default Header

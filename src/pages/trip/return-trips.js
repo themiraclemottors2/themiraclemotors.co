@@ -35,7 +35,6 @@ const SearchResult = props => {
   }) => ({
     searchResult,
     loading,
-    returnTrip,
     departureTimestamp,
     departureTerminalId: arrivalTerminalId,
     arrivalTerminalId: departureTerminalId,
@@ -48,7 +47,6 @@ const SearchResult = props => {
   const {
     searchResult,
     loading,
-    returnTrip,
     departureTimestamp,
     departureTerminalId,
     arrivalTerminalId,
@@ -63,16 +61,16 @@ const SearchResult = props => {
     } catch (error) {
       toast.error("Can not search for trips at the moment")
     }
+
+    if (!departureTerminalId.length) {
+      navigate("../")
+      return null
+    }
   }, [dispatch, departureTerminalId, arrivalTerminalId])
 
   const handleSubmit = data => {
     dispatch(setTrip(data, "returnTrip"))
     return navigate("/trip/book/passengers-details")
-  }
-
-  if (!departureTerminalId.length) {
-    navigate("../")
-    return null
   }
 
   return (
