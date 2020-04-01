@@ -1,6 +1,6 @@
 // import { window } from "browser-monads"
 import { LOGIN, LOGOUT, REDIRECT } from "../types"
-import { Auth } from "../../services"
+import { AuthRequestService } from "../../services"
 
 const login = data => ({
   type: LOGIN,
@@ -15,7 +15,7 @@ const register = redirectTo => ({
 
 export const loginRequest = (body, redirectTo = null) => async dispatch => {
   try {
-    const data = await Auth.signIn(body)
+    const data = await AuthRequestService.signIn(body)
     return dispatch(login({ ...data, redirectTo }))
   } catch (error) {
     throw error
@@ -24,7 +24,7 @@ export const loginRequest = (body, redirectTo = null) => async dispatch => {
 
 export const registerRequest = body => async dispatch => {
   try {
-    await Auth.signUp(body)
+    await AuthRequestService.signUp(body)
     return dispatch(register("/sign-in"))
   } catch (error) {
     throw error

@@ -7,7 +7,7 @@ import {
   RESET_TRIPS,
   SET_PASSENGERS,
 } from "../types"
-import { Trips } from "../../services"
+import { TripsRequestService } from "../../services"
 
 const getTrips = data => ({
   type: GET_TRIPS,
@@ -46,7 +46,7 @@ export const fetchTripsRequest = params => async (dispatch, getState) => {
 
   dispatch(asyncStart(identifier))
   try {
-    const data = await Trips.get(params)
+    const data = await TripsRequestService.getTrips(params)
     return dispatch(getTrips(data))
   } catch (error) {
     throw error
@@ -60,7 +60,10 @@ export const searchTripsRequest = params => async (dispatch, getState) => {
 
   dispatch(asyncStart(identifier))
   try {
-    const data = await Trips.search({ ...searchData, ...params })
+    const data = await TripsRequestService.searchTrips({
+      ...searchData,
+      ...params,
+    })
     return dispatch(getTrips(data))
   } catch (error) {
     throw error

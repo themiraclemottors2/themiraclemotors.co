@@ -1,6 +1,6 @@
 // import { window } from "browser-monads"
 import { GET_TERMINALS, ASYNC_START } from "../types"
-import { Terminals } from "../../services"
+import { TerminalsRequestService } from "../../services"
 
 const getTerminals = data => ({
   type: GET_TERMINALS,
@@ -19,7 +19,7 @@ export const fetchTerminalsRequest = () => async (dispatch, getState) => {
 
   dispatch(asyncStart(identifier))
   try {
-    const data = await Terminals.get()
+    const data = await TerminalsRequestService.getTerminals()
     return dispatch(getTerminals(data))
   } catch (error) {
     throw error

@@ -46,7 +46,7 @@ class Layout extends Component {
   }
 
   render() {
-    const { children, location, type } = this.props
+    const { children, type } = this.props
     return (
       <StickyContainer className={styles.Layout}>
         <Header {...this.props} layout={type} />

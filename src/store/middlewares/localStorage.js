@@ -1,26 +1,22 @@
-import { window } from "browser-monads"
 import { setToken } from "../../lib"
 import { LOGIN, LOGOUT, RESET_TOKEN } from "../types"
+import { LocalStorageService } from "../../services"
 
 const localStorageMiddleware = store => next => action => {
   const { type, accessToken, refreshToken, user, error } = action
   if (type === LOGIN) {
     if (!error) {
-      window.localStorage.setItem("accessToken", accessToken)
-      window.localStorage.setItem("refreshToken", refreshToken)
-      window.localStorage.setItem("user", JSON.stringify(user))
+      LocalStorageService.setToken({ accessToken, refreshToken })
+      LocalStorageService.setUser(user)
       setToken(accessToken)
     }
   } else if (type === RESET_TOKEN) {
     if (!error) {
-      window.localStorage.setItem("accessToken", accessToken)
-      window.localStorage.setItem("refreshToken", refreshToken)
+      LocalStorageService.setToken({ accessToken, refreshToken })
       setToken(accessToken)
     }
   } else if (type === LOGOUT) {
-    window.localStorage.removeItem("accessToken")
-    window.localStorage.removeItem("refreshToken")
-    window.localStorage.removeItem("user")
+    LocalStorageService.clearStorage()
     setToken("")
   }
 
