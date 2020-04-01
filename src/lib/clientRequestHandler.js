@@ -1,7 +1,7 @@
 import axios from "axios"
-import {
-  serviceRoot
-} from "./constants"
+import { serviceRoot } from "./constants"
+import { LocalStorageService, AuthRequestService } from "../services"
+import { navigate } from "gatsby"
 
 export const serviceInstance = axios.create({
   baseURL: serviceRoot,
@@ -13,10 +13,48 @@ export const serviceInstance = axios.create({
   },
 })
 
-export const setToken = (token) => {
-  if (token) {
-    serviceInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`
-  } else {
-    delete serviceInstance.defaults.headers.common["Authorization"]
+serviceInstance.interceptors.request.use(
+  config => {
+    const token = LocalStorageService.getAccessToken()
+    if (token) {
+      config.headers["Authorization"] = "Bearer " + token
+    }
+    return config
+  },
+  error => {
+    Promise.reject(error)
   }
-}
+)
+
+serviceInstance.interceptors.response.use(
+  response => response,
+  async error => {
+    const originalRequest = error.config
+
+    if (
+      error.response.status === 401 &&
+      originalRequest.url === `${serviceRoot}/auth/refresh-token`
+    ) {
+      navigate("/sign-in")
+      return Promise.reject(error)
+    }
+
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true
+      const refreshToken = LocalStorageService.getRefreshToken()
+      const accessToken = LocalStorageService.getAccessToken()
+      return AuthRequestService.refreshToken({
+        refreshToken: refreshToken,
+      }).then(res => {
+        if (res.status === 201) {
+          LocalStorageService.setToken(res.data.data)
+          axios.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer  + ${accessToken}`
+          return axios(originalRequest)
+        }
+      })
+    }
+    return Promise.reject(error)
+  }
+)

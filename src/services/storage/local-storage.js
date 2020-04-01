@@ -22,7 +22,7 @@ export default {
     window.localStorage.setItem("user", JSON.stringify(userObject)),
   getAccessToken: () => window.localStorage.getItem("accessToken"),
   getRefreshToken: () => window.localStorage.getItem("refreshToken"),
-  getUser: () => window.localStorage.getItem("user"),
+  getUser: () => JSON.parse(window.localStorage.getItem("user")),
   clearStorage: () =>
     _chearMultipleItems(["accessToken", "refreshToken", "user"]),
 }

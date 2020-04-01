@@ -1,4 +1,3 @@
-import { setToken } from "../../lib"
 import { LOGIN, LOGOUT, RESET_TOKEN } from "../types"
 import { LocalStorageService } from "../../services"
 
@@ -8,16 +7,13 @@ const localStorageMiddleware = store => next => action => {
     if (!error) {
       LocalStorageService.setToken({ accessToken, refreshToken })
       LocalStorageService.setUser(user)
-      setToken(accessToken)
     }
   } else if (type === RESET_TOKEN) {
     if (!error) {
       LocalStorageService.setToken({ accessToken, refreshToken })
-      setToken(accessToken)
     }
   } else if (type === LOGOUT) {
     LocalStorageService.clearStorage()
-    setToken("")
   }
 
   next(action)

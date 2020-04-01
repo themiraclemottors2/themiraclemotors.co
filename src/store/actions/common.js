@@ -1,19 +1,17 @@
-import { window } from "browser-monads"
 import { APP_LOAD, REDIRECTED } from "../types"
-import { setToken } from "../../lib"
+import { LocalStorageService } from "../../services"
 
 export const onAppLoad = () => dispatch => {
-  const accessToken = window.localStorage.getItem("accessToken")
-  const user = window.localStorage.getItem("user")
+  const token = LocalStorageService.getAccessToken()
+  const user = LocalStorageService.getUser()
   let isAuthenticated = false
-  if (accessToken) {
-    setToken(accessToken)
+  if (token) {
     isAuthenticated = true
   }
   return dispatch({
     type: APP_LOAD,
     isAuthenticated,
-    user: JSON.parse(user),
+    user,
   })
 }
 
