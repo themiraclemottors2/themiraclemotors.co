@@ -9,6 +9,7 @@ const Button = ({
   children,
   loading,
   disabled,
+  id,
   ...rest
 }) => {
   return (
@@ -19,6 +20,7 @@ const Button = ({
         [`${styles.Button__loading}`]: loading,
       })}
       disabled={disabled}
+      id={id}
       {...rest}
     >
       {!loading && children}

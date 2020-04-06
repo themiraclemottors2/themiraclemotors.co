@@ -46,9 +46,10 @@ export const fetchTripsRequest = params => async (dispatch, getState) => {
 
   dispatch(asyncStart(identifier))
   try {
-    const data = await TripsRequestService.getTrips(params)
+    const data = await TripsRequestService.get(params)
     return dispatch(getTrips(data))
   } catch (error) {
+    dispatch(getTrips([]))
     throw error
   }
 }
@@ -60,12 +61,13 @@ export const searchTripsRequest = params => async (dispatch, getState) => {
 
   dispatch(asyncStart(identifier))
   try {
-    const data = await TripsRequestService.searchTrips({
+    const data = await TripsRequestService.search({
       ...searchData,
       ...params,
     })
     return dispatch(getTrips(data))
   } catch (error) {
+    dispatch(getTrips([]))
     throw error
   }
 }

@@ -4,9 +4,13 @@ import styles from "./trip.module.scss"
 import { ChevronRight } from "assets/svg"
 import cx from "classnames"
 
-const BookHeader = ({ stage, breadCrumbs }) => {
+const BookHeader = ({ stage, breadCrumbs, hideBreadCrumbsOnMobile }) => {
   return (
-    <div className={styles.BookHeader}>
+    <div
+      className={cx(styles.BookHeader, {
+        [`${styles.BookHeader__hideBreadCrumbsOnMobile}`]: hideBreadCrumbsOnMobile,
+      })}
+    >
       {breadCrumbs.map((item, index) => {
         return (
           <Fragment key={index}>

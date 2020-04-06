@@ -1,544 +1,822 @@
-@import '../../styles/generic.scss';
+@import "../../styles/generic.scss";
 
 .BookHeader,
 .SearchResultHeader {
-    font-size: 1em;
-    padding: 6.83em 6.05em 0.72em 6.05em;
-    background: $white;
+  font-size: 1em;
+  padding: 6.83em 6.05em 0.72em 6.05em;
+  background: $white;
 }
 
 .SearchResultHeader {
-    &>h4 {
-        font-weight: bold;
-        font-size: 0.78em;
-        line-height: 136%;
-        text-transform: uppercase;
-        color: #5ACAFA;
-    }
+  @include sm {
+    padding: 90px 26px 24px;
+  }
 
-    &>h2 {
-        font-weight: bold;
-        font-size: 2em;
-        line-height: 133%;
-        color: #425486;
-        margin: 0.14em 0;
-    }
+  & > h4 {
+    font-weight: bold;
+    font-size: 0.78em;
+    line-height: 136%;
+    text-transform: uppercase;
+    color: #5acafa;
 
-    &>p {
-        font-size: 0.89em;
-        line-height: 131%;
-        color: #425486;
-        margin-bottom: 0.625em;
+    @include sm {
+      font-size: 14px;
     }
+  }
 
-    &>button {
-        display: block;
-        margin-left: auto;
-        height: 3.25em;
-        background: #32BBFF !important;
-        color: $white !important;
-        width: 12.31em;
+  & > h2 {
+    font-weight: bold;
+    font-size: 2em;
+    line-height: 133%;
+    color: #425486;
+    margin: 0.14em 0;
+  }
+
+  & > p {
+    font-size: 0.89em;
+    line-height: 131%;
+    color: #425486;
+    margin-bottom: 0.625em;
+
+    @include sm {
+      font-size: 14px;
     }
+  }
+
+  & > button {
+    display: block;
+    margin-left: auto;
+    height: 3.25em;
+    background: #32bbff !important;
+    color: $white !important;
+    width: 12.31em;
+
+    @include sm {
+      height: 45px;
+      font-size: 14px;
+      min-width: initial;
+      width: 150px;
+    }
+  }
 }
 
 .BookHeader {
-    padding-bottom: 1.67em;
-    color: #A1A9C3;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
+  padding-bottom: 1.67em;
+  color: #a1a9c3;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
 
-    &>p {
-        font-size: 1em;
-        line-height: 133%;
-    }
+  @include sm {
+    padding-top: 85px;
+    padding-left: 26px;
+    padding-right: 26px;
+  }
 
-    &>svg {
-        height: 0.39em;
-        margin: 0 0.72em;
-    }
+  & > p {
+    font-size: 1em;
+    line-height: 133%;
 
-    &__ActiveStage {
-        color: #425486;
+    @include sm {
+      font-size: 14px;
     }
+  }
+
+  & > svg {
+    height: 0.39em;
+    margin: 0 0.72em;
+
+    @include sm {
+      height: 10px;
+    }
+  }
+
+  &__ActiveStage {
+    color: #425486;
+  }
+
+  &__hideBreadCrumbsOnMobile {
+    @include sm {
+      padding-top: 13px;
+    }
+  }
 }
 
 .ResultWrapper {
-    font-size: 1em;
-    padding: 2.11em 6.05em 2.11em 6.05em;
-    display: grid;
-    column-gap: 2.83em;
-    grid-template-columns: repeat(2, max-content);
-    justify-content: space-between;
+  font-size: 1em;
+  padding: 2.11em 6.05em 2.11em 6.05em;
+  display: grid;
+  column-gap: 2.83em;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: space-between;
+
+  @include sm {
+    display: block;
+    padding: 0;
+    padding-top: 26px;
+  }
 }
 
 .Default {
-    &__sidebar {
-        font-size: 1rem;
-        width: 18em !important;
-        height: max-content;
+  &__sidebar {
+    font-size: 1rem;
+    width: 18em !important;
+    height: max-content;
+
+    @include sm {
+      width: 100% !important;
+      padding: 22px 26px !important;
     }
+
+    & > div {
+      justify-content: space-between;
+
+      & > div {
+        width: calc(50% - 0.5em);
+        padding: 0.61em 0.5em;
+
+        @include sm {
+          width: calc(50% - 1em);
+          padding: 10px 20px;
+        }
+
+        & > svg {
+          width: 1em;
+          height: 1em;
+          margin-right: 0.5em;
+
+          @include sm {
+            width: 20px;
+            height: 20px;
+            margin-right: 20px;
+          }
+        }
+
+        & > p {
+          font-size: 0.7em;
+
+          @include sm {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
 }
 
 .Result,
 .BookItem,
 .NoResult {
-    font-size: 1em;
-    width: 47.77em;
-    background: #FFFFFF;
-    border-radius: 5px;
+  font-size: 1em;
+  width: 47.77em;
+  background: #ffffff;
+  border-radius: 5px;
 
-    &:not(:last-of-type) {
-        margin-bottom: 2.11em;
-    }
+  @include sm {
+    margin: 0 26px;
+    width: calc(100% - (26px * 2));
+    overflow: hidden;
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: 2.11em;
+  }
 }
 
 .Result__Details,
 .BookItem__Details,
 .NoResult {
-    display: flex;
-    align-items: center;
-    height: max-content;
+  display: flex;
+  align-items: center;
+  height: max-content;
 }
 
-
 .NoResult {
-    font-size: 1em;
-    padding: 1.67em;
+  font-size: 1em;
+  padding: 1.67em;
 
-    &>svg {
-        width: 4.56em;
-        height: 4.56em;
-        margin-right: 1em;
+  & > svg {
+    width: 4.56em;
+    height: 4.56em;
+    margin-right: 1em;
+
+    @include sm {
+      width: 130px;
+      height: initial;
+    }
+  }
+
+  &__Textbox {
+    color: #425486;
+
+    & > h4 {
+      font-weight: bold;
+      font-size: 1em;
+      line-height: 133%;
+      margin-bottom: 0.44em;
+
+      @include sm {
+        font-size: 16px;
+      }
     }
 
-    &__Textbox {
-        color: #425486;
+    & > p {
+      font-size: 0.89em;
+      line-height: 131%;
 
-        &>h4 {
-            font-weight: bold;
-            font-size: 1em;
-            line-height: 133%;
-            margin-bottom: 0.44em;
-        }
-
-        &>p {
-            font-size: 0.89em;
-            line-height: 131%;
-        }
+      @include sm {
+        font-size: 13px;
+      }
     }
+  }
 }
 
 .Result,
 .BookItem {
+  &__Details,
+  &__Seat,
+  &__Loading {
+    width: 100%;
+    padding: 1.11em 1.39em;
+    justify-content: space-between;
+    position: relative;
+  }
 
-    &__Details,
-    &__Seat,
-    &__Loading {
-        width: 100%;
-        padding: 1.11em 1.39em;
-        justify-content: space-between;
+  &__Loading {
+    & > div {
+      overflow: hidden;
+    }
+  }
+
+  &__Details {
+    &__bus {
+      & > p {
+        font-weight: bold;
+        font-size: 0.89em;
+        line-height: 107.45%;
+        color: #a1a9c3;
+        margin-bottom: 1.44em;
+
+        @include sm {
+          font-size: 14px;
+        }
+      }
+
+      & > img {
+        width: 8.51em;
+        height: 3.94em;
+
+        @include sm {
+          width: initial;
+          height: 70px;
+          margin-top: 10px;
+        }
+      }
     }
 
-    &__Details {
-        &__bus {
-            &>p {
-                font-weight: bold;
-                font-size: 0.89em;
-                line-height: 107.45%;
-                color: #A1A9C3;
-                margin-bottom: 1.44em;
-            }
+    &__time {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      font-size: 0.89em;
+      line-height: 131%;
+      color: #425486;
 
-            &>img {
-                width: 8.51em;
-                height: 3.94em;
-            }
-        }
+      @include sm {
+        position: absolute;
+        right: 13px;
+        font-size: 13px;
+      }
 
-        &__time {
-            display: flex;
-            flex-wrap: nowrap;
-            align-items: center;
-            font-size: 0.89em;
-            line-height: 131%;
-            color: #425486;
-
-            &>svg {
-                width: 1.76em;
-                height: 1.56em;
-                margin-right: 0.56em;
-            }
-        }
-
-        &__booking {
-            text-align: end;
-            color: #425486;
-
-            &>h3 {
-                font-weight: bold;
-                font-size: 1.22em;
-                line-height: 136%;
-                margin-bottom: 0.09em;
-            }
-
-            &>p {
-                font-size: 0.89em;
-                line-height: 131%;
-                margin-bottom: 1.25em;
-            }
-        }
+      & > svg {
+        width: 1.76em;
+        height: 1.56em;
+        margin-right: 0.56em;
+      }
     }
 
-    &__button {
-        height: 2.38em;
-        background: #32BBFF !important;
-        color: $white !important;
-        width: 10.06em !important;
+    &__booking {
+      text-align: end;
+      color: #425486;
+
+      & > h3 {
+        font-weight: bold;
+        font-size: 1.22em;
+        line-height: 136%;
+        margin-bottom: 0.09em;
+
+        @include sm {
+          font-size: 14px;
+        }
+      }
+
+      & > p {
         font-size: 0.89em;
         line-height: 131%;
-        font-weight: normal;
-        min-width: initial;
+        margin-bottom: 1.25em;
+
+        @include sm {
+          font-size: 12px;
+          margin-bottom: 50px;
+        }
+      }
+    }
+  }
+
+  &__button {
+    height: 2.38em;
+    background: #32bbff !important;
+    color: $white !important;
+    width: 10.06em !important;
+    font-size: 0.89em;
+    line-height: 131%;
+    font-weight: normal;
+    min-width: initial;
+
+    @include sm {
+      font-size: 14px !important;
+      width: 120px !important;
+      height: 35px !important;
+      min-width: initial !important;
+      min-height: initial !important;
+    }
+  }
+
+  &__Seat {
+    border-top: 0.5px solid #a1a9c3;
+    padding-top: 2.22em;
+    padding-bottom: 2.22em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    @include sm {
+      position: relative;
+      padding-top: 12px;
     }
 
-    &__Seat {
-        border-top: 0.5px solid #A1A9C3;
-        padding-top: 2.22em;
-        padding-bottom: 2.22em;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: nowrap;
+    &__bus {
+      height: 13.27em;
+      width: 18.89em;
+      position: relative;
+      padding: 1.11em 1.11em 1.11em 4.83em;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
 
-        &__bus {
-            height: 13.27em;
-            width: 18.89em;
-            position: relative;
-            padding: 1.11em 1.11em 1.11em 4.83em;
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: space-between;
+      @include sm {
+        height: 202px;
+        width: 100%;
+        padding: 20px 17px 20px 58px;
+      }
 
-            &>svg {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                left: 0;
-                top: 0;
-            }
-        }
-
-        &__column {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            &>div {
-                height: 1.72em;
-                width: 1.72em;
-                cursor: pointer;
-
-                &>svg {
-                    width: 100%;
-                    height: 100%;
-                    transform: rotate(-90deg);
-
-                    path {
-                        fill: #425486;
-                    }
-                }
-            }
-        }
-
-        &__other {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        &__sample {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: nowrap;
-            border: 1px solid #A1A9C3;
-            border-radius: 5px;
-            width: 17.56em;
-            padding: 0.78em 1.56em;
-
-            &>div {
-                text-align: center;
-                font-size: 0.89em;
-                line-height: 131%;
-                color: #425486;
-            }
-        }
-
-        &__available {
-            &>svg {
-                path {
-                    fill: #425486 !important;
-                }
-            }
-        }
-
-        &__booked {
-            &>svg {
-                path {
-                    fill: #32BBFF !important;
-                }
-            }
-        }
-
-        &__selected {
-            &>svg {
-                path {
-                    fill: #27AE60 !important;
-                }
-            }
-        }
+      & > svg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+      }
     }
+
+    &__column {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      & > div {
+        height: 1.72em;
+        width: 1.72em;
+        cursor: pointer;
+
+        @include sm {
+          height: 32px;
+          width: initial;
+        }
+
+        & > svg {
+          width: 100%;
+          height: 100%;
+          transform: rotate(-90deg);
+
+          path {
+            fill: #425486;
+          }
+        }
+      }
+    }
+
+    &__other {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      @include sm {
+        & > button {
+          margin-left: auto;
+          position: absolute;
+          bottom: 22px;
+        }
+      }
+    }
+
+    &__sample {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: nowrap;
+      border: 1px solid #a1a9c3;
+      border-radius: 5px;
+      width: 17.56em;
+      padding: 0.78em 1.56em;
+
+      @include sm {
+        flex-direction: column;
+        width: max-content;
+        margin-left: 20px;
+        margin-bottom: 57px;
+        margin-top: 11px;
+        align-items: center;
+      }
+
+      & > div {
+        text-align: center;
+        font-size: 0.89em;
+        line-height: 131%;
+        color: #425486;
+        font-size: 10px;
+
+        &:not(:last-of-type) {
+          margin-bottom: 11px;
+        }
+      }
+    }
+
+    &__available {
+      & > svg {
+        path {
+          fill: #425486 !important;
+        }
+      }
+    }
+
+    &__booked {
+      & > svg {
+        path {
+          fill: #32bbff !important;
+        }
+      }
+    }
+
+    &__selected {
+      & > svg {
+        path {
+          fill: #27ae60 !important;
+        }
+      }
+    }
+  }
 }
 
 .BookItem {
-    &__Details {
-        &__bus {
-            &>h3 {
-                font-weight: bold;
-                font-size: 1.22em;
-                line-height: 136%;
-                color: #425486;
-                margin-bottom: 1.04em;
-            }
-        }
+  &__Details {
+    &__bus {
+      & > h3 {
+        font-weight: bold;
+        font-size: 1.22em;
+        line-height: 136%;
+        color: #425486;
+        margin-bottom: 1.04em;
+      }
     }
+  }
 }
 
 .BookSidebar {
-    font-size: 1rem;
+  font-size: 1rem;
 
-    &__Card {
-        background: $white;
-        border-radius: 5px;
-        width: 23.22em;
-        padding: 0 1.44em;
+  &__Card {
+    background: $white;
+    border-radius: 5px;
+    width: 23.22em;
+    padding: 0 1.44em;
 
-        &:not(:last-of-type) {
-            margin-bottom: 2.06em;
-        }
-
+    &:not(:last-of-type) {
+      margin-bottom: 2.06em;
     }
 
-    &__TripDetails,
-    &__Cost {
-        padding: 1.33em 0;
+    @include sm {
+      width: 100%;
+      padding: 0 26px;
+    }
+  }
 
-        &:not(:last-of-type) {
-            border-bottom: 0.5px solid #a1a9c3cc;
-        }
+  &__TripDetails,
+  &__Cost {
+    padding: 1.33em 0;
+
+    &:not(:last-of-type) {
+      border-bottom: 0.5px solid #a1a9c3cc;
+    }
+  }
+
+  &__TripDetails {
+    & > h2 {
+      font-weight: bold;
+      font-size: 0.78em;
+      line-height: 136%;
+      color: #a1a9c3;
+      margin-bottom: 0.79em;
+
+      @include sm {
+        font-size: 14px;
+      }
     }
 
-    &__TripDetails {
-        &>h2 {
-            font-weight: bold;
+    & > h3 {
+      font-weight: bold;
+      font-size: 0.89em;
+      line-height: 131%;
+      color: #425486;
+      margin-bottom: 0.25em;
+
+      @include sm {
+        font-size: 15px;
+      }
+    }
+
+    & > p {
+      font-size: 0.89em;
+      line-height: 131%;
+      color: #425486;
+
+      @include sm {
+        font-size: 15px;
+      }
+    }
+  }
+
+  &__Cost {
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.89em;
+      line-height: 131%;
+      color: #425486;
+
+      &:not(:last-of-type) {
+        margin-bottom: 0.94em;
+      }
+
+      @include sm {
+        font-size: 15px;
+      }
+    }
+
+    &:nth-of-type(2) {
+      & > div {
+        font-weight: bold;
+        font-size: 1.22em;
+
+        @include sm {
+          font-size: 17px;
+        }
+
+        & > p {
+          & > span {
+            font-weight: normal;
             font-size: 0.78em;
-            line-height: 136%;
-            color: #A1A9C3;
-            margin-bottom: 0.79em;
-        }
 
-        &>h3 {
-            font-weight: bold;
-            font-size: 0.89em;
-            line-height: 131%;
-            color: #425486;
-            margin-bottom: 0.25em;
-        }
-
-        &>p {
-            font-size: 0.89em;
-            line-height: 131%;
-            color: #425486;
-        }
-    }
-
-    &__Cost {
-        &>div {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.89em;
-            line-height: 131%;
-            color: #425486;
-
-            &:not(:last-of-type) {
-                margin-bottom: 0.94em;
+            @include sm {
+              font-size: 14px;
             }
+          }
         }
-
-        &:nth-of-type(2) {
-            &>div {
-                font-weight: bold;
-                font-size: 1.22em;
-
-                &>p {
-                    &>span {
-                        font-weight: normal;
-                        font-size: 0.78em;
-                    }
-                }
-            }
-        }
+      }
     }
+  }
 }
 
 .CompletingBookingContent,
 .PassengerDetailsContent {
-    width: 41.11em;
+  width: 41.11em;
+
+  @include sm {
+    width: 100%;
+  }
 }
 
 .PassengerDetailsContent,
 .ProfileContent {
-    &__info {
-        background: #F1F2F6;
-        border-radius: 5px;
-        display: flex;
-        flex-wrap: nowrap;
-        padding: 0.67em 1.22em;
-        margin-bottom: 1.78em;
-        align-items: center;
+  &__info {
+    background: #f1f2f6;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0.67em 1.22em;
+    margin-bottom: 1.78em;
+    align-items: center;
+    width: 100%;
 
-        &>svg {
-            width: 1.67em;
-            height: 1.67em;
-            margin-right: 0.5em;
-        }
-
-        &>p {
-            font-weight: bold;
-            font-size: 0.78em;
-            line-height: 136%;
-            color: #425486;
-        }
+    & > svg {
+      width: 1.67em;
+      height: 1.67em;
+      margin-right: 0.5em;
     }
 
-    &__Submit {
-        height: 2.38em;
-        background: #32BBFF !important;
-        color: $white !important;
-        font-size: 0.89em;
-        line-height: 131%;
-        font-weight: normal;
-        min-width: initial;
-        padding: 0 1.75em;
+    & > p {
+      font-weight: bold;
+      font-size: 0.78em;
+      line-height: 136%;
+      color: #425486;
+
+      @include sm {
+        font-size: 11px;
+      }
     }
+  }
+
+  &__Submit {
+    height: 2.38em;
+    background: #32bbff !important;
+    color: $white !important;
+    font-size: 0.89em;
+    line-height: 131%;
+    font-weight: normal;
+    min-width: initial;
+    padding: 0 1.75em;
+  }
 }
 
 .PassengerDetailsContent {
-    &__accordion {
-        width: 100%;
-        margin-bottom: 2.17em;
+  &__accordion {
+    width: 100%;
+    margin-bottom: 2.17em;
+
+    @include sm {
+      min-width: initial;
     }
 
-    &__Submit {
-        margin-left: auto;
+    & > div > form {
+      padding-bottom: 25px;
     }
+  }
 }
 
 .CompletingBookingContent {
-    &__wrapperCard {
-        width: 100%;
+  &__wrapperCard {
+    width: 100%;
 
-        &:not(:last-of-type) {
-            margin-bottom: 2.17em;
-        }
+    &:not(:last-of-type) {
+      margin-bottom: 2.17em;
     }
 
-    &__profile {
-        &__info {
-            width: 100%;
-            display: flex;
-            flex-wrap: nowrap;
-            align-items: center;
-            font-size: 0.89em;
-            line-height: 131%;
-            color: #425486;
+    @include sm {
+      padding-bottom: 25px;
 
-            &:not(:last-of-type) {
-                margin-bottom: 1em;
-            }
-
-            &__text {
-                width: 30%;
-                font-weight: bold;
-            }
-        }
+      &:last-of-type {
+        margin-bottom: 2.17em;
+      }
     }
+  }
 
-    &__payment {
-        margin-bottom: 1.5em;
+  &__profile {
+    &__info {
+      width: 100%;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      font-size: 0.89em;
+      line-height: 131%;
+      color: #425486;
 
-        &__selection {
-            width: 100%;
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.89em;
+      @include sm {
+        font-size: 14px;
+      }
 
-            &>img {
-                width: 5.44em;
-            }
+      &:not(:last-of-type) {
+        margin-bottom: 1em;
+      }
 
+      &__text {
+        width: 30%;
+        font-weight: bold;
+
+        @include sm {
+          width: 38%;
         }
+      }
+
+      &__value {
+        @include sm {
+          width: 62%;
+        }
+      }
     }
+  }
+
+  &__payment {
+    margin-bottom: 1.5em;
+
+    &__selection {
+      width: 100%;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.89em;
+
+      & > img {
+        width: 5.44em;
+      }
+    }
+  }
 }
 
 .ProfileContent {
-    width: 47.77em;
+  width: 47.77em;
 
-    &__button_group {
-        display: flex;
-        margin-left: auto;
-        margin-top: 2.11em;
-        width: max-content;
+  @include sm {
+    width: 100%;
+    background-color: #fff;
+  }
+
+  &__button_group {
+    display: flex;
+    margin-left: auto;
+    margin-top: 2.11em;
+    width: max-content;
+
+    @include sm {
+      margin-top: 0;
+      margin-left: 0;
+      padding-bottom: 2.11em;
+      padding-right: 26px;
+      padding-left: 26px;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+
+  &__Submit {
+    width: 8.8em;
+
+    @include sm {
+      min-width: calc(50% - 1em) !important;
     }
 
-    &__Submit {
-        width: 8.8em;
+    &__cancel {
+      margin-right: 1.38em;
 
-        &__cancel {
-            margin-right: 1.38em;
-        }
+      @include sm {
+        margin-right: 0;
+      }
     }
+  }
 }
 
 .BookingFooter {
-    width: 100%;
-    margin-top: 1.61em;
+  width: 100%;
+  margin-top: 1.61em;
 
-    &>p {
-        margin-left: 2.06em;
-        color: #425486;
-        font-size: 0.89em;
-        line-height: 169%;
-        letter-spacing: 0.035em;
+  @include sm {
+    padding: 0 26px;
+  }
 
-        &>strong {
-            display: inline-block;
-            margin-bottom: 0.4em;
-        }
+  & > p {
+    margin-left: 2.06em;
+    color: #425486;
+    font-size: 0.89em;
+    line-height: 169%;
+    letter-spacing: 0.035em;
+
+    @include sm {
+      font-size: 14px;
+      margin-left: 0;
     }
 
-    &__button {
-        background: #32BBFF !important;
-        color: $white !important;
-        line-height: 131%;
-        font-weight: normal;
-        min-width: 12.25em;
-        margin-left: auto;
-        padding: 0 1.75em;
-        margin-top: 1.81em;
+    & > strong {
+      display: inline-block;
+      margin-bottom: 0.4em;
     }
+  }
+
+  &__button {
+    background: #32bbff !important;
+    color: $white !important;
+    line-height: 131%;
+    font-weight: normal;
+    min-width: 12.25em;
+    margin-left: auto;
+    padding: 0 1.75em;
+    margin-top: 1.81em;
+
+    @include sm {
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+  }
 }

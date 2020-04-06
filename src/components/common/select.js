@@ -45,8 +45,9 @@ class Select extends Component {
     return this.props.onChange(value)
   }
 
-  _handleShowOption = () =>
+  _handleShowOption = () => {
     this.setState(({ showOptions }) => ({ showOptions: !showOptions }))
+  }
 
   render() {
     const { className, options, icon: I, label } = this.props
@@ -55,7 +56,6 @@ class Select extends Component {
     const selectedOption = [...options].find(
       ({ value: optionValue }) => optionValue === selectedValue
     )
-
     return (
       <div
         onClick={() => this._handleShowOption()}
@@ -65,6 +65,28 @@ class Select extends Component {
         tabIndex="0"
         className={cx(styles.Select, className)}
       >
+        <select
+          style={{
+            visibility: "hidden",
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+          }}
+          name={this.props.name}
+          value={selectedOption && selectedOption.value}
+        >
+          {options.map(({ text, value }, index) => {
+            return (
+              <option
+                key={index}
+                value={value}
+                selected={selectedOption && selectedOption.value === value}
+              >
+                {text}
+              </option>
+            )
+          })}
+        </select>
         <div className={styles.Select__value}>
           {I && <I />}
           <div className={styles.Select__value__wrapper}>

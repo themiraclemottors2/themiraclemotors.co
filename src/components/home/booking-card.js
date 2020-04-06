@@ -30,7 +30,9 @@ const BookingCard = props => {
     searchData,
   } = useSelector(stateExtractor, shallowEqual)
   const [activeTab, setActiveTab] = useState("seat")
-  const [bookingType, setBookingType] = useState("one_way")
+  const [bookingType, setBookingType] = useState(
+    (searchData.bookingType && searchData.bookingType) || ""
+  )
 
   useEffect(() => {
     try {

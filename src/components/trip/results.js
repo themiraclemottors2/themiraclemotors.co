@@ -11,7 +11,7 @@ import moment from "moment"
 const Results = ({ loading, data, onContinue, numberOfTravellers }) => {
   const [openSeats, setOpenSeats] = useState(false)
   const [selectedSeats, setSelectedSeats] = useState([])
-  const seats = [...data.seats]
+  const seats = [...data.seats.sort((a, b) => a.seatNumber - b.seatNumber)]
   const availableSeats = data.seats.filter(item => item.status === "available")
     .length
   const vehicleModel = data.vehicle.type.model
@@ -58,7 +58,7 @@ const Results = ({ loading, data, onContinue, numberOfTravellers }) => {
                 className={styles.Result__button}
                 disabled={!availableSeats}
               >
-                View seats
+                Select seats
               </Button>
             </div>
           </div>

@@ -4,32 +4,54 @@ import { Button } from "../common"
 import { usePaystackPayment } from "react-paystack"
 
 const BookingFooter = ({
-  onClick,
+  makeBooking,
   paymentMethod,
   paymentConfig,
-  onPaymentSuccess,
-  onPaymentClose,
+  completeBookingBtn,
+  payBtn,
+  onCompleteBookingClick,
+  loading,
 }) => {
-  const buttonText = paymentMethod === "card" ? "Pay Now" : "Finish Booking"
+  const buttonTextRender = () => {
+    if (paymentMethod === "card" && payBtn) return "Pay Now"
+    if (paymentMethod === "arrival" && payBtn) return "Finish Booking"
+    return "Complete Booking"
+  }
   const initializePayment = usePaystackPayment(paymentConfig)
   const handleOnClick = e => {
     e.preventDefault()
-    if (paymentMethod === "card") {
-      return initializePayment(onPaymentSuccess, onPaymentClose)
+    if (completeBookingBtn && !payBtn) {
+      onCompleteBookingClick()
+      return
     }
-
-    return onClick()
+    if (paymentMethod === "card" && payBtn) {
+      initializePayment(makeBooking)
+      return null
+    }
+    if (paymentMethod === "arrival" && payBtn) {
+      makeBooking()
+      return null
+    }
   }
   return (
-    <div className={styles.BookingFooter}>
-      <p>
-        <strong>By clicking "{buttonText}":</strong>
-        <br />- I accept the terms and conditions of The Miracle Motors.
-      </p>
-      <Button className={styles.BookingFooter__button} onClick={handleOnClick}>
-        {buttonText}
-      </Button>
-    </div>
+    completeBookingBtn && (
+      <div className={styles.BookingFooter}>
+        {(!completeBookingBtn || payBtn) && (
+          <p>
+            <strong>By clicking "{buttonTextRender()}":</strong>
+            <br />- I accept the terms and conditions of The Miracle Motors.
+          </p>
+        )}
+        <Button
+          className={styles.BookingFooter__button}
+          onClick={handleOnClick}
+          id={completeBookingBtn && !payBtn ? "complete-booking-btn" : ""}
+          loading={loading}
+        >
+          {buttonTextRender()}
+        </Button>
+      </div>
+    )
   )
 }
 

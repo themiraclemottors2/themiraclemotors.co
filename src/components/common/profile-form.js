@@ -4,13 +4,29 @@ import styles from "./common.module.scss"
 import { Input, Button, Select } from "./index"
 import { toast } from "react-toastify"
 
-const ProfileForm = ({ className, onSubmit, buttonText, value }) => {
+const ProfileForm = ({
+  className,
+  onSubmit,
+  buttonText,
+  value,
+  disableEssentials,
+  forwardedRef,
+}) => {
+  const kinPhoneNumberFromValue = () => {
+    if (value.kinPhoneNumber) {
+      if (typeof value.kinPhoneNumber === "number")
+        value.kinPhoneNumber = String(value.kinPhoneNumber)
+      return value.kinPhoneNumber.length < 11
+        ? value.kinPhoneNumber
+        : `0${value.kinPhoneNumber.substring(4)}`
+    }
+  }
   const [firstName, setFirstName] = useState(value.firstName || "")
   const [lastName, setLastName] = useState(value.lastName || "")
   const [address, setAddress] = useState(value.address || "")
   const [kinFullName, setKinFullName] = useState(value.kinFullName || "")
   const [kinPhoneNumber, setKinPhoneNumber] = useState(
-    (value.kinPhoneNumber && `0${value.kinPhoneNumber.substring(4)}`) || ""
+    kinPhoneNumberFromValue() || ""
   )
   const [region, setRegion] = useState(value.region || "")
   const [email, setEmail] = useState(value.email || "")
@@ -44,23 +60,27 @@ const ProfileForm = ({ className, onSubmit, buttonText, value }) => {
     ) {
       return toast.warn("Field(s) can not be empty")
     }
-    return onSubmit({
-      firstName,
-      lastName,
-      address,
-      kinFullName,
-      kinPhoneNumber,
-      region,
-      email,
-      phoneNumber,
-      gender,
-    })
+    return onSubmit(
+      {
+        firstName,
+        lastName,
+        address,
+        kinFullName,
+        kinPhoneNumber,
+        region,
+        email,
+        phoneNumber,
+        gender,
+      },
+      e
+    )
   }
 
   return (
     <form
-      onSubmit={handleOnSumbit}
+      ref={forwardedRef}
       className={cx(styles.ProfileForm, className)}
+      onSubmit={handleOnSumbit}
     >
       <div className={styles.ProfileForm__Input__group}>
         <Input
@@ -71,6 +91,7 @@ const ProfileForm = ({ className, onSubmit, buttonText, value }) => {
           onChange={({ target }) => setFirstName(target.value)}
           required
           name="firstName"
+          disabled={!!disableEssentials}
         />
         <Input
           className={styles.ProfileForm__Input__half}
@@ -80,6 +101,7 @@ const ProfileForm = ({ className, onSubmit, buttonText, value }) => {
           onChange={({ target }) => setLastName(target.value)}
           required
           name="lastName"
+          disabled={!!disableEssentials}
         />
       </div>
       <div className={styles.ProfileForm__Input__group}>
@@ -92,6 +114,7 @@ const ProfileForm = ({ className, onSubmit, buttonText, value }) => {
           onChange={({ target }) => setEmail(target.value)}
           required
           name="email"
+          disabled={!!disableEssentials}
         />
         <Input
           type="phone"
@@ -102,6 +125,7 @@ const ProfileForm = ({ className, onSubmit, buttonText, value }) => {
           onChange={_handlePhoneInput}
           required
           name="phoneNumber"
+          disabled={!!disableEssentials}
         />
       </div>
       <div className={styles.ProfileForm__Input__group}>
@@ -114,6 +138,7 @@ const ProfileForm = ({ className, onSubmit, buttonText, value }) => {
           label="Gender"
           value={gender}
           onChange={value => setGender(value)}
+          name="gender"
         />
         <Input
           className={styles.ProfileForm__Input__half}
@@ -180,4 +205,6 @@ ProfileForm.defaultProps = {
   },
 }
 
-export default ProfileForm
+export default React.forwardRef((props, ref) => (
+  <ProfileForm {...props} forwardedRef={ref} />
+))

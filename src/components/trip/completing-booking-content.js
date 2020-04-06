@@ -32,7 +32,7 @@ const CompletingBookingContent = ({
                     styles.CompletingBookingContent__profile__info__value
                   }
                 >
-                  {`${item.firstName} ${item.lastName}`}
+                  {item.name}
                 </p>
               </div>
               <div className={styles.CompletingBookingContent__profile__info}>

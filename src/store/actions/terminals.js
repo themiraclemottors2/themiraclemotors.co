@@ -19,9 +19,10 @@ export const fetchTerminalsRequest = () => async (dispatch, getState) => {
 
   dispatch(asyncStart(identifier))
   try {
-    const data = await TerminalsRequestService.getTerminals()
+    const data = await TerminalsRequestService.get()
     return dispatch(getTerminals(data))
   } catch (error) {
+    dispatch(getTerminals([]))
     throw error
   }
 }

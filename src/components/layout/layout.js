@@ -12,6 +12,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import { connect } from "react-redux"
 import { navigate } from "gatsby"
 import * as actions from "store/actions/common"
+import { settingsRequest } from "store/actions/settings"
 import Header from "../header"
 import styles from "./layout.module.scss"
 import { ToastContainer, toast } from "react-toastify"
@@ -39,8 +40,9 @@ class Layout extends Component {
   }
 
   _handleAppLoading = () => {
-    const { onAppLoad, appLoaded } = this.props
+    const { onAppLoad, appLoaded, settingsRequest } = this.props
     if (!appLoaded) {
+      settingsRequest()
       onAppLoad()
     }
   }
@@ -64,4 +66,4 @@ const mapStateToProps = ({ common }) => ({
   ...common,
 })
 
-export default connect(mapStateToProps, actions)(Layout)
+export default connect(mapStateToProps, { ...actions, settingsRequest })(Layout)

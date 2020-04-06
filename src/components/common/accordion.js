@@ -4,10 +4,10 @@ import styles from "./common.module.scss"
 import { CircleChevronUp } from "../../assets/svg"
 import cx from "classnames"
 
-const Accordion = ({ children, title, className, opened: propOpened }) => {
+const Accordion = ({ children, title, className, opened: propOpened, id }) => {
   const [opened, setOpened] = useState(false)
   return (
-    <div className={cx(styles.Accordion, className)}>
+    <div id={id} className={cx(styles.Accordion, className)}>
       <div className={styles.Accordion__header}>
         <p className={styles.Accordion__title}>{title}</p>
         <CircleChevronUp

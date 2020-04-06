@@ -7,7 +7,7 @@ import cx from "classnames"
 const ResultWrapper = ({ children, sidebar, className, footer }) => {
   return (
     <div className={cx(styles.ResultWrapper, className)}>
-      <div className={styles.ResultContainer}>{children}</div>
+      {children}
       {!sidebar && <AppStoreAction className={styles.Default__sidebar} />}
       {sidebar && sidebar}
       {footer && footer}

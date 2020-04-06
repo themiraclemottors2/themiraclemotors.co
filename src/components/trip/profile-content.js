@@ -1,11 +1,30 @@
-import React from "react"
+import React, { createRef } from "react"
 // import PropTypes from "prop-types"
 import styles from "./trip.module.scss"
 import { ProfileForm, Button, WrapperCard } from "../common"
 import { Info } from "../../assets/svg"
 import cx from "classnames"
 
-const ProfileContent = ({ onDone }) => {
+const profileFormRef = createRef()
+
+const ProfileContent = ({ onSave, onCancel, user, loading }) => {
+  const handleOnSave = e => {
+    e.preventDefault()
+    const {
+      region: { value: region },
+      gender: { value: gender },
+      address: { value: address },
+      kinPhoneNumber: { value: kinPhoneNumber },
+      kinFullName: { value: kinFullName },
+    } = profileFormRef.current
+    return onSave({
+      gender,
+      address: `${address}${region ? ` ,${region}` : ""}`,
+      kinFullName,
+      kinPhoneNumber,
+    })
+  }
+
   return (
     <div className={styles.ProfileContent}>
       <WrapperCard
@@ -16,11 +35,11 @@ const ProfileContent = ({ onDone }) => {
           <Info />
           <p>These details will be used as your default passenger details</p>
         </div>
-        <ProfileForm />
+        <ProfileForm value={user} disableEssentials ref={profileFormRef} />
       </WrapperCard>
       <div className={styles.ProfileContent__button_group}>
         <Button
-          onClick={onDone}
+          onClick={onCancel}
           className={cx(
             styles.ProfileContent__Submit,
             styles.ProfileContent__Submit__cancel
@@ -29,11 +48,12 @@ const ProfileContent = ({ onDone }) => {
           Cancel
         </Button>
         <Button
-          onClick={onDone}
+          onClick={handleOnSave}
           className={cx(
             styles.ProfileContent__Submit,
             styles.ProfileContent__Submit__save
           )}
+          loading={loading}
         >
           Save
         </Button>

@@ -1,3 +1,6 @@
 export { default as AuthRequestService } from "./auth"
 export { default as TerminalsRequestService } from "./terminals"
 export { default as TripsRequestService } from "./trips"
+export { default as ProfileRequestService } from "./profile"
+export { default as BookingsRequestService } from "./bookings"
+export { default as SettingsRequestService } from "./settings"

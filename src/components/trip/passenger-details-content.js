@@ -1,21 +1,35 @@
 import React, { useState } from "react"
 // import PropTypes from "prop-types"
 import styles from "./trip.module.scss"
-import { Accordion, ProfileForm, Button } from "../common"
+import { Accordion, ProfileForm } from "../common"
 import { Info } from "../../assets/svg"
+import { navigate } from "gatsby"
+import { window } from "browser-monads"
+import omit from "../../../node_modules/lodash/omit"
 
 const PassengerDetailsContent = ({ onDone, user, numberOfTravellers }) => {
   const [passengerCount, setPassengerCount] = useState(0)
   const [passengersData, setPassengersData] = useState([])
 
   const handleOnSubmit = data => {
+    data = {
+      ...omit(data, ["firstName", "lastName"]),
+      name: `${data.firstName} ${data.lastName}`,
+      ageBracket: "adult",
+    }
+    if (numberOfTravellers === 1) {
+      onDone([data])
+      return navigate(`${window.location.pathname}/#complete-booking-btn`)
+    }
+    if (numberOfTravellers === passengersData.length + 1) {
+      onDone([...passengersData, data])
+      return navigate(`${window.location.pathname}/#complete-booking-btn`)
+    }
     setPassengersData([...passengersData, data])
     setPassengerCount(passengerCount + 1)
-  }
-
-  const handleOnDone = e => {
-    e.preventDefault()
-    onDone(passengersData)
+    return navigate(
+      `${window.location.pathname}/#passenger-${passengerCount + 1}`
+    )
   }
 
   return (
@@ -31,6 +45,7 @@ const PassengerDetailsContent = ({ onDone, user, numberOfTravellers }) => {
               }
               opened={index <= passengerCount}
               className={styles.PassengerDetailsContent__accordion}
+              id={`passenger-${index}`}
             >
               {index === 0 && (
                 <div className={styles.PassengerDetailsContent__info}>
@@ -44,19 +59,16 @@ const PassengerDetailsContent = ({ onDone, user, numberOfTravellers }) => {
               <ProfileForm
                 value={index === 0 ? user : passengersData[index]}
                 buttonText="Next"
-                onSubmit={passengersData[index] ? () => null : handleOnSubmit}
+                onSubmit={data => {
+                  if (passengersData[index]) {
+                    return null
+                  }
+                  return handleOnSubmit(data)
+                }}
               />
             </Accordion>
           )
         })}
-      {numberOfTravellers === passengersData.length && (
-        <Button
-          onClick={handleOnDone}
-          className={styles.PassengerDetailsContent__Submit}
-        >
-          Complete Booking
-        </Button>
-      )}
     </div>
   )
 }

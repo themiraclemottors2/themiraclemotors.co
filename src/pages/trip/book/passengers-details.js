@@ -15,6 +15,8 @@ import isEmpty from "../../../../node_modules/lodash/isEmpty"
 import { extractTerminalName } from "../../../lib"
 import { navigate } from "gatsby"
 import { setPassengers } from "../../../store/actions/trips"
+import { bookTripRequest } from "../../../store/actions/bookings"
+import { toast } from "react-toastify"
 
 class PassengersDetails extends Component {
   constructor(props) {
@@ -42,12 +44,12 @@ class PassengersDetails extends Component {
   }
 
   _prepStateFromProps = () => {
-    const serviceCharge = 450
     const {
       outgoingTrip,
       returnTrip,
       searchData: { bookingType, ...searchData },
       terminals,
+      serviceCharge,
     } = this.props
     const outgoingBooking = omit(outgoingTrip, [
       "departureTimestamp",
@@ -119,7 +121,66 @@ class PassengersDetails extends Component {
 
   _handlePassengerDetails = async passengers => {
     await this.props.setPassengers(passengers)
-    return this.changeStage(1)
+  }
+
+  _handleBooking = async paymentResponse => {
+    const {
+      passengers,
+      bookTripRequest: bookTrip,
+      bookings: bookingsFromGlobalState,
+    } = this.props
+    const { bookings, numberOfTravellers, paymentMethod, type } = this.state
+
+    if (bookingsFromGlobalState.loading) {
+      return null
+    }
+    const requestBody = {
+      passengers,
+      bookings,
+      numberOfTravellers,
+      type,
+      paymentType: paymentMethod === "card" ? "online" : "offline",
+    }
+    if (paymentResponse && paymentMethod === "card") {
+      requestBody.paymentRef = paymentResponse.reference
+    }
+    try {
+      await bookTrip(requestBody)
+    } catch (error) {
+      toast.error(
+        (error.response && error.response.data.message) ||
+          "Sorry, your booking not successful"
+      )
+    }
+  }
+
+  _renderFooter = () => {
+    const {
+      breadCrumbs,
+      stage,
+      paymentMethod,
+      trip,
+      numberOfTravellers,
+    } = this.state
+    const { user, passengers, bookings } = this.props
+    const paymentConfig = {
+      publicKey: process.env.GATSBY_PAYSTACK_PUBLIC_KEY,
+      email: user.email,
+      amount: (trip.ticketsCost + trip.serviceCharge) * 100,
+      channels: ["card"],
+    }
+
+    return (
+      <BookingFooter
+        paymentMethod={paymentMethod}
+        makeBooking={this._handleBooking}
+        paymentConfig={paymentConfig}
+        payBtn={stage === breadCrumbs.length - 1}
+        completeBookingBtn={numberOfTravellers === passengers.length}
+        onCompleteBookingClick={() => this.changeStage(1)}
+        loading={bookings.loading}
+      />
+    )
   }
 
   render() {
@@ -132,29 +193,13 @@ class PassengersDetails extends Component {
     } = this.state
     const { user, passengers } = this.props
 
-    const paymentConfig = {
-      publicKey: "pk_test_eb313e7bdda49dc2cb9e93617350bb4f3ee0b8a3",
-      email: user.email,
-      amount: (trip.ticketsCost + trip.serviceCharge) * 100,
-      channels: ["card"],
-    }
-
     return (
       <AuthenticatedLayout {...this.props}>
         <SEO title={breadCrumbs[stage]} />
         <BookHeader stage={stage} breadCrumbs={breadCrumbs} />
         <ResultWrapper
           sidebar={!isEmpty(trip) ? <BookSidebar trip={trip} /> : null}
-          footer={
-            stage === breadCrumbs.length - 1 && (
-              <BookingFooter
-                paymentMethod={paymentMethod}
-                onClick={() => null}
-                paymentConfig={paymentConfig}
-                onPaymentSuccess={response => console.log(response)}
-              />
-            )
-          }
+          footer={this._renderFooter()}
         >
           {stage === 0 && (
             <PassengerDetailsContent
@@ -180,6 +225,8 @@ const mapStateToProps = ({
   common: { user },
   trips: { returnTrip, outgoingTrip, searchData, passengers },
   terminals: { data: terminals },
+  settings: { serviceCharge },
+  bookings,
 }) => ({
   user: {
     ...omit(user, [
@@ -197,6 +244,10 @@ const mapStateToProps = ({
   searchData,
   terminals,
   passengers,
+  bookings,
+  serviceCharge,
 })
 
-export default connect(mapStateToProps, { setPassengers })(PassengersDetails)
+export default connect(mapStateToProps, { setPassengers, bookTripRequest })(
+  PassengersDetails
+)
