@@ -10,5 +10,4 @@ export default {
     serviceInstance
       .post(`/auth/signup`, body)
       .then(({ data: { data } }) => data),
-  refreshToken: body => axios.post(`${serviceRoot}/auth/refresh-token`, body),
 }

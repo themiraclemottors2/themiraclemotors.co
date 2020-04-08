@@ -5,10 +5,17 @@ import pick from "../../../node_modules/lodash/pick"
 export const onAppLoad = () => dispatch => {
   const token = LocalStorageService.getAccessToken()
   let user = LocalStorageService.getUser()
-  user = {
-    ...pick(user, ["firstName", "lastName", "email", "phoneNumber", "gender"]),
-    ...pick(user.profile, ["address", "kinFullName", "kinPhoneNumber"]),
-  }
+  if (user)
+    user = {
+      ...pick(user, [
+        "firstName",
+        "lastName",
+        "email",
+        "phoneNumber",
+        "gender",
+      ]),
+      ...pick(user.profile, ["address", "kinFullName", "kinPhoneNumber"]),
+    }
   let isAuthenticated = false
   if (token) {
     isAuthenticated = true

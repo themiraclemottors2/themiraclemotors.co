@@ -30,11 +30,13 @@ serviceInstance.interceptors.response.use(
   response => response,
   async error => {
     const originalRequest = error.config
+    console.log(originalRequest)
     if (!error.response) return Promise.reject(error)
     if (
-      error.response.status === 401 &&
+      (error.response.status === 401 || error.response.status === 404) &&
       originalRequest.url === `${serviceRoot}/auth/refresh-token`
     ) {
+      LocalStorageService.clearStorage()
       navigate("/sign-in")
       return Promise.reject(error)
     }
@@ -43,17 +45,27 @@ serviceInstance.interceptors.response.use(
       originalRequest._retry = true
       const refreshToken = LocalStorageService.getRefreshToken()
       const accessToken = LocalStorageService.getAccessToken()
-      return AuthRequestService.refreshToken({
-        refreshToken: refreshToken,
-      }).then(res => {
-        if (res.status === 201) {
-          LocalStorageService.setToken(res.data.data)
-          axios.defaults.headers.common[
-            "Authorization"
-          ] = `Bearer  + ${accessToken}`
-          return axios(originalRequest)
-        }
-      })
+      return serviceInstance
+        .post(
+          `${serviceRoot}/auth/refresh-token`,
+          {
+            refreshToken: refreshToken,
+          },
+          {
+            headers: {
+              Authorization: "",
+            },
+          }
+        )
+        .then(res => {
+          if (res.status === 201) {
+            LocalStorageService.setToken(res.data.data)
+            axios.defaults.headers.common[
+              "Authorization"
+            ] = `Bearer  + ${accessToken}`
+            return axios(originalRequest)
+          }
+        })
     }
     return Promise.reject(error)
   }
