@@ -40,11 +40,17 @@ class Layout extends Component {
   }
 
   _handleAppLoading = () => {
-    const { onAppLoad, appLoaded, settingsRequest } = this.props
+    const {
+      onAppLoad,
+      appLoaded,
+      settingsRequest,
+      isAuthenticated,
+    } = this.props
     if (!appLoaded) {
-      settingsRequest()
       onAppLoad()
     }
+
+    if (isAuthenticated) settingsRequest()
   }
 
   render() {

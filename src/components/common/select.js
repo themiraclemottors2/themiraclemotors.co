@@ -20,6 +20,8 @@ class Select extends Component {
   }
 
   componentDidMount() {
+    if (this.props.value) this.setState({ selectedValue: this.props.value })
+
     document.addEventListener("mousedown", this._handleClickOutside)
     if (this.props.value && (this.props.value.length || this.props.value)) {
       this.setState({ selectedValue: this.props.value })
@@ -28,6 +30,11 @@ class Select extends Component {
 
   componentWillUnmount() {
     document.removeEventListener("mousedown", this._handleClickOutside)
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.value !== prevProps.value)
+      this.setState({ selectedValue: this.props.value })
   }
 
   _handleClickOutside = event => {
@@ -50,7 +57,7 @@ class Select extends Component {
   }
 
   render() {
-    const { className, options, icon: I, label } = this.props
+    const { className, options, icon: I, label, value } = this.props
     const { selectedValue, showOptions } = this.state
 
     const selectedOption = [...options].find(

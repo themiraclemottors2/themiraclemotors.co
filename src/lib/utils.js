@@ -18,3 +18,9 @@ export const extractTerminalName = (terminals, id) => {
   if (!terminals.length) return null
   return capitalize(terminals.filter(item => item.id === id)[0].name)
 }
+
+export const randomItemFromArray = arr => {
+  let randomIndex = 0
+  if (arr.length) randomIndex = Math.floor(Math.random() * arr.length)
+  return arr[randomIndex]
+}

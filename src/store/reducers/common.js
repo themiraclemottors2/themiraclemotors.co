@@ -5,6 +5,7 @@ import {
   LOGOUT,
   LOGIN,
   UPDATE_USER,
+  GET_TERMINALS,
 } from "../types"
 
 const initState = {
@@ -13,11 +14,12 @@ const initState = {
   redirectTo: null,
   error: null,
   user: {},
+  popularTrips: [],
 }
 
 export default (
   state = initState,
-  { type, isAuthenticated, redirectTo, user }
+  { type, isAuthenticated, redirectTo, user, popularTrips }
 ) => {
   switch (type) {
     case APP_LOAD:
@@ -27,6 +29,11 @@ export default (
         isAuthenticated,
         user,
         redirectTo,
+      }
+    case GET_TERMINALS:
+      return {
+        ...state,
+        popularTrips,
       }
     case UPDATE_USER:
       return {

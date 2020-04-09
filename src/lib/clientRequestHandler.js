@@ -30,10 +30,11 @@ serviceInstance.interceptors.response.use(
   response => response,
   async error => {
     const originalRequest = error.config
-    console.log(originalRequest)
     if (!error.response) return Promise.reject(error)
     if (
-      (error.response.status === 401 || error.response.status === 404) &&
+      (error.response.status === 401 ||
+        error.response.status === 404 ||
+        error.response.status === 422) &&
       originalRequest.url === `${serviceRoot}/auth/refresh-token`
     ) {
       LocalStorageService.clearStorage()

@@ -44,9 +44,6 @@ const Footer = () => {
           <li>
             <Link to="/">Help Center!</Link>
           </li>
-          <li>
-            <Link to="/">Blog</Link>
-          </li>
         </ul>
         <ul className={styles.Footer__LinksList}>
           <li>

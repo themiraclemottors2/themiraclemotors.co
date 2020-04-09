@@ -12,7 +12,7 @@ import BookingCardLoader from "./booking-card-loader"
 import { getSearchData } from "../../store/actions/trips"
 import { toast } from "react-toastify"
 
-const BookingCard = props => {
+const BookingCard = () => {
   const stateExtractor = ({
     terminals,
     common: { isAuthenticated },
