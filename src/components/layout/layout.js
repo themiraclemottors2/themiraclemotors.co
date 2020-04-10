@@ -13,6 +13,7 @@ import { connect } from "react-redux"
 import { navigate } from "gatsby"
 import * as actions from "store/actions/common"
 import { settingsRequest } from "store/actions/settings"
+import { fetchTerminalsRequest } from "store/actions/terminals"
 import Header from "../header"
 import styles from "./layout.module.scss"
 import { ToastContainer, toast } from "react-toastify"
@@ -45,9 +46,11 @@ class Layout extends Component {
       appLoaded,
       settingsRequest,
       isAuthenticated,
+      fetchTerminalsRequest,
     } = this.props
     if (!appLoaded) {
       onAppLoad()
+      fetchTerminalsRequest()
     }
 
     if (isAuthenticated) settingsRequest()
@@ -72,4 +75,8 @@ const mapStateToProps = ({ common }) => ({
   ...common,
 })
 
-export default connect(mapStateToProps, { ...actions, settingsRequest })(Layout)
+export default connect(mapStateToProps, {
+  ...actions,
+  settingsRequest,
+  fetchTerminalsRequest,
+})(Layout)

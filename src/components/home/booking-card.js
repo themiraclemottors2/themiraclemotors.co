@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useDispatch, useSelector, shallowEqual } from "react-redux"
 import styles from "./home.module.scss"
 import cx from "classnames"
@@ -7,10 +7,8 @@ import { Toggle } from "../common"
 import SeatBookingForm from "./seat-booking-form"
 import HireBusForm from "./hire-bus-form"
 import FormContainer from "../common/form-container"
-import { fetchTerminalsRequest } from "store/actions/terminals"
 import BookingCardLoader from "./booking-card-loader"
 import { getSearchData } from "../../store/actions/trips"
-import { toast } from "react-toastify"
 
 const BookingCard = () => {
   const stateExtractor = ({
@@ -33,14 +31,6 @@ const BookingCard = () => {
   const [bookingType, setBookingType] = useState(
     (searchData.bookingType && searchData.bookingType) || ""
   )
-
-  useEffect(() => {
-    try {
-      dispatch(fetchTerminalsRequest())
-    } catch (error) {
-      toast.error("Error fetching terminals")
-    }
-  }, [dispatch])
 
   const handleSubmit = async formData => {
     if (!isAuthenticated && activeTab === "seat")
