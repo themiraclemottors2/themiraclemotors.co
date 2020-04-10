@@ -84,10 +84,13 @@ const SearchResult = props => {
     <AuthenticatedLayout {...props}>
       <SEO title="Trip Search Result" />
       <SearchResultHeader
-        header={`Showing trips from ${extractTerminalName(
-          terminals,
-          departureTerminalId
-        )} to ${extractTerminalName(terminals, arrivalTerminalId)}`}
+        header={
+          terminals.length &&
+          `Showing trips from ${extractTerminalName(
+            terminals,
+            departureTerminalId
+          )} to ${extractTerminalName(terminals, arrivalTerminalId)}`
+        }
         date={moment(departureTimestamp).format("MMMM D, YYYY")}
         btnOnClick={() => navigate("../")}
       />

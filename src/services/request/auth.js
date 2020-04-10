@@ -1,5 +1,4 @@
-import { serviceInstance, serviceRoot } from "lib"
-import axios from "axios"
+import { serviceInstance } from "lib"
 
 export default {
   signIn: body =>

@@ -1,6 +1,6 @@
 import axios from "axios"
 import { serviceRoot } from "./constants"
-import { LocalStorageService, AuthRequestService } from "../services"
+import { LocalStorageService } from "../services"
 import { navigate } from "gatsby"
 
 export const serviceInstance = axios.create({

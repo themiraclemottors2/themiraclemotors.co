@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styles from "./home.module.scss"
-import { Input, Button, Select } from "../common"
+import { Input, Button, Select, DatePicker } from "../common"
 import { Locator, Calendar } from "../../assets/svg"
 import { capitalize } from "lib"
 
@@ -24,18 +24,16 @@ const HireBusForm = ({ roundTrip, terminals }) => {
         label="Destination"
         icon={Locator}
       />
-      <Input
+      <DatePicker
         icon={Calendar}
         className={styles.BookingCard__Input}
         label="Departure Date"
-        type="datetime-local"
       />
       {roundTrip && (
-        <Input
+        <DatePicker
           icon={Calendar}
           className={styles.BookingCard__Input}
           label="Return Date"
-          type="datetime-local"
         />
       )}
       <Button className={styles.BookingCard__Submit}>Continue</Button>

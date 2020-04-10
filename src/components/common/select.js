@@ -57,7 +57,7 @@ class Select extends Component {
   }
 
   render() {
-    const { className, options, icon: I, label, value } = this.props
+    const { className, options, icon: I, label } = this.props
     const { selectedValue, showOptions } = this.state
 
     const selectedOption = [...options].find(

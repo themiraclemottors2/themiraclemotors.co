@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
 import styles from "./home.module.scss"
-import { Input, Select, Button } from "../common"
+import { Select, Button, DatePicker } from "../common"
 import { Locator, Calendar, User } from "../../assets/svg"
 import { capitalize } from "lib"
 import { toast } from "react-toastify"
@@ -61,7 +61,7 @@ const SeatBookingForm = ({ roundTrip, terminals, onSubmit, searchData }) => {
         label="Departure Terminal"
         icon={Locator}
         onChange={value => setDepartureTerminalId(value)}
-        value={departureTerminalId}
+        value={searchData.departureTerminalId || departureTerminalId}
       />
       <Select
         className={styles.BookingCard__Input}
@@ -71,24 +71,22 @@ const SeatBookingForm = ({ roundTrip, terminals, onSubmit, searchData }) => {
         onChange={value => setArrivalTerminalId(value)}
         value={arrivalTerminalId}
       />
-      <Input
+      <DatePicker
         icon={Calendar}
         className={styles.BookingCard__Input}
         label="Departure Date"
-        type="datetime-local"
-        onChange={({ target }) =>
-          setDepartureTimestamp(moment(target.value).format("YYYY-MM-DDTHH:mm"))
+        onChange={date =>
+          setDepartureTimestamp(moment(date).format("YYYY-MM-DDTHH:mm"))
         }
         value={departureTimestamp}
       />
       {roundTrip && (
-        <Input
+        <DatePicker
           icon={Calendar}
           className={styles.BookingCard__Input}
           label="Return Date"
-          type="datetime-local"
-          onChange={({ target }) =>
-            setReturnTimestamp(moment(target.value).format("YYYY-MM-DDTHH:mm"))
+          onChange={date =>
+            setReturnTimestamp(moment(date).format("YYYY-MM-DDTHH:mm"))
           }
           value={returnTimestamp}
         />

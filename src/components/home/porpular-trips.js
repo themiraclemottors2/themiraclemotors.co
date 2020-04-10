@@ -2,7 +2,7 @@ import React from "react"
 import styles from "./home.module.scss"
 import { Link } from "gatsby"
 import { useDispatch, useSelector, shallowEqual } from "react-redux"
-import { randomItemFromArray, capitalize } from "lib"
+import { capitalize } from "lib"
 import { getSearchData } from "../../store/actions/trips"
 
 const PorpularTrips = () => {
@@ -27,7 +27,7 @@ const PorpularTrips = () => {
         Book a travel ticket in one click.
       </h1>
       <div className={styles.PorpularTrips__TripListWrapper}>
-        {!loading && popularTrips.length && (
+        {!loading && popularTrips.length ? (
           <ul className={styles.PorpularTrips__TripList}>
             {popularTrips.map(({ departure, arrival }, index) => {
               return (
@@ -47,7 +47,7 @@ const PorpularTrips = () => {
               )
             })}
           </ul>
-        )}
+        ) : null}
       </div>
     </div>
   )
