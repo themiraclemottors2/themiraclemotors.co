@@ -5,7 +5,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux"
 import { capitalize } from "lib"
 import { getSearchData } from "../../store/actions/trips"
 
-const PorpularTrips = () => {
+const PopularTrips = () => {
   const stateExtractor = ({
     terminals: { loading },
     common: { popularTrips },
@@ -21,17 +21,17 @@ const PorpularTrips = () => {
   }
 
   return (
-    <div className={styles.PorpularTrips}>
-      <p className={styles.PorpularTrips__SubHeading}>POPULAR TRIPS</p>
-      <h1 className={styles.PorpularTrips__Heading}>
+    <div className={styles.PopularTrips}>
+      <p className={styles.PopularTrips__SubHeading}>POPULAR TRIPS</p>
+      <h1 className={styles.PopularTrips__Heading}>
         Book a travel ticket in one click.
       </h1>
-      <div className={styles.PorpularTrips__TripListWrapper}>
+      <div className={styles.PopularTrips__TripListWrapper}>
         {!loading && popularTrips.length ? (
-          <ul className={styles.PorpularTrips__TripList}>
+          <ul className={styles.PopularTrips__TripList}>
             {popularTrips.map(({ departure, arrival }, index) => {
               return (
-                <li key={index} className={styles.PorpularTrips__Trip}>
+                <li key={index} className={styles.PopularTrips__Trip}>
                   <Link
                     onClick={e =>
                       handleOnClick({
@@ -53,4 +53,4 @@ const PorpularTrips = () => {
   )
 }
 
-export default PorpularTrips
+export default PopularTrips

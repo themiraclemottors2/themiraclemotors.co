@@ -4,7 +4,7 @@ import styles from "./home.module.scss"
 import BookingCard from "./booking-card"
 import AppStoreAction from "../common/app-store-action"
 import Features from "./features"
-import PorpularTrips from "./porpular-trips"
+import PopularTrips from "./popular-trips"
 import Newsletter from "./newsletter"
 
 const Home = props => {
@@ -24,7 +24,7 @@ const Home = props => {
         <AppStoreAction className={styles.AppStoreAction} />
       </div>
       <Features />
-      <PorpularTrips />
+      <PopularTrips />
       <Newsletter />
     </div>
   )

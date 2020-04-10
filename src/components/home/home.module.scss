@@ -2,425 +2,432 @@
 @import "../../styles/breakpoint";
 
 .Home {
+  width: 100%;
+  font-size: 1rem;
+  transition: all ease-in-out 0.2s;
+
+  &__Fold {
     width: 100%;
-    font-size: 1rem;
-    transition: all ease-in-out 0.2s;
+    height: max-content;
+    background-image: url("../../assets/images/banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 8.44em 6.05em 5.05em 6.05em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    z-index: 0;
 
-    &__Fold {
-        width: 100%;
-        height: max-content;
-        background-image: url("../../assets/images/banner.png");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-        padding: 8.44em 6.05em 5.05em 6.05em;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        position: relative;
-        z-index: 0;
-
-
-        @include sm {
-            display: block;
-            padding: 0;
-            padding-top: 127px;
-            padding-bottom: 193px;
-        }
-
-        &__Overlay {
-            position: absolute;
-            background-color: rgba(64, 64, 64, 0.5);
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            z-index: 1;
-
-            @include sm {
-                display: none;
-            }
-        }
+    @include sm {
+      display: block;
+      padding: 0;
+      padding-top: 127px;
+      padding-bottom: 193px;
     }
 
-    &__Caption {
-        color: $white;
-        margin-top: 12.4em;
-        margin-bottom: 10.2em;
-        width: 29.5em;
-        z-index: 2;
+    &__Overlay {
+      position: absolute;
+      background-color: rgba(64, 64, 64, 0.5);
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
 
-        &>h4 {
-            font-weight: bold;
-            font-size: 2em;
-            line-height: 133%;
-            margin-bottom: 0.36em;
-        }
-
-        &p {
-            font-size: 1em;
-            line-height: 133%;
-        }
-
-        @include sm {
-            margin: 0;
-            padding: 60px 50px 130px 50px;
-            width: 100%;
-            background-color: rgba(64, 64, 64, 0.5);
-
-            &>h4 {
-                font-size: 30px;
-            }
-
-            &>p {
-                font-size: 16px;
-            }
-
-        }
+      @include sm {
+        display: none;
+      }
     }
+  }
+
+  &__Caption {
+    color: $white;
+    margin-top: 12.4em;
+    margin-bottom: 10.2em;
+    width: 29.5em;
+    z-index: 2;
+
+    & > h4 {
+      font-weight: bold;
+      font-size: 2em;
+      line-height: 133%;
+      margin-bottom: 0.36em;
+    }
+
+    &p {
+      font-size: 1em;
+      line-height: 133%;
+    }
+
+    @include sm {
+      margin: 0;
+      padding: 60px 50px 130px 50px;
+      width: 100%;
+      background-color: rgba(64, 64, 64, 0.5);
+
+      & > h4 {
+        font-size: 30px;
+      }
+
+      & > p {
+        font-size: 16px;
+      }
+    }
+  }
 }
 
 .BookingCard,
 .NewsletterForm {
-    &__Submit {
-        height: 3.25em;
-        background: #32BBFF !important;
-        color: $white !important;
-    }
+  &__Submit {
+    height: 3.25em;
+    background: #32bbff !important;
+    color: $white !important;
+  }
 }
 
 .BookingCard {
-    grid-row: 1 / span 2;
-    grid-column: 2 / span 1;
-    justify-self: end;
-    z-index: 2;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  grid-row: 1 / span 2;
+  grid-column: 2 / span 1;
+  justify-self: end;
+  z-index: 2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-    &__Toggle {
-        margin: 26px 0 22px 0;
+  &__Toggle {
+    margin: 26px 0 22px 0;
+  }
+
+  &__Tab {
+    font-size: 1em;
+    background: #f1f2f6;
+    border-radius: 5px;
+    width: 100%;
+    height: 2.88em;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 1.722em;
+
+    @include sm {
+      height: 52px;
+      border-radius: 5px 5px 0 0;
+      margin-bottom: 25px;
     }
 
-    &__Tab {
-        font-size: 1em;
-        background: #f1f2f6;
-        border-radius: 5px;
-        width: 100%;
-        height: 2.88em;
-        display: flex;
-        flex-wrap: nowrap;
-        margin-bottom: 1.722em;
+    &__button {
+      width: 50%;
+      height: 100%;
+      border-radius: 5px;
+      background: transparent;
+      outline: 0;
+      border: 0;
+      display: block;
+      font-weight: 600;
+      font-size: 0.88em;
+      line-height: 125%;
+      color: #425486;
 
-        @include sm {
-            height: 52px;
-            border-radius: 5px 5px 0 0;
-            margin-bottom: 25px;
-        }
+      @include sm {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+        border-radius: 5px 5px 0 0;
+      }
 
-        &__button {
-            width: 50%;
-            height: 100%;
-            border-radius: 5px;
-            background: transparent;
-            outline: 0;
-            border: 0;
-            display: block;
-            font-weight: 600;
-            font-size: 0.88em;
-            line-height: 125%;
-            color: #425486;
-
-            @include sm {
-                font-weight: 600;
-                font-size: 14px;
-                line-height: 18px;
-                border-radius: 5px 5px 0 0;
-            }
-
-            &__active {
-                background: $white;
-                border: 0.5px solid #425486;
-            }
-        }
+      &__active {
+        background: $white;
+        border: 0.5px solid #425486;
+      }
     }
+  }
 
-    &__Input {
-        margin-bottom: 1.55em;
+  &__Input {
+    margin-bottom: 1.55em;
+  }
+
+  &__Passanger {
+    font-size: 1em;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background: #425486;
+    border-radius: 5px;
+    margin-bottom: 2.5em;
+
+    &__select {
+      width: calc(50% - 0.03em);
+      min-width: 0 !important;
+
+      &:nth-of-type(1) {
+        border-right: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:nth-of-type(2) {
+        border-left: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
     }
+  }
 
-    &__Passanger {
-        font-size: 1em;
-        width: 100%;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        background: #425486;
-        border-radius: 5px;
-        margin-bottom: 2.5em;
+  &__Submit {
+    width: 100%;
+  }
 
-        &__select {
-            width: calc(50% - 0.03em);
-            min-width: 0 !important;
-
-            &:nth-of-type(1) {
-                border-right: 0;
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-
-            }
-
-
-            &:nth-of-type(2) {
-                border-left: 0;
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-
-            }
-        }
+  &Loader {
+    &__skeleton {
+      margin-bottom: 1.55em;
+      overflow: hidden;
     }
-
-    &__Submit {
-        width: 100%;
-    }
-
-    &Loader {
-        &__skeleton {
-            margin-bottom: 1.55em;
-            overflow: hidden;
-        }
-    }
+  }
 }
 
 .AppStoreAction {
-    z-index: 2;
+  z-index: 2;
+  text-align: left;
 
-    @include sm {
-        position: absolute !important;
-        bottom: 0;
+  & > div {
+    justify-content: flex-start;
+  }
+
+  @include sm {
+    position: absolute !important;
+    bottom: 0;
+    text-align: center;
+
+    & > div {
+      justify-content: center;
     }
+  }
 }
 
 .Features,
-.PorpularTrips,
+.PopularTrips,
 .Newsletter {
-    font-size: 1rem;
+  font-size: 1rem;
 
-    &__SubHeading {
-        font-weight: 600;
-        font-size: 0.78em;
-        line-height: 129%;
-        text-transform: uppercase;
-        color: #5ACAFA;
+  &__SubHeading {
+    font-weight: 600;
+    font-size: 0.78em;
+    line-height: 129%;
+    text-transform: uppercase;
+    color: #5acafa;
 
-        @include sm {
-            font-weight: 600;
-            font-size: 14px;
-            line-height: 18px;
-        }
+    @include sm {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
     }
+  }
 
-    &__Heading {
-        font-weight: 600;
-        font-size: 2em;
-        line-height: 144%;
+  &__Heading {
+    font-weight: 600;
+    font-size: 2em;
+    line-height: 144%;
 
-        @include sm {
-            font-weight: 600;
-            font-size: 30px;
-            line-height: 38px;
-        }
+    @include sm {
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 38px;
     }
+  }
 }
 
 .Newsletter,
 .Features {
-    padding: 6.5em 6.05em;
-    background-color: $white;
+  padding: 6.5em 6.05em;
+  background-color: $white;
 
-    &__Heading {
-        color: #425486;
-    }
+  &__Heading {
+    color: #425486;
+  }
 }
 
 .Features {
+  @include sm {
+    padding-top: 50px;
+    padding-bottom: 72px;
+  }
+
+  &__Heading {
+    margin-bottom: 3.37em;
+
     @include sm {
-        padding-top: 50px;
-        padding-bottom: 72px;
+      margin-bottom: 72px;
+    }
+  }
+
+  &__List {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    @include sm {
+      display: block;
+    }
+  }
+
+  &__Item {
+    width: 16.67em;
+
+    @include sm {
+      width: 100%;
+
+      &:not(:last-of-type) {
+        margin-bottom: 72px;
+      }
+    }
+
+    &__Icon {
+      width: 4.44em;
+      height: 4.44em;
+      border-radius: 50%;
+      background: #f1f2f6;
+      margin-bottom: 1.17em;
+
+      @include sm {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 21px;
+      }
     }
 
     &__Heading {
-        margin-bottom: 3.37em;
+      font-weight: 600;
+      font-size: 1.22em;
+      line-height: 127%;
+      color: #425486;
+      margin-bottom: 0.72em;
 
-        @include sm {
-            margin-bottom: 72px;
-        }
+      @include sm {
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 28px;
+        margin-bottom: 12px;
+      }
     }
 
-    &__List {
-        width: 100%;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        align-items: center;
+    &__Text {
+      font-size: 0.89em;
+      line-height: 125%;
+      color: #425486;
 
-        @include sm {
-            display: block;
-        }
+      @include sm {
+        font-size: 16px;
+        line-height: 20px;
+      }
     }
-
-    &__Item {
-        width: 16.67em;
-
-        @include sm {
-            width: 100%;
-
-            &:not(:last-of-type) {
-                margin-bottom: 72px;
-            }
-        }
-
-        &__Icon {
-            width: 4.44em;
-            height: 4.44em;
-            border-radius: 50%;
-            background: #F1F2F6;
-            margin-bottom: 1.17em;
-
-            @include sm {
-                width: 80px;
-                height: 80px;
-                margin-bottom: 21px;
-            }
-        }
-
-        &__Heading {
-            font-weight: 600;
-            font-size: 1.22em;
-            line-height: 127%;
-            color: #425486;
-            margin-bottom: 0.72em;
-
-            @include sm {
-                font-weight: 600;
-                font-size: 22px;
-                line-height: 28px;
-                margin-bottom: 12px;
-            }
-        }
-
-        &__Text {
-            font-size: 0.89em;
-            line-height: 125%;
-            color: #425486;
-
-            @include sm {
-                font-size: 16px;
-                line-height: 20px;
-            }
-        }
-    }
+  }
 }
 
-.PorpularTrips {
-    background: #425486;
-    padding: 5.277em 6.05em;
+.PopularTrips {
+  background: #425486;
+  padding: 5.277em 6.05em;
+
+  @include sm {
+    padding-top: 58px;
+    padding-bottom: 0;
+  }
+
+  &__Heading {
+    color: $white;
+    margin-bottom: 1.84em;
 
     @include sm {
-        padding-top: 58px;
-        padding-bottom: 0;
+      margin-bottom: 39px;
+    }
+  }
+
+  &__TripListWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    @include sm {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__TripList {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    width: 100%;
+
+    @include sm {
+      margin-bottom: 53px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__Trip {
+    margin-bottom: 1.06em;
+
+    @include sm {
+      margin-bottom: 21px;
+      width: 40%;
+
+      &:nth-of-type(odd) {
+        margin-right: 10%;
+      }
     }
 
-    &__Heading {
-        color: $white;
-        margin-bottom: 1.84em;
+    & > a {
+      font-size: 0.89em;
+      line-height: 125%;
+      color: #ffffff;
+      padding-bottom: 0.13em;
 
-        @include sm {
-            margin-bottom: 39px;
-        }
+      @include sm {
+        font-size: 16px;
+        line-height: 20px;
+      }
+
+      &:hover {
+        border-bottom: 1px solid $white;
+      }
     }
-
-    &__TripListWrapper {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: nowrap;
-
-        @include sm {
-            flex-wrap: wrap;
-        }
-    }
-
-    &__TripList {
-        list-style: none;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        justify-content: space-between;
-        width: 100%;
-
-        @include sm {
-            margin-bottom: 53px;
-            display: flex;
-            flex-wrap: wrap;
-        }
-    }
-
-    &__Trip {
-        margin-bottom: 1.06em;
-
-        @include sm {
-            margin-bottom: 21px;
-            width: 34%;
-        }
-
-
-        &>a {
-            font-size: 0.89em;
-            line-height: 125%;
-            color: #FFFFFF;
-            padding-bottom: 0.13em;
-
-            @include sm {
-                font-size: 16px;
-                line-height: 20px;
-            }
-
-
-            &:hover {
-                border-bottom: 1px solid $white;
-            }
-        }
-    }
+  }
 }
 
 .Newsletter {
-    &__Heading {
-        margin-bottom: 2.13em;
+  &__Heading {
+    margin-bottom: 2.13em;
+  }
+
+  &Form {
+    display: flex;
+    flex-wrap: nowrap;
+
+    @include sm {
+      display: block;
     }
 
-    &Form {
-        display: flex;
-        flex-wrap: nowrap;
+    &__Input {
+      margin-right: 1.5em;
 
-        @include sm {
-            display: block;
-        }
-
-        &__Input {
-            margin-right: 1.5em;
-
-            @include sm {
-                margin-right: 0;
-                margin-bottom: 21px;
-            }
-        }
+      @include sm {
+        margin-right: 0;
+        margin-bottom: 21px;
+      }
     }
+  }
 }
 
 .Features,
-.PorpularTrips,
+.PopularTrips,
 .Newsletter {
-    @include sm {
-        padding-right: 25px;
-        padding-left: 25px;
-    }
+  @include sm {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
 }
