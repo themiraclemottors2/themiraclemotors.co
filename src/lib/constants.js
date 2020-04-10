@@ -1,1 +1,3 @@
-export const serviceRoot = "https://miraclemotors.herokuapp.com/api/v1"
+export const serviceRoot = process.env.GATSBY_SERVICE_ROOT
+
+console.log(serviceRoot)

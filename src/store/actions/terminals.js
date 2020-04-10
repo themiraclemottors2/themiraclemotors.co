@@ -40,7 +40,6 @@ export const fetchTerminalsRequest = () => async (dispatch, getState) => {
     const popularTrips = getPopularTrips(data)
     return dispatch(getTerminals(data, popularTrips))
   } catch (error) {
-    dispatch(getTerminals([]))
-    throw error
+    dispatch(getTerminals([], []))
   }
 }
