@@ -1,4 +1,4 @@
-import React, { createRef } from "react"
+import React, { createRef, useState } from "react"
 // import PropTypes from "prop-types"
 import styles from "./trip.module.scss"
 import { ProfileForm, Button, WrapperCard } from "../common"
@@ -8,6 +8,7 @@ import cx from "classnames"
 const profileFormRef = createRef()
 
 const ProfileContent = ({ onSave, onCancel, user, loading }) => {
+  const [cancelable, setCancelable] = useState(false)
   const handleOnSave = e => {
     e.preventDefault()
     const {
@@ -35,7 +36,12 @@ const ProfileContent = ({ onSave, onCancel, user, loading }) => {
           <Info />
           <p>These details will be used as your default passenger details</p>
         </div>
-        <ProfileForm value={user} disableEssentials ref={profileFormRef} />
+        <ProfileForm
+          value={user}
+          disableEssentials
+          ref={profileFormRef}
+          setCancelable={setCancelable}
+        />
       </WrapperCard>
       <div className={styles.ProfileContent__button_group}>
         <Button
@@ -44,6 +50,7 @@ const ProfileContent = ({ onSave, onCancel, user, loading }) => {
             styles.ProfileContent__Submit,
             styles.ProfileContent__Submit__cancel
           )}
+          disabled={!cancelable}
         >
           Cancel
         </Button>

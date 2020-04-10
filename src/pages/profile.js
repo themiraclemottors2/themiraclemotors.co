@@ -23,7 +23,7 @@ const Profile = props => {
       return toast.warn("Field(s) can not be empty ")
     }
     setLoading(true)
-    console.log(data)
+
     try {
       await dispatch(updateProfileRequest(data))
       toast.success("Profile updated successfully")

@@ -9,6 +9,16 @@ import moment from "moment"
 import isEqual from "../../../node_modules/lodash/isEqual"
 
 class SeatBookingForm extends Component {
+  static defaultProps = {
+    roundTrip: false,
+    terminals: [],
+  }
+
+  static propTypes = {
+    roundTrip: PropTypes.bool.isRequired,
+    terminals: PropTypes.array,
+  }
+
   state = {
     departureTerminalId: "",
     arrivalTerminalId: "",
@@ -22,7 +32,10 @@ class SeatBookingForm extends Component {
   }
 
   componentDidUpdate(prevProps, prevSate) {
-    if (!isEqual(prevProps.searchData, this.props.searchData)) {
+    if (
+      this.props.searchData &&
+      !isEqual(prevProps.searchData, this.props.searchData)
+    ) {
       this.setState({ ...this.props.searchData })
     }
   }
@@ -137,15 +150,6 @@ class SeatBookingForm extends Component {
       </form>
     )
   }
-}
-SeatBookingForm.defaultProps = {
-  roundTrip: false,
-  terminals: [],
-}
-
-SeatBookingForm.propTypes = {
-  roundTrip: PropTypes.bool.isRequired,
-  terminals: PropTypes.array,
 }
 
 export default SeatBookingForm

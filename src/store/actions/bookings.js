@@ -19,7 +19,6 @@ export const bookTripRequest = body => async (dispatch, getState) => {
   dispatch(asyncStart(identifier))
   try {
     const [data] = await BookingsRequestService.book(body)
-    console.log(data)
     return dispatch(setBookedTrip(data))
   } catch (error) {
     dispatch(setBookedTrip({}))

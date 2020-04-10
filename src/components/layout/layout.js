@@ -18,14 +18,11 @@ import Header from "../header"
 import styles from "./layout.module.scss"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import { window } from "browser-monads"
 
 class Layout extends Component {
-  componentWillReceiveProps(nextProps) {
-    const { onRedirect } = this.props
-    if (nextProps.redirectTo) {
-      navigate(nextProps.redirectTo)
-      onRedirect()
-    }
+  componentDidUpdate(prevProps, prevState) {
+    this._handleRedirect(prevProps.redirectTo)
   }
 
   componentDidMount() {
@@ -38,6 +35,26 @@ class Layout extends Component {
       draggable: false,
       pauseOnHover: true,
     })
+  }
+
+  _handleRedirect = redirectTo => {
+    const pathname = window.location.pathname
+    const { isAuthenticated, type, onRedirect } = this.props
+
+    if (redirectTo) {
+      navigate(redirectTo)
+      return onRedirect()
+    }
+
+    if (isAuthenticated && type === "unauthenticated") {
+      navigate("/")
+      return null
+    }
+
+    if (!isAuthenticated && type === "authenticated") {
+      navigate(`/sign-in?redirect=${pathname}`)
+      return null
+    }
   }
 
   _handleAppLoading = () => {
@@ -58,6 +75,7 @@ class Layout extends Component {
 
   render() {
     const { children, type } = this.props
+
     return (
       <StickyContainer className={styles.Layout}>
         <Header {...this.props} layout={type} />

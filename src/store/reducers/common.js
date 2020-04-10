@@ -61,7 +61,7 @@ export default (
     case LOGOUT:
       return {
         ...initState,
-        redirectTo: "/",
+        redirectTo: "/sign-in",
       }
     default:
       return state

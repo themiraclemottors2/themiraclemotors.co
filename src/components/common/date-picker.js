@@ -8,6 +8,7 @@ import ReactDOM from "react-dom"
 import moment from "moment"
 
 class DatePicker extends Component {
+  static defaultProps = { type: "text" }
   constructor(props) {
     super(props)
     this.state = {
@@ -24,6 +25,11 @@ class DatePicker extends Component {
 
   componentWillUnmount() {
     document.removeEventListener("mousedown", this._handleClickOutside)
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.value !== prevProps.value)
+      this.setState({ value: moment(this.props.value) })
   }
 
   _handleClickOutside = event => {
@@ -82,7 +88,5 @@ class DatePicker extends Component {
     )
   }
 }
-
-DatePicker.defaultProps = { type: "text" }
 
 export default DatePicker
