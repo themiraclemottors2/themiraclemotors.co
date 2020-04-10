@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styles from "./home.module.scss"
-import { Input, Button, Select, DatePicker } from "../common"
+import { Button, Select, DatePicker } from "../common"
 import { Locator, Calendar } from "../../assets/svg"
 import { capitalize } from "lib"
 
