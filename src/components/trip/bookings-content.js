@@ -6,16 +6,23 @@ import BookItem from "./book-item"
 import Results from "./results"
 import { useDispatch, useSelector, shallowEqual } from "react-redux"
 import { fetchBookingsRequest } from "store/actions/bookings"
-import { LocalStorageService } from "services"
 import { capitalize, formatCurrency } from "lib"
 
 const BookingContent = () => {
-  const stateExtractor = ({ bookings }) => ({
+  const stateExtractor = ({
+    bookings,
+    common: {
+      user: { id: userId },
+    },
+  }) => ({
     ...bookings,
+    userId,
   })
-  const { data: bookings, loading } = useSelector(stateExtractor, shallowEqual)
+  const { data: bookings, loading, userId } = useSelector(
+    stateExtractor,
+    shallowEqual
+  )
   const dispatch = useDispatch()
-  const { id: userId } = LocalStorageService.getUser()
 
   useEffect(() => {
     dispatch(fetchBookingsRequest(userId))

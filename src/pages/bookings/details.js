@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { AuthenticatedLayout } from "components/layout"
 import SEO from "components/seo"
 import { ResultWrapper, BookHeader } from "components/trip"
@@ -16,9 +16,13 @@ const Details = props => {
       ? bookingsList.find(item => item.id === state.bookingId)
       : {}
   console.log(booking)
-  if (!state || !state.bookingId) {
-    navigate("/bookings")
-  }
+
+  useEffect(() => {
+    if (!state || !state.bookingId) {
+      navigate("/bookings")
+    }
+  }, [state])
+
   return (
     <AuthenticatedLayout {...props}>
       <SEO title="Booking Details" />

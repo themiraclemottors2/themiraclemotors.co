@@ -13,6 +13,7 @@ export const onAppLoad = () => dispatch => {
         "email",
         "phoneNumber",
         "gender",
+        "id",
       ]),
       ...pick(user.profile, ["address", "kinFullName", "kinPhoneNumber"]),
     }
