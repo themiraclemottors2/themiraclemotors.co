@@ -10,3 +10,4 @@ export { default as CompletingBookingContent } from "./completing-booking-conten
 export { default as ProfileContent } from "./profile-content"
 export { default as BookingsContent } from "./bookings-content"
 export { default as BookItem } from "./book-item"
+export { default as BookingCompleteContent } from "./booking-complete-content"

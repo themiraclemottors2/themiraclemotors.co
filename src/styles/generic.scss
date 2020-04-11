@@ -6,6 +6,10 @@ html {
     font-size: 62.5%;
     scroll-behavior: smooth;
 
+    @include rwd(700) {
+        font-size: 59%;
+    }
+
     @include md {
         font-size: 75%;
     }

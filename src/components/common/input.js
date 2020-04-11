@@ -4,7 +4,7 @@ import cx from "classnames"
 
 const Input = ({ className, icon: I, label, value, ...rest }) => {
   const rando = Math.floor(Math.random() * 1000)
-
+  value = value || ""
   return (
     <div className={cx(styles.Input, className)}>
       {I && <I />}
@@ -16,6 +16,6 @@ const Input = ({ className, icon: I, label, value, ...rest }) => {
   )
 }
 
-Input.defaultProps = { type: "text" }
+Input.defaultProps = { type: "text", onChange: () => null }
 
 export default Input

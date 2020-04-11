@@ -5,8 +5,8 @@ export default {
     serviceInstance
       .post(`/bookings`, { ...body })
       .then(({ data: { data } }) => data),
-  list: (id, params) =>
+  list: (userId, params) =>
     serviceInstance
-      .get(`/bookings/${id}`, { params })
+      .get(`/bookings/${userId}`, { params })
       .then(({ data: { data } }) => data),
 }

@@ -3,6 +3,8 @@ import {
   UPDATE_PAGINATION,
   UPDATE_FILTER,
   SET_BOOKED_TRIP,
+  RESET_BOOKINGS,
+  GET_BOOKINGS,
 } from "../types"
 
 const initState = {
@@ -11,21 +13,36 @@ const initState = {
   filters: {},
   loading: false,
   identifier: "bookings",
-  bookedTrip: "",
+  bookedTrip: {},
 }
 
 export default (
   state = initState,
-  { type, data, filters, page, identifier, bookedTrip }
+  { type, data, filters, page, identifier, bookedTrip, dataSet }
 ) => {
   switch (type) {
+    case GET_BOOKINGS:
+      return {
+        ...state,
+        data,
+        loading: false,
+      }
     case SET_BOOKED_TRIP:
       return {
         ...state,
         bookedTrip,
         loading: false,
       }
-
+    case RESET_BOOKINGS:
+      if (dataSet) {
+        return {
+          ...state,
+          ...dataSet,
+        }
+      }
+      return {
+        ...initState,
+      }
     case ASYNC_START:
       if (identifier === initState.identifier)
         return {

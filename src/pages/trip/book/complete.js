@@ -1,13 +1,15 @@
 import React from "react"
-import { AppliedLayout } from "components/layout"
+import { AuthenticatedLayout } from "components/layout"
 import SEO from "components/seo"
+import { BookingCompleteContent } from "components/trip"
 
-const Complete = props => {
+const BookingComplete = props => {
   return (
-    <AppliedLayout {...props}>
+    <AuthenticatedLayout {...props}>
       <SEO title="Booking Completed" />
-    </AppliedLayout>
+      <BookingCompleteContent />
+    </AuthenticatedLayout>
   )
 }
 
-export default Complete
+export default BookingComplete

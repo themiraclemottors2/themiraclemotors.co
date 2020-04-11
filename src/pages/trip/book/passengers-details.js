@@ -145,7 +145,8 @@ class PassengersDetails extends Component {
       requestBody.paymentRef = paymentResponse.reference
     }
     try {
-      await bookTrip(requestBody)
+      const bookingResp = await bookTrip(requestBody)
+      if (bookingResp) return navigate("/trip/book/complete")
     } catch (error) {
       toast.error(
         (error.response && error.response.data.message) ||

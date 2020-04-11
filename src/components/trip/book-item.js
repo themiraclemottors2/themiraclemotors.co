@@ -3,13 +3,26 @@ import styles from "./trip.module.scss"
 import { AlarmClock } from "../../assets/svg"
 import { Button } from "../common"
 
-const BookItem = () => {
+const BookItem = ({
+  booking: {
+    bookingId,
+    departureTerminal,
+    arrivalTerminal,
+    vehicle,
+    amount,
+    seats,
+    departureTime,
+  },
+  viewDetails,
+}) => {
   return (
     <div className={styles.BookItem}>
       <div className={styles.BookItem__Details}>
         <div className={styles.BookItem__Details__bus}>
-          <p>TOYOTA SIENNA</p>
-          <h3>NGN 3,999</h3>
+          <p>{vehicle}</p>
+          <h3>
+            {departureTerminal} to {arrivalTerminal}
+          </h3>
           <div className={styles.BookItem__Details__time}>
             <AlarmClock />
             <p>8:00AM</p>
@@ -17,9 +30,12 @@ const BookItem = () => {
         </div>
 
         <div className={styles.BookItem__Details__booking}>
-          <h3>NGN 3,999</h3>
-          <p>4 seat(s)</p>
-          <Button onClick={() => null} className={styles.BookItem__button}>
+          <h3>NGN {amount}</h3>
+          <p>{seats} seat(s)</p>
+          <Button
+            onClick={() => viewDetails(bookingId)}
+            className={styles.BookItem__button}
+          >
             View Details
           </Button>
         </div>

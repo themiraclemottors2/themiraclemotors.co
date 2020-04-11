@@ -29,7 +29,7 @@ class ProfileForm extends Component {
         {
           ...this.props.value,
           kinPhoneNumber: this._formatPhone(this.props.value.kinPhoneNumber),
-          phoneNumber: this._formatPhone(this.props.value.kinPhoneNumber),
+          phoneNumber: this._formatPhone(this.props.value.phoneNumber),
         },
         false
       )
@@ -61,14 +61,19 @@ class ProfileForm extends Component {
     value.phoneNumber = this._formatPhone(value.phoneNumber)
     value.kinPhoneNumber = this._formatPhone(value.kinPhoneNumber)
     this.setState({ ...data }, () => {
-      if (isEqual(this.state, value) && checkCancelable) {
+      if (isEqual(this.state, value) && checkCancelable && setCancelable) {
         return setCancelable(false)
       } else if (
         emptyObjProps(value).length > emptyObjProps(this.state).length &&
-        checkCancelable
+        checkCancelable &&
+        setCancelable
       ) {
         return setCancelable(true)
-      } else if (!isEqual(value, this.state) && checkCancelable) {
+      } else if (
+        !isEqual(value, this.state) &&
+        checkCancelable &&
+        setCancelable
+      ) {
         return setCancelable(true)
       }
     })

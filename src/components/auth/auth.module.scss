@@ -14,6 +14,9 @@
 
     @include sm {
         padding-top: 68px;
+        height: 100vh;
+        overflow: auto;
+        background: #fff;
     }
 }
 
@@ -41,11 +44,23 @@
     &__container {
         margin-bottom: 1.55em;
         width: 100% !important;
+
+        @include sm {
+            display: block;
+        }
     }
 
     &__Input {
         &__half {
             width: calc(50% - 12px) !important;
+
+            @include sm {
+                width: 100% !important;
+
+                &:not(:last-of-type) {
+                    margin-bottom: 1.55em;
+                }
+            }
         }
     }
 

@@ -67,6 +67,7 @@ class DatePicker extends Component {
             id={`${rando}-input`}
             value={moment(value).format("DD/MM/YYYY")}
             disabled
+            onChange={() => null}
           />
           <label htmlFor={`${rando}-input`}>{label}</label>
         </div>

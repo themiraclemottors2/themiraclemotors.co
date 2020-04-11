@@ -1,7 +1,7 @@
 import values from "../../node_modules/lodash/values"
 
 export const formatCurrency = num => {
-  return num
+  return Number(num)
     .toFixed(2)
     .toString()
     .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
