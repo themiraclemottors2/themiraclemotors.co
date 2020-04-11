@@ -1,7 +1,11 @@
 import React, { useEffect } from "react"
 import { AuthenticatedLayout } from "components/layout"
 import SEO from "components/seo"
-import { ResultWrapper, BookHeader } from "components/trip"
+import {
+  ResultWrapper,
+  BookHeader,
+  BookingDetailsContent,
+} from "components/trip"
 import { navigate } from "gatsby"
 import { useSelector, shallowEqual } from "react-redux"
 
@@ -28,7 +32,7 @@ const Details = props => {
       <SEO title="Booking Details" />
       <BookHeader stage={0} breadCrumbs={["Booking Details"]} />
       <ResultWrapper>
-        <p>{(props.location.state && props.location.state.bookingId) || ""}</p>
+        <BookingDetailsContent booking={booking} />
       </ResultWrapper>
     </AuthenticatedLayout>
   )

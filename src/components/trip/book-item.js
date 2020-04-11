@@ -2,6 +2,7 @@ import React from "react"
 import styles from "./trip.module.scss"
 import { AlarmClock } from "../../assets/svg"
 import { Button } from "../common"
+import moment from "moment"
 
 const BookItem = ({
   booking: {
@@ -25,7 +26,7 @@ const BookItem = ({
           </h3>
           <div className={styles.BookItem__Details__time}>
             <AlarmClock />
-            <p>8:00AM</p>
+            <p>{moment(departureTime).format("H:mm A")}</p>
           </div>
         </div>
 

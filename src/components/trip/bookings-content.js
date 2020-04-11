@@ -25,7 +25,7 @@ const BookingContent = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchBookingsRequest(userId))
+    dispatch(fetchBookingsRequest())
   }, [userId, dispatch])
 
   const handleViewDetails = bookingId => {

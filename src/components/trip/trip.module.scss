@@ -626,6 +626,7 @@
 }
 
 .CompletingBookingContent,
+.BookingDetailsContent,
 .PassengerDetailsContent {
   width: 41.11em;
 
@@ -691,6 +692,7 @@
   }
 }
 
+.BookingDetailsContent,
 .CompletingBookingContent {
   &__wrapperCard {
     width: 100%;
@@ -708,7 +710,8 @@
     }
   }
 
-  &__profile {
+  &__profile,
+  &__details {
     &__info {
       width: 100%;
       display: flex;
@@ -743,6 +746,33 @@
     }
   }
 
+  &__details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include sm {
+      display: block;
+    }
+
+    &__info {
+
+      &__text,
+      &__value {
+        width: 50%;
+
+        @include sm {
+          width: 38%;
+        }
+      }
+
+      &__value {
+        @include sm {
+          width: 62%;
+        }
+      }
+    }
+  }
+
   &__payment {
     margin-bottom: 1.5em;
 
@@ -756,6 +786,21 @@
 
       &>img {
         width: 5.44em;
+      }
+    }
+  }
+}
+
+.BookingDetailsContent {
+  &__profile {
+    &:not(:last-child) {
+      padding-bottom: 1.77em;
+      margin-bottom: 1.77em;
+      border-bottom: 1px solid #f2f2f6;
+
+      @include sm {
+        padding-bottom: 2.77em;
+        margin-bottom: 2.77em;
       }
     }
   }

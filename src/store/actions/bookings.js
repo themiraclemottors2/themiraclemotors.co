@@ -28,17 +28,14 @@ export const resetBookings = dataSet => dispatch =>
     dataSet,
   })
 
-export const fetchBookingsRequest = (userId, params) => async (
-  dispatch,
-  getState
-) => {
+export const fetchBookingsRequest = params => async (dispatch, getState) => {
   const {
     bookings: { identifier },
   } = getState()
 
   dispatch(asyncStart(identifier))
   try {
-    const data = await BookingsRequestService.list(userId, params)
+    const data = await BookingsRequestService.list(params)
     dispatch(getBookings(data))
     return data
   } catch (error) {
