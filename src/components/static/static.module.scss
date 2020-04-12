@@ -1,0 +1,105 @@
+@import "../../styles/generic.scss";
+
+.PageContainer {
+    font-size: 1rem;
+    padding-top: 5.26em;
+
+    &__content {
+        font-size: 1em;
+        background-color: #fff;
+        padding: 6em 6.05em 7.6em 6.05em;
+
+        @include sm {
+            padding: 60px 26px;
+        }
+    }
+}
+
+.AboveFold {
+    font-size: 1em;
+    padding: 7.77em 6.05em 10.83em 6.05em;
+    color: #425486;
+
+    @include sm {
+        padding: 100px 26px;
+    }
+
+    &>h5 {
+        font-weight: bold;
+        font-size: 0.78em;
+        line-height: 136%;
+        text-transform: uppercase;
+        color: #32BBFF;
+        margin-bottom: 0.36em;
+
+        @include sm {
+            font-size: 14px;
+        }
+    }
+
+    &>h2,
+    &>p {
+        width: 44%;
+
+        @include sm {
+            width: 100%;
+        }
+    }
+
+    &>h2 {
+        font-weight: bold;
+        font-size: 2em;
+        line-height: 133%;
+        margin-bottom: 0.36em;
+
+        @include sm {
+            font-size: 25px;
+        }
+    }
+
+    &>p {
+        font-weight: normal;
+        font-size: 0.89em;
+        line-height: 131%;
+
+        @include sm {
+            font-size: 14px;
+        }
+    }
+}
+
+.Content {
+    &__section {
+        font-size: 1em;
+        color: #425486;
+
+        &:not(:last-of-type) {
+            margin-bottom: 1.39em;
+
+            @include sm {
+                margin-bottom: 30px;
+            }
+        }
+
+        &__header {
+            font-weight: bold;
+            font-size: 1.33em;
+            line-height: 138%;
+            margin-bottom: 0.83em;
+
+            @include sm {
+                font-size: 18px;
+            }
+        }
+
+        &__text {
+            font-weight: normal;
+            font-size: 0.89em;
+            line-height: 131%;
+
+            @include sm {
+                font-size: 14px;
+            }
+        }
+    }
+}
