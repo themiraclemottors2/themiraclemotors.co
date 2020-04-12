@@ -4,6 +4,7 @@ const initState = {
   loading: false,
   identifier: "settings",
   serviceCharge: 0,
+  id: "",
 }
 
 export default (state = initState, { type, identifier, settings }) => {

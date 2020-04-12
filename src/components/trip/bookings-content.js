@@ -25,7 +25,11 @@ const BookingContent = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchBookingsRequest())
+    try {
+      dispatch(fetchBookingsRequest())
+    } catch (error) {
+      console.log(error)
+    }
   }, [userId, dispatch])
 
   const handleViewDetails = bookingId => {
@@ -39,8 +43,8 @@ const BookingContent = () => {
       {bookings.length <= 0 && !loading && (
         <NoResult
           svg={Book}
-          header="You haven’t made any bookings yet."
-          text="All bookings you make will be listed here."
+          header={"You haven’t made any bookings yet."}
+          text={"All bookings you make will be listed here."}
         />
       )}
       {bookings.length > 0 &&

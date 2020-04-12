@@ -20,9 +20,9 @@ export const settingsRequest = () => async (dispatch, getState) => {
   dispatch(asyncStart(identifier))
   try {
     const data = await SettingsRequestService.get()
-    return dispatch(getSettings(omit(data, ["id", "updatedAt", "createdAt"])))
+    return dispatch(getSettings(omit(data, ["updatedAt", "createdAt"])))
   } catch (error) {
     dispatch(getSettings({}))
-    throw error
+    console.log(error)
   }
 }

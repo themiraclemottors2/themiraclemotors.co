@@ -13,10 +13,12 @@ export const serviceInstance = axios.create({
   },
 })
 
+const refreshTokenUrl = "/auth/refresh-token"
+
 serviceInstance.interceptors.request.use(
   config => {
     const token = LocalStorageService.getAccessToken()
-    if (token) {
+    if (token && config.url !== refreshTokenUrl) {
       config.headers["Authorization"] = "Bearer " + token
     }
     return config
@@ -30,43 +32,37 @@ serviceInstance.interceptors.response.use(
   response => response,
   async error => {
     const originalRequest = error.config
-    if (!error.response) return Promise.reject(error)
     if (
-      (error.response.status === 401 ||
-        error.response.status === 404 ||
-        error.response.status === 422) &&
-      originalRequest.url === `${serviceRoot}/auth/refresh-token`
+      error.response &&
+      error.response.status === 401 &&
+      originalRequest.url === refreshTokenUrl
     ) {
       LocalStorageService.clearStorage()
       navigate("/sign-in")
       return Promise.reject(error)
     }
 
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if (
+      error.response &&
+      error.response.status === 401 &&
+      !originalRequest._retry
+    ) {
       originalRequest._retry = true
       const refreshToken = LocalStorageService.getRefreshToken()
-      const accessToken = LocalStorageService.getAccessToken()
-      return serviceInstance
-        .post(
-          `${serviceRoot}/auth/refresh-token`,
-          {
+      try {
+        return serviceInstance
+          .post(refreshTokenUrl, {
             refreshToken: refreshToken,
-          },
-          {
-            headers: {
-              Authorization: "",
-            },
-          }
-        )
-        .then(res => {
-          if (res.status === 201) {
-            LocalStorageService.setToken(res.data.data)
-            axios.defaults.headers.common[
-              "Authorization"
-            ] = `Bearer  + ${accessToken}`
-            return axios(originalRequest)
-          }
-        })
+          })
+          .then(res => {
+            if (res.status === 200) {
+              LocalStorageService.setToken(res.data.data)
+              return serviceInstance(originalRequest)
+            }
+          })
+      } catch (err) {
+        Promise.reject(error)
+      }
     }
     return Promise.reject(error)
   }

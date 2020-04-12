@@ -64,13 +64,14 @@ class Layout extends Component {
       settingsRequest,
       isAuthenticated,
       fetchTerminalsRequest,
+      settingsId,
     } = this.props
     if (!appLoaded) {
       onAppLoad()
       fetchTerminalsRequest()
     }
 
-    if (isAuthenticated) settingsRequest()
+    if (isAuthenticated && !settingsId) settingsRequest()
   }
 
   render() {
@@ -89,8 +90,9 @@ class Layout extends Component {
   }
 }
 
-const mapStateToProps = ({ common }) => ({
+const mapStateToProps = ({ common, settings: { id: settingsId } }) => ({
   ...common,
+  settingsId,
 })
 
 export default connect(mapStateToProps, {

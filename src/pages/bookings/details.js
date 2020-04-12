@@ -18,8 +18,17 @@ const Details = props => {
   const booking =
     state && state.bookingId
       ? bookingsList.find(item => item.id === state.bookingId)
-      : {}
-  console.log(booking)
+      : {
+          passengers: [{ name: "", gender: "" }],
+          referenceId: "",
+          numberOfTravellers: 0,
+          trip: {
+            departureTerminal: { name: "" },
+            arrivalTerminal: { name: "" },
+            departureTimestamp: "",
+          },
+          payment: { referenceId: "", status: "", amount: "" },
+        }
 
   useEffect(() => {
     if (!state || !state.bookingId) {

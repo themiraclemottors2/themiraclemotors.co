@@ -96,7 +96,17 @@ const BookingDetailsContent = ({
 }
 
 BookingDetailsContent.defaultProps = {
-  passengers: [],
+  booking: {
+    passengers: [{ name: "", gender: "" }],
+    referenceId: "",
+    numberOfTravellers: 0,
+    trip: {
+      departureTerminal: { name: "" },
+      arrivalTerminal: { name: "" },
+      departureTimestamp: "",
+    },
+    payment: { referenceId: "", status: "", amount: "" },
+  },
 }
 
 export default BookingDetailsContent
