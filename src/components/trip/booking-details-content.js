@@ -79,6 +79,41 @@ const BookingDetailsContent = ({
               className={styles.BookingDetailsContent__profile__info}
             >
               <p className={styles.BookingDetailsContent__profile__info__text}>
+                Phone Number:
+              </p>
+              <p className={styles.BookingDetailsContent__profile__info__value}>
+                {passenger.phoneNumber.length === 10
+                  ? `+234${passenger.phoneNumber}`
+                  : passenger.phoneNumber}
+              </p>
+            </div>
+            <div
+              key={index}
+              className={styles.BookingDetailsContent__profile__info}
+            >
+              <p className={styles.BookingDetailsContent__profile__info__text}>
+                Email:
+              </p>
+              <p className={styles.BookingDetailsContent__profile__info__value}>
+                {passenger.email}
+              </p>
+            </div>
+            <div
+              key={index}
+              className={styles.BookingDetailsContent__profile__info}
+            >
+              <p className={styles.BookingDetailsContent__profile__info__text}>
+                Address:
+              </p>
+              <p className={styles.BookingDetailsContent__profile__info__value}>
+                {passenger.address}
+              </p>
+            </div>
+            <div
+              key={index}
+              className={styles.BookingDetailsContent__profile__info}
+            >
+              <p className={styles.BookingDetailsContent__profile__info__text}>
                 Gender:
               </p>
               <p
