@@ -1,12 +1,8 @@
 import React from "react"
 import Layout from "./layout"
 
-const AppliedLayout = ({ children, location }) => {
-  return (
-    <Layout location={location} type="applied">
-      {children}
-    </Layout>
-  )
+const AppliedLayout = props => {
+  return <Layout {...props} type="applied" />
 }
 
 export default AppliedLayout

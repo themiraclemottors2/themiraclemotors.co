@@ -1,0 +1,15 @@
+import React from "react"
+import { AppliedLayout } from "components/layout"
+import SEO from "components/seo"
+
+const PrivacyPolicy = props => {
+  const title = "Privacy Policy"
+  return (
+    <AppliedLayout {...props}>
+      <SEO title={title} />
+      <div style={{ width: "100%", height: "546px" }}></div>
+    </AppliedLayout>
+  )
+}
+
+export default PrivacyPolicy

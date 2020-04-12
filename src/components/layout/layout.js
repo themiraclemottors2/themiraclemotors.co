@@ -78,7 +78,7 @@ class Layout extends Component {
 
     return (
       <StickyContainer className={styles.Layout}>
-        <Header {...this.props} layout={type} />
+        <Header {...this.props} />
         <main>
           {children}
           {type === "applied" && <Footer />}

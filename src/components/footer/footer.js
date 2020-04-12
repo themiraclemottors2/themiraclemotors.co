@@ -22,10 +22,10 @@ const Footer = () => {
             <strong>Legal</strong>
           </li>
           <li>
-            <Link to="/">Terms &amp; Conditions</Link>
+            <Link to="/terms">Terms &amp; Conditions</Link>
           </li>
           <li>
-            <Link to="/">Privacy Policy</Link>
+            <Link to="/privacy-policy">Privacy Policy</Link>
           </li>
         </ul>
         <ul className={styles.Footer__LinksList}>
@@ -33,10 +33,10 @@ const Footer = () => {
             <strong>Company</strong>
           </li>
           <li>
-            <Link to="/">About</Link>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/">Careers</Link>
+            <Link to="/careers">Careers</Link>
           </li>
           <li>
             <Link to="/">Help Center!</Link>

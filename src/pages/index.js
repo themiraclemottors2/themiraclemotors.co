@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 
 const IndexPage = props => {
   return (
-    <AppliedLayout {...props}>
+    <AppliedLayout {...props} topOffset={500} isHome={true}>
       <SEO title="Home" />
       <Home />
     </AppliedLayout>

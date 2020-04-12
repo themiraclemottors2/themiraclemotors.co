@@ -7,14 +7,12 @@ import { Logo } from "../../assets/svg"
 import styles from "./header.module.scss"
 import { logout } from "store/actions/auth"
 
-const Header = ({ location, layout }) => {
+const Header = ({ location, topOffset, isHome }) => {
   const isAuthenticated = useSelector(
     ({ common: { isAuthenticated } }) => isAuthenticated
   )
   const dispatch = useDispatch()
   const pathname = location.pathname
-  const topOffset = layout === "applied" ? 500 : 0
-  const isHome = layout === "applied"
   const _handleLogout = e => {
     e.preventDefault()
     dispatch(logout())
@@ -97,6 +95,8 @@ const Header = ({ location, layout }) => {
 
 Header.defaultProps = {
   location: { pathname: "" },
+  topOffset: 0,
+  isHome: false,
 }
 
 export default Header
