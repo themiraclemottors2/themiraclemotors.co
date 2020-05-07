@@ -9,7 +9,8 @@
   &__Fold {
     width: 100%;
     height: max-content;
-    background-image: url("../../assets/images/banner.png");
+    background: rgba(0, 0, 0, 0.05);
+    // background-image: url("../../assets/images/banner.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -49,7 +50,7 @@
     width: 29.5em;
     z-index: 2;
 
-    & > h4 {
+    &>h4 {
       font-weight: bold;
       font-size: 2em;
       line-height: 133%;
@@ -67,11 +68,11 @@
       width: 100%;
       background-color: rgba(64, 64, 64, 0.5);
 
-      & > h4 {
+      &>h4 {
         font-size: 30px;
       }
 
-      & > p {
+      &>p {
         font-size: 16px;
       }
     }
@@ -189,7 +190,7 @@
   z-index: 2;
   text-align: left;
 
-  & > div {
+  &>div {
     justify-content: flex-start;
   }
 
@@ -198,7 +199,7 @@
     bottom: 0;
     text-align: center;
 
-    & > div {
+    &>div {
       justify-content: center;
     }
   }
@@ -381,7 +382,7 @@
       }
     }
 
-    & > a {
+    &>a {
       font-size: 0.89em;
       line-height: 125%;
       color: #ffffff;
