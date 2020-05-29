@@ -288,13 +288,19 @@
       width: 4.44em;
       height: 4.44em;
       border-radius: 50%;
-      background: #f1f2f6;
       margin-bottom: 1.17em;
+      color: #425486;
 
       @include sm {
         width: 80px;
         height: 80px;
         margin-bottom: 21px;
+      }
+
+      svg {
+        height: 100%;
+        width: 100%;
+        fill: currentColor;
       }
     }
 

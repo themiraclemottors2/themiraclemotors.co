@@ -15,9 +15,8 @@ const Home = props => {
         <div className={styles.Home__Caption}>
           <h4>The safest way to travel on road in Nigeria.</h4>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation.
+            When it comes to safety, no better company places it customers and
+            staffs well-being as a priority over profit.
           </p>
         </div>
         <BookingCard />

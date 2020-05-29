@@ -2,6 +2,7 @@ import React from "react"
 import { AppliedLayout } from "components/layout"
 import SEO from "components/seo"
 import { PageContainer, Content } from "components/static"
+import { policy } from "assets/data"
 
 const PrivacyPolicy = props => {
   const title = "Privacy Policy"
@@ -11,9 +12,9 @@ const PrivacyPolicy = props => {
       <PageContainer
         title={title}
         header="We are driven by respect for our customer’s privacy."
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+        text=""
       >
-        <Content />
+        <Content data={policy} contact />
       </PageContainer>
     </AppliedLayout>
   )

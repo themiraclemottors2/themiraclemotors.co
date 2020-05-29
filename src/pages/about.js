@@ -1,7 +1,8 @@
 import React from "react"
 import { AppliedLayout } from "components/layout"
 import SEO from "components/seo"
-import { PageContainer } from "components/static"
+import { PageContainer, Content } from "components/static"
+import { about } from "assets/data"
 
 const About = props => {
   const title = "About"
@@ -11,13 +12,9 @@ const About = props => {
       <PageContainer
         title={title}
         header="Helping people explore the world conveniently in a lmao way."
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+        text=""
       >
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation.
-        </p>
+        <Content data={about} contact />
       </PageContainer>
     </AppliedLayout>
   )
