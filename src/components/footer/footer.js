@@ -11,9 +11,7 @@ const Footer = () => {
         <p>19B Bosun Adekoya Street, Lekki, Lagos, Nigeria.</p>
         <p>
           Miracle Motors is a registered Delaware C Corporation company, with RC
-          Number 900009. Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+          Number 1635067.
         </p>
       </div>
       <div className={styles.Footer__UsefullLinks}>
