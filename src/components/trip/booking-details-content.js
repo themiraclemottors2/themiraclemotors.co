@@ -61,7 +61,7 @@ const BookingDetailsContent = ({
         title="Passenger(s) Information"
         className={styles.BookingDetailsContent__wrapperCard}
       >
-        {passengers.map((passenger, index) => (
+        {passengers.map((passenger = { phoneNumber: "" }, index) => (
           <div className={styles.BookingDetailsContent__profile}>
             <div
               key={index}
@@ -82,7 +82,7 @@ const BookingDetailsContent = ({
                 Phone Number:
               </p>
               <p className={styles.BookingDetailsContent__profile__info__value}>
-                {passenger.phoneNumber.length === 10
+                {passenger?.phoneNumber?.length === 10
                   ? `+234${passenger.phoneNumber}`
                   : passenger.phoneNumber}
               </p>
