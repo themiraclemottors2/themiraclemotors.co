@@ -47,14 +47,7 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-netlify-cache`,
-    {
-      resolve: "gatsby-plugin-react-svg",
-      options: {
-        rule: {
-          include: /assets\/svg/,
-        },
-      },
-    },
+    "gatsby-plugin-react-svg",
     {
       resolve: "gatsby-plugin-root-import",
       options: {
