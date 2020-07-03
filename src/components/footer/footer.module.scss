@@ -23,14 +23,14 @@
             margin-bottom: 30px;
         }
 
-        &>svg {
+        &>img {
             width: 11em;
-            height: 3.5em;
+            // height: 3.5em;
             margin-bottom: 2.22em;
 
             @include sm {
                 width: 150px;
-                height: 40px;
+                // height: 40px;
                 margin-bottom: 21px;
             }
         }

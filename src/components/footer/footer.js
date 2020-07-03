@@ -1,13 +1,13 @@
 import React from "react"
 import styles from "./footer.module.scss"
-import { Logo } from "../../assets/svg"
+import logo_white from "../../assets/images/logo-white.png"
 import { Link } from "gatsby"
 
 const Footer = () => {
   return (
     <footer className={styles.Footer}>
       <div className={styles.Footer__About}>
-        <Logo />
+        <img src={logo_white} alt="" />
         <p>19B Bosun Adekoya Street, Lekki, Lagos, Nigeria.</p>
         <p>
           Miracle Motors is a registered Delaware C Corporation company, with RC

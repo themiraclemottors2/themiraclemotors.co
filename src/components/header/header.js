@@ -3,7 +3,7 @@ import React, { Fragment } from "react"
 import { Sticky } from "react-sticky"
 import cx from "classnames"
 import { useSelector, useDispatch } from "react-redux"
-import { Logo } from "../../assets/svg"
+import logo_white from "../../assets/images/logo-white.png"
 import styles from "./header.module.scss"
 import { logout } from "store/actions/auth"
 
@@ -34,7 +34,7 @@ const Header = ({ location, topOffset, isHome }) => {
             })}
             to="/"
           >
-            <Logo />
+            <img src={logo_white} alt="" />
           </Link>
           <div className={styles.Header__Nav}>
             <input type="checkbox" id="menu" onClick={() => null} />
