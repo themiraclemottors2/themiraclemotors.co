@@ -25,7 +25,7 @@ export const loginRequest = (body, redirectTo = null) => async dispatch => {
 export const registerRequest = body => async dispatch => {
   try {
     await AuthRequestService.signUp(body)
-    return dispatch(register("/sign-in"))
+    return dispatch(register("/"))
   } catch (error) {
     throw error
   }

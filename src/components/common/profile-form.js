@@ -19,23 +19,6 @@ class ProfileForm extends Component {
     region: "",
   }
 
-  componentDidMount() {
-    this._handleOnChange(this.props.value, false)
-  }
-
-  componentDidUpdate(prevProps, prevSate) {
-    if (this.props.value && !isEqual(prevProps.value, this.props.value)) {
-      this._handleOnChange(
-        {
-          ...this.props.value,
-          kinPhoneNumber: this._formatPhone(this.props.value.kinPhoneNumber),
-          phoneNumber: this._formatPhone(this.props.value.phoneNumber),
-        },
-        false
-      )
-    }
-  }
-
   _handlePhoneInput = ({ target: { value, name } }) => {
     const { phoneNumber, kinPhoneNumber } = this.state
     if (isNaN(Number(value))) {
@@ -55,28 +38,8 @@ class ProfileForm extends Component {
     return onSubmit(this.state)
   }
 
-  _handleOnChange = (data, checkCancelable = true) => {
-    const { setCancelable, value } = this.props
-    value.region = ""
-    value.phoneNumber = this._formatPhone(value.phoneNumber)
-    value.kinPhoneNumber = this._formatPhone(value.kinPhoneNumber)
-    this.setState({ ...data }, () => {
-      if (isEqual(this.state, value) && checkCancelable && setCancelable) {
-        return setCancelable(false)
-      } else if (
-        emptyObjProps(value).length > emptyObjProps(this.state).length &&
-        checkCancelable &&
-        setCancelable
-      ) {
-        return setCancelable(true)
-      } else if (
-        !isEqual(value, this.state) &&
-        checkCancelable &&
-        setCancelable
-      ) {
-        return setCancelable(true)
-      }
-    })
+  _handleOnChange = data => {
+    this.setState({ ...data })
   }
 
   _formatPhone = phone => {

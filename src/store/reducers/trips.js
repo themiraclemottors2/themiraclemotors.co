@@ -26,7 +26,7 @@ const initState = {
   identifier: "trips",
   outgoingTrip: { seats: [] },
   returnTrip: { seats: [] },
-  passengers: [],
+  passengers: [{ email: "" }],
 }
 
 export default (

@@ -17,12 +17,20 @@ const ProfileContent = ({ onSave, onCancel, user, loading }) => {
       address: { value: address },
       kinPhoneNumber: { value: kinPhoneNumber },
       kinFullName: { value: kinFullName },
+      firstName: { value: firstName },
+      lastName: { value: lastName },
+      email: { value: email },
+      phoneNumber: { value: phoneNumber },
     } = profileFormRef.current
     return onSave({
       gender,
       address: `${address}${region ? ` ,${region}` : ""}`,
       kinFullName,
       kinPhoneNumber,
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
     })
   }
 
@@ -37,7 +45,6 @@ const ProfileContent = ({ onSave, onCancel, user, loading }) => {
           <p>These details will be used as your default passenger details</p>
         </div>
         <ProfileForm
-          value={user}
           disableEssentials
           ref={profileFormRef}
           setCancelable={setCancelable}

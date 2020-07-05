@@ -23,8 +23,9 @@ const Content = ({ data, contact }) => {
         <p className={styles.Content__section__text}>
           <a href="mailto:contact@themiraclemotors.co">
             contact@themiraclemotors.co
-          </a>{" "}
-          or <a href="tel:+2348147344497">+2348147344497</a>
+          </a>
+          {", "} <a href="tel:+2348034419505">+2348034419505</a> or{" "}
+          <a href="tel:+2348147344497">+2348147344497</a>
         </p>
       </div>
     </div>

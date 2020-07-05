@@ -8,7 +8,10 @@ const Footer = () => {
     <footer className={styles.Footer}>
       <div className={styles.Footer__About}>
         <img src={logo_white} alt="" />
-        <p>19B Bosun Adekoya Street, Lekki, Lagos, Nigeria.</p>
+        <p>
+          Km 33 Lekki/Epe express way, opposite Golden park estate, Sangotedo,
+          Lagos, Nigeria.
+        </p>
         <p>
           Miracle Motors is a registered Delaware C Corporation company, with RC
           Number 1635067.

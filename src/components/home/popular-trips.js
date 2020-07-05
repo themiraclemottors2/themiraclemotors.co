@@ -27,27 +27,44 @@ const PopularTrips = () => {
         Book a travel ticket in one click.
       </h1>
       <div className={styles.PopularTrips__TripListWrapper}>
-        {!loading && popularTrips.length ? (
-          <ul className={styles.PopularTrips__TripList}>
-            {popularTrips.map(({ departure, arrival }, index) => {
-              return (
-                <li key={index} className={styles.PopularTrips__Trip}>
-                  <Link
-                    onClick={e =>
-                      handleOnClick({
-                        departureTerminalId: departure.id,
-                        arrivalTerminalId: arrival.id,
-                      })
-                    }
-                    to="/"
-                  >
-                    {capitalize(departure.name)} to {capitalize(arrival.name)}
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
-        ) : null}
+        <ul className={styles.PopularTrips__TripList}>
+          <li className={styles.PopularTrips__Trip}>
+            <Link to="/#">Lagos to Benin</Link>
+          </li>
+          <li className={styles.PopularTrips__Trip}>
+            <Link to="/#">Lagos to Abuja</Link>
+          </li>
+          <li className={styles.PopularTrips__Trip}>
+            <Link to="/#">Lagos to Port Harcourt</Link>
+          </li>
+
+          <li className={styles.PopularTrips__Trip}>
+            <Link to="/#">Lagos to Warri</Link>
+          </li>
+          <li className={styles.PopularTrips__Trip}>
+            <Link to="/#">Lagos to Enugu</Link>
+          </li>
+          <li className={styles.PopularTrips__Trip}>
+            <Link to="/#">Lagos to Onitsha</Link>
+          </li>
+
+          <li className={styles.PopularTrips__Trip}>
+            <Link to="/#">Lagos to Owerri</Link>
+          </li>
+          <li className={styles.PopularTrips__Trip}>
+            <Link to="/#">Lagos to Bayelsa</Link>
+          </li>
+          <li className={styles.PopularTrips__Trip}>
+            <Link to="/#">Abuja to Benin</Link>
+          </li>
+
+          <li className={styles.PopularTrips__Trip}>
+            <Link to="/#">Abuja to Port Harcourt</Link>
+          </li>
+          <li className={styles.PopularTrips__Trip}>
+            <Link to="/#">Abuja to Lagos</Link>
+          </li>
+        </ul>
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ import { navigate } from "gatsby"
 import { window } from "browser-monads"
 import omit from "../../../node_modules/lodash/omit"
 
-const PassengerDetailsContent = ({ onDone, user, numberOfTravellers }) => {
+const PassengerDetailsContent = ({ onDone, numberOfTravellers }) => {
   const [passengerCount, setPassengerCount] = useState(0)
   const [passengersData, setPassengersData] = useState([])
 
@@ -57,7 +57,7 @@ const PassengerDetailsContent = ({ onDone, user, numberOfTravellers }) => {
                 </div>
               )}
               <ProfileForm
-                value={index === 0 ? user : passengersData[index]}
+                value={passengersData[index]}
                 buttonText="Next"
                 onSubmit={data => {
                   if (passengersData[index]) {
