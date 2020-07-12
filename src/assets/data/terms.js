@@ -14,7 +14,7 @@ export default [
   {
     header: "Luggage Allowance",
     text: `
-  For comfort and safety purposes, we are unable to accommodate any luggage with dimensions exceeding this standard (25”x15”x15) per ticket. All guests are entitled to one medium sized luggage. In cases where specific guest(s) luggage exceeds this requirement, affected guests will be asked to purchase an extra seat to accommodate it.
+  For comfort and safety purposes, we are unable to accommodate any luggage with dimensions exceeding this standard <strong>(25”x15”x15) per ticket</strong>. All guests are entitled to one medium sized luggage. In cases where specific guest(s) luggage exceeds this requirement, affected guests will be asked to purchase an extra seat to accommodate it.
   Also flexible/plastic traveling boxes are not acceptable in our vehicle. This is because these boxes are not only fragile but also difficult to manipulate which poses a challenge during luggage loading activities.
   Owing to the embargo placed by the Nigeria Customs on the importation of some food commodities, kindly note that we do not carry bag(s) of rice on board our vehicles. Fragile items such as electronics, laptops and other valuable items are not to be placed in the trunk of our vehicles but carried as hand luggage.
   Please note that hazardous materials such as but not limited to - gas cylinders (empty or with content), generators, building materials, fuel in gallons, agrochemicals, herbicides, pesticides; etc. are not permissible on our vehicles.
@@ -36,7 +36,7 @@ export default [
   {
     header: "Managing Reservations (Rescheduling and Rerouting)",
     text: `
-  Customers with unused tickets are advised to utilize as soon as possible as ticket validity is restricted to one month from date of purchase after which the ticket becomes invalid. To utilize such tickets within the validity period, kindly send an email to contact@tmm.com. with new itinerary before proposed travel date
+  Customers with unused tickets are advised to utilize as soon as possible as ticket validity is restricted to one month from date of purchase after which the ticket becomes invalid. To utilize such tickets within the validity period, kindly send an email to <strong>contact@tmm.com</strong>. with new itinerary before proposed travel date
   Note that all reschedules/ re-routing requests are subject to vehicle and seat availability on desired route.
   In the event that the fare of the new trip is higher than the old trip, the guest will also be required to pay the differential for reschedule or re-routing request.
   `,
@@ -44,7 +44,7 @@ export default [
   {
     header: "Debits without value on online transactions",
     text: `
-  Customers are advised to contact their banks should they require a refund due to double debits and debits on card transactions or USSD payments without value using our online booking platform. Refund request originating from bank transfers can be processed by sending an email to contact@tmm.com. Once it is confirmed that funds were acquired and the account number to be credited has been provided by guest, a refund will be made within 7-10 working days.
+  Customers are advised to contact their banks should they require a refund due to double debits and debits on card transactions or USSD payments without value using our online booking platform. Refund request originating from bank transfers can be processed by sending an email to <strong>contact@tmm.com</strong>. Once it is confirmed that funds were acquired and the account number to be credited has been provided by guest, a refund will be made within 7-10 working days.
   `,
   },
   {

@@ -11,7 +11,7 @@ const About = props => {
       <SEO title={title} />
       <PageContainer
         title={title}
-        header="Helping people explore the world conveniently in a lmao way."
+        header="Helping people explore the world conveniently in a New way."
         text=""
       >
         <Content data={about} contact />

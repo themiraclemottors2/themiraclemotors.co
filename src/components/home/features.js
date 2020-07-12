@@ -16,10 +16,8 @@ const Features = () => {
           </div>
           <h4 className={styles.Features__Item__Heading}>Travel with ease.</h4>
           <p className={styles.Features__Item__Text}>
-            Travel is not a one size fits all experience, it’s an experience
-            made better through the guidance of experienced personnel. From your
-            departure terminals, we will work with you making sure that you have
-            a hitch free trip.
+            We make it sure from your booking to arrival is a seamless
+            experience
           </p>
         </div>
         <div className={styles.Features__Item}>
@@ -30,10 +28,8 @@ const Features = () => {
             Get the best prices.
           </h4>
           <p className={styles.Features__Item__Text}>
-            Our high reputation, excellent state of art facilities, automation
-            of processes and technological advancement has all enabled us come
-            out with the best prizes any reliable transport company can possibly
-            have.
+            Our competitive prices for a quality travel experience makes us
+            stand out
           </p>
         </div>
         <div className={styles.Features__Item}>
@@ -44,9 +40,8 @@ const Features = () => {
             Put your safety first.
           </h4>
           <p className={styles.Features__Item__Text}>
-            Here at TMM, we develop best-practice standards like routine
-            automobile checks, engagement of well-trained drivers who are not
-            only competent with the FRSC road signs but know how to value life.
+            When it comes to safety, no better company places it customers and
+            staffs well-being as a priority over profit
           </p>
         </div>
       </div>
