@@ -116,7 +116,7 @@ class ProfileForm extends Component {
             }
             required
             name="email"
-            disabled={!!disableEssentials}
+            
           />
           <Input
             type="phone"
@@ -127,7 +127,7 @@ class ProfileForm extends Component {
             onChange={this._handlePhoneInput}
             required
             name="phoneNumber"
-            disabled={!!disableEssentials}
+           
           />
         </div>
         <div className={styles.ProfileForm__Input__group}>
