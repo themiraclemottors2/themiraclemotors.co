@@ -98,7 +98,7 @@ export default [
   {
     header: "In transit Breakdown",
     text: `
-  As a company, we recognise the importance of preventive maintenance and we practice it religiously to reduce and possibly eliminate in transit breakdowns. However in the event that it does happen, guests are requested to contact our call centre using 08147344497.
+  In miracle motors, we recognise the importance of preventive maintenance and we practice it religiously to reduce and possibly eliminate in transit breakdowns. However in the event that it does happen, guests are requested to contact our call centre using 08147344497.
   <br/> <br/><br/>`,
   },
 ]
