@@ -50,7 +50,7 @@ const BookingCard = () => {
   return (
     <FormContainer
       className={styles.BookingCard}
-      header="Make a booking for your next trip."
+      header="Make a booking for your next trip here."
     >
       <div className={styles.BookingCard__Tab}>
         <button
