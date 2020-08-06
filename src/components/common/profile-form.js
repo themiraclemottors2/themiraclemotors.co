@@ -89,7 +89,7 @@ class ProfileForm extends Component {
             }
             required
             name="firstName"
-            disabled={!!disableEssentials}
+            
           />
           <Input
             className={styles.ProfileForm__Input__half}
@@ -101,7 +101,7 @@ class ProfileForm extends Component {
             }
             required
             name="lastName"
-            disabled={!!disableEssentials}
+            
           />
         </div>
         <div className={styles.ProfileForm__Input__group}>
