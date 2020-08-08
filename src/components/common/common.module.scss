@@ -463,8 +463,9 @@
   width: 29.5em;
   padding: 1.17em;
   text-align: center;
-  position: relative;
+  position: absolute;
   height: max-content;
+  top: 300px;
 
   @include sm {
     padding: 3em 1.44em;
