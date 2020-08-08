@@ -15,11 +15,11 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
+    position: absolute;
     padding: 8.44em 6.05em 5.05em 6.05em;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    position: relative;
+    position: absolute;
     z-index: 0;
 
     @include sm {
