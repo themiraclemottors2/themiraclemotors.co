@@ -97,7 +97,9 @@ const SearchResult = props => {
       <ResultWrapper>
         {searchResult.length <= 0 && !loading && (
           <NoResult
+          
             svg={Road}
+            
             header="There are no trips available at this time."
             text="You can contact support for help with making your booking at an available time."
           />
