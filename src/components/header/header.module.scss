@@ -10,6 +10,7 @@
   align-items: center;
   position: absolute;
   top: 0;
+  bottom: 80px;
   left: 0;
   right: 0;
   z-index: 10;
@@ -29,7 +30,7 @@
     }
 
     &>img {
-      width: 6.11em;
+      width: 7.11em;
       // height: 1.94em;
 
       @include sm {
