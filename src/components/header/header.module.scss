@@ -16,8 +16,7 @@
 
   @include sm {
     padding: 0 25px;
-    background-color: white;
-    color: black;
+    background-color: rgba(64, 64, 64, 0.5);
   }
 
   &__logo {
@@ -29,7 +28,7 @@
     }
 
     &>img {
-      width: 8.11em;
+      width: 7.11em;
       // height: 1.94em;
 
       @include sm {
