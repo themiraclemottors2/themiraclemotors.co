@@ -10,7 +10,6 @@
   align-items: center;
   position: absolute;
   top: 0;
-  bottom: 120px;
   left: 0;
   right: 0;
   z-index: 10;
@@ -22,7 +21,6 @@
   }
 
   &__logo {
-    color: aqua;
     font-size: 1em;
     margin: 2.55em 0;
 
@@ -31,7 +29,7 @@
     }
 
     &>img {
-      width: 7.11em;
+      width: 6.11em;
       // height: 1.94em;
 
       @include sm {
@@ -67,7 +65,7 @@
         position: relative;
         width: 25px;
         height: 2px;
-        background-color: $black;
+        background-color: $white;
         right: 0;
         transition: all ease-in-out 0.2s;
 
