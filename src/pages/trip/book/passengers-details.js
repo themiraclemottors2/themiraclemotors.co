@@ -99,7 +99,7 @@ class PassengersDetails extends Component {
 
     return this.setState({
       bookings,
-      numberOfpersonsTravelling,
+      numberOfTravellers,
       trip,
       type: bookingType,
     })
