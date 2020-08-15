@@ -81,7 +81,7 @@ const SearchResult = props => {
           terminals,
           departureTerminalId
         )} to ${extractTerminalName(terminals, arrivalTerminalId)}`}
-        date={moment(departureTimestamp).format("MMMM D, YYYY")}
+        date={moment(departureTimestamp).format("DD MM, YYYY")}
         btnOnClick={() => navigate("/")}
       />
       <ResultWrapper>
