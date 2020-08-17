@@ -15,7 +15,7 @@
   height: max-content;
 
   @include sm {
-    padding: 0 10px;
+    padding: 0 15px;
     background-color:  #425486;
   }
 
@@ -140,7 +140,7 @@
         overflow: hidden;
         display: block;
         background: $white;
-        top: 50%;
+        top: 150%;
         right: -8px;
         color: #425486;
         width: 0px;
