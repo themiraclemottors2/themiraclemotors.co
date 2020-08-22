@@ -75,6 +75,9 @@ const SignInForm = props => {
       <p>
         Forgot password? Reset password <Link to="/password-reset">here.</Link>
       </p>
+      <p>
+      Continue without sign in <Link to="/trip/results">here.</Link>
+      </p>
     </FormContainer>
   )
 }
