@@ -63,7 +63,7 @@ const SearchResult = props => {
     }
 
     if (!departureTerminalId.length) {
-      navigate("../")
+      navigate("/trip/results")
       return null
     }
   }, [dispatch, departureTerminalId, arrivalTerminalId])
