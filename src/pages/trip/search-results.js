@@ -92,7 +92,7 @@ const SearchResult = props => {
           )} to ${extractTerminalName(terminals, arrivalTerminalId)}`
         }
         date={moment(departureTimestamp).format("DD MM, YYYY")}
-        btnOnClick={() => navigate("../")}
+        btnOnClick={() => navigate("../trip/results")}
       />
       <ResultWrapper>
         {searchResult.length <= 0 && !loading && (
