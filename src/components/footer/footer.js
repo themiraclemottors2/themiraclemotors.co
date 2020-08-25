@@ -48,13 +48,13 @@ const Footer = () => {
             <strong>Social</strong>
           </li>
           <li>
-            <Link to="/">Facebook</Link>
+            <Link to="https://facebook.com/Themiraclemotorsng">Facebook</Link>
           </li>
           <li>
-            <Link to="/">Instagram</Link>
+            <Link to="https://instagram.com/Themiraclemotorsng">Instagram</Link>
           </li>
           <li>
-            <Link to="/">Twitter</Link>
+            <Link to="https://twitter.com/Themiraclemoto2"> Twitter</Link>
           </li>
           <li>
             <Link to="/">LinkedIn</Link>
