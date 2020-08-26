@@ -8,7 +8,7 @@ export const formatCurrency = num => {
 }
 
 export const capitalize = text => {
-  const textArr = text.split(" ")
+  const textArr = text.split(" ");
   return textArr
     .map(
       item => `${item.charAt(0).toUpperCase()}${item.slice(1).toLowerCase()}`
@@ -18,7 +18,7 @@ export const capitalize = text => {
 
 export const extractTerminalName = (terminals, id) => {
   if (!terminals.length) return null
-  return capitalize(terminals.filter(item => item.id === id)[0].Name)
+  return capitalize(terminals.filter(item => item.id === id)[0].Name);
 }
 
 export const randomItemFromArray = arr => {
