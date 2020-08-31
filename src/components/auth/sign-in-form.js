@@ -73,10 +73,7 @@ const SignInForm = props => {
         </Button>
       </form>
       <p>
-        Forgot password? Reset passwords <Link to="/password-reset">here.</Link>
-      </p>
-      <p>
-      Continue without signing in <Link to="/trip/search-results">here.</Link>
+        Forgot password? Reset password <Link to="/password-reset">here.</Link>
       </p>
     </FormContainer>
   )
