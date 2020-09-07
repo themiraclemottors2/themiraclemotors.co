@@ -19,7 +19,9 @@ export const capitalize = text => {
 
 export const extractTerminalName = (terminals, id) => {
   if (!terminals.length) return null
-  return capitalize(terminals.filter(item => item.id === id)[0].Name);
+  //return capitalize(terminals.filter(item => item.id === id)[0].Name);
+  var termi=terminals.find(item =>item.id === id);
+  return termi? termi.Name ? capitalize(termi.Name):"":"";
 }
 
 export const randomItemFromArray = arr => {
