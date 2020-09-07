@@ -85,7 +85,7 @@ const SignInForm = props => {
       </ul>
       
       <p>
-        Continue without login? Continue <Link to="/password-reset">here.</Link>
+        Continue without login? Continue <Link to="/trip/search-results">here.</Link>
         
       </p>
       
