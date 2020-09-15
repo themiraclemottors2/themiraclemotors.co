@@ -30,13 +30,13 @@ export default [
   {
     header: "Refund Policy",
     text: `
-  Themiraclemotor.co has a no refund policy for all tickets duly purchased from any of her sales channels.
+  themiraclemotorsng.com has a no refund policy for all tickets duly purchased from any of her sales channels.
   `,
   },
   {
     header: "Managing Reservations (Rescheduling and Rerouting)",
     text: `
-  Customers with unused tickets are advised to utilize as soon as possible as ticket validity is restricted to one month from date of purchase after which the ticket becomes invalid. To utilize such tickets within the validity period, kindly send an email to <strong>contact@tmm.com</strong>. with new itinerary before proposed travel date
+  Customers with unused tickets are advised to utilize as soon as possible as ticket validity is restricted to one month from date of purchase after which the ticket becomes invalid. To utilize such tickets within the validity period, kindly send an email to <strong>info@themiraclemotorsng.com</strong>. with new itinerary before proposed travel date
   Note that all reschedules/ re-routing requests are subject to vehicle and seat availability on desired route.
   In the event that the fare of the new trip is higher than the old trip, the guest will also be required to pay the differential for reschedule or re-routing request.
   `,
@@ -44,7 +44,8 @@ export default [
   {
     header: "Debits without value on online transactions",
     text: `
-  Customers are advised to contact their banks should they require a refund due to double debits and debits on card transactions or USSD payments without value using our online booking platform. Refund request originating from bank transfers can be processed by sending an email to <strong>contact@tmm.com</strong>. Once it is confirmed that funds were acquired and the account number to be credited has been provided by guest, a refund will be made within 7-10 working days.
+  Customers are advised to contact their banks should they require a refund due to double debits and debits on card transactions or USSD payments without value using our online booking platform. Refund request originating from bank transfers can be processed by sending an email to <strong>  Customers with unused tickets are advised to utilize as soon as possible as ticket validity is restricted to one month from date of purchase after which the ticket becomes invalid. To utilize such tickets within the validity period, kindly send an email to <strong>info@themiraclemotorsng.com</strong>. with new itinerary before proposed travel date
+  </strong>. Once it is confirmed that funds were acquired and the account number to be credited has been provided by guest, a refund will be made within 7-10 working days.
   `,
   },
   {
@@ -56,7 +57,7 @@ export default [
   {
     header: "Carriage of unaccompanied children",
     text: `
-  Themiraclemotor.co can only provide transportation for unaccompanied children between the ages of 10 to 15 on the condition that the parent or guardian of the minor completes and submits our unaccompanied minor form which can be obtained from any of our parks before the commencement of trip.
+  themiraclemotorsng.com can only provide transportation for unaccompanied children between the ages of 10 to 15 on the condition that the parent or guardian of the minor completes and submits our unaccompanied minor form which can be obtained from any of our parks before the commencement of trip.
   `,
   },
   {
