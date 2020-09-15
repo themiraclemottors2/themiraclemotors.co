@@ -21,11 +21,11 @@ const Content = ({ data, contact }) => {
           our care team via email or mobile using:
         </p>
         <p className={styles.Content__section__text}>
-          <a href="mailto:contact@themiraclemotors.co">
-            contact@themiraclemotors.co
+          <a href="mailto:info@themiraclemotorsng.com">
+            info@themiraclemotorsng.com
           </a>
-          {", "} <a href="tel:+2348034419505">+2348034419505</a> or{" "}
-          <a href="tel:+2348147344497">+2348147344497</a>
+          {", "} <a href="tel:+2348096498451">+2348096498451</a> or{" "}
+          <a href="tel:+2348096498450">+2348096498450</a>
         </p>
       </div>
     </div>
