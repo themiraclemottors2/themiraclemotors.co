@@ -74,21 +74,21 @@ const SignInForm = props => {
       </form>
       <p>
         Forgot password? Reset password <Link to="/password-reset">here.</Link>
-        
+        <br />
+        Do not have an account? Register <Link to="/register">here.</Link>
       </p>
-      <h3>
-      Why sign up on themiraclemotorsng.com? 
-      </h3>
-      <ul>
-      <li>Get 5% discount if you sign up</li>
-      <li>Get other special offers and deals</li>
-      </ul>
-      
       <p>
-        Continue without login? Continue <Link to="../trip/search-results">here.</Link>
-        
+        Why sign up on themiraclemotorsng.com?
+        <ul style={{ listStyle: "none" }}>
+          <li>Get 5% discount if you sign up</li>
+          <li>Get other special offers and deals</li>
+        </ul>
       </p>
-      
+
+      {/* <p>
+        Continue without login? Continue{" "}
+        <Link to="../trip/search-results">here.</Link>
+      </p> */}
     </FormContainer>
   )
 }

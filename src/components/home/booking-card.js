@@ -33,8 +33,10 @@ const BookingCard = () => {
   )
 
   const handleSubmit = async formData => {
-    if (!isAuthenticated && activeTab === "seat")
+    if (!isAuthenticated && activeTab === "seat") {
+      await dispatch(getSearchData({ ...formData, bookingType }))
       return navigate("/sign-in?redirect=/trip/search-results")
+    }
 
     if (activeTab === "seat") {
       await dispatch(getSearchData({ ...formData, bookingType }))
