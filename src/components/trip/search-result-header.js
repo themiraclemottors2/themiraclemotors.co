@@ -14,8 +14,8 @@ const SearchResultHeader = ({ header, btnOnClick, date, returnTrip }) => {
   )
 }
 
-SearchResultHeader.propTypes = {
-  header: PropTypes.string,
-}
+// SearchResultHeader.propTypes = {
+//   header: PropTypes.string,
+// }
 
 export default SearchResultHeader
