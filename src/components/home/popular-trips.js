@@ -41,7 +41,7 @@ const PopularTrips = () => {
       <div className={styles.PopularTrips__TripListWrapper}>
         <ul className={styles.PopularTrips__TripList}>
           <li className={styles.PopularTrips__Trip} >
-          <img src={benin3} style={{ width: "250px", height: "200px"}} className={styles.PopularTrips__img}  alt="" />
+          <img src={benin3} style={{ width: "250px", height: "200px"}}  alt="" />
             <Link to="/#">Lagos to Benin</Link>
           </li>
           <li className={styles.PopularTrips__Trip}>
