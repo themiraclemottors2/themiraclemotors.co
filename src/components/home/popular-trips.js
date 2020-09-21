@@ -40,55 +40,55 @@ const PopularTrips = () => {
       </h1>
       <div className={styles.PopularTrips__TripListWrapper}>
         <ul className={styles.PopularTrips__TripList}>
-          <li className={styles.PopularTrips__Trip}>
-          <img src={benin3} style={{ width: "250px" }} alt="" />
+          <li className={styles.PopularTrips__Trip} >
+          <img src={benin3} style={{ width: "250px", height: "200px"}} className={styles.PopularTrips__img}  alt="" />
             <Link to="/#">Lagos to Benin</Link>
           </li>
           <li className={styles.PopularTrips__Trip}>
-          <img src={abuja2} style={{ width: "250px" }} alt="" />
+          <img src={abuja2} style={{ width: "250px", height: "200px" }} alt="" />
             <Link to="/#">Lagos to Abuja</Link>
           </li>
           <li className={styles.PopularTrips__Trip}>
-          <img src={uyoooo} style={{ width: "250px" }} alt="" />
+          <img src={uyoooo} style={{ width: "250px", height: "200px" }} alt="" />
             <Link to="/#">Lagos to Calabar</Link>
           </li>
 
           <li className={styles.PopularTrips__Trip}>
-          <img src={abisaa} alt="" />
+          <img src={abisaa} style={{ width: "250px", height: "200px" }} alt="" />
             <Link to="/#">Lagos to Warri</Link>
           </li>
           <li className={styles.PopularTrips__Trip}>
-          <img src={delta} style={{ width: "250px" }} alt="" />
+          <img src={delta} style={{ width: "250px", height: "200px" }} alt="" />
             <Link to="/#">Lagos to Enugu</Link>
           </li>
           <li className={styles.PopularTrips__Trip}>
-          <img src={lagooo} style={{ width: "250px" }} alt="" />
+          <img src={lagooo} style={{ width: "250px", height: "200px" }} alt="" />
             <Link to="/#">Lagos to Onitsha</Link>
           </li>
 
           <li className={styles.PopularTrips__Trip}>
-          <img src={enugu} style={{ width: "250px" }} alt="" />
+          <img src={enugu} style={{ width: "250px", height: "200px" }} alt="" />
             <Link to="/#">Lagos to Enugu</Link>
           </li>
           <li className={styles.PopularTrips__Trip}>
-          <img src={bayelsa} style={{ width: "250px" }} alt="" />
+          <img src={bayelsa} style={{ width: "250px", height: "200px" }} alt="" />
             <Link to="/#">Lagos to Bayelsa</Link>
           </li>
           <li className={styles.PopularTrips__Trip}>
-          <img src={rivers} style={{ width: "250px" }} alt="" />
+          <img src={rivers} style={{ width: "250px", height: "200px" }} alt="" />
             <Link to="/#">Lagos to PH City</Link>
           </li>
 
           <li className={styles.PopularTrips__Trip}>
-          <img src={anabra} style={{ width: "250px" }} alt="" />
+          <img src={anabra} style={{ width: "250px", height: "200px" }} alt="" />
             <Link to="/#">Lagos to Awka</Link>
           </li>
           <li className={styles.PopularTrips__Trip}>
-          <img src={owerri} style={{ width: "250px" }} alt="" />
+          <img src={owerri} style={{ width: "250px", height: "200px" }} alt="" />
             <Link to="/#">Lagos to Owerri</Link>
           </li>
           <li className={styles.PopularTrips__Trip}>
-          <img src={asa} style={{ width: "250px" }} alt="" />
+          <img src={asa} style={{ width: "250px", height: "200px" }} alt="" />
             <Link to="/#">Lagos to Asaba</Link>
           </li>
         </ul>
