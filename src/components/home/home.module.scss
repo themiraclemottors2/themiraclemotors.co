@@ -216,8 +216,9 @@
 
   &__SubHeading {
     font-weight: 600;
-    font-size: 0.78em;
+    font-size: 1.28;
     line-height: 129%;
+    text-align: center;
     text-transform: uppercase;
     color: #5acafa;
 
@@ -341,11 +342,12 @@
   padding: 5.277em 6.05em;
 
   @include sm {
-    padding-top: 58px;
+    padding-top: 48px;
     padding-bottom: 0;
   }
 
   &__Heading {
+    text-align: center;
     color: $white;
     margin-bottom: 1.84em;
 
@@ -381,7 +383,8 @@
   }
 
   &__Trip {
-    margin-bottom: 1.06em;
+    margin-bottom: 1.09em;
+    
 
     @include sm {
       margin-bottom: 21px;
@@ -391,7 +394,10 @@
         margin-right: 10%;
       }
     }
-
+    &__img {
+      width: 60px;
+      height: 60px;
+    }  
     &>a {
       font-size: 0.89em;
       line-height: 125%;
