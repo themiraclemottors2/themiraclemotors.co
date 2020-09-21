@@ -76,7 +76,7 @@ const PopularTrips = () => {
           </li>
           <li className={styles.PopularTrips__Trip}>
           <img src={rivers} style={{ width: "250px" }} alt="" />
-            <Link to="/#">Lagos to PH City</Link>
+            <Link to="/#">Lagos to PortHarcourt</Link>
           </li>
 
           <li className={styles.PopularTrips__Trip}>
