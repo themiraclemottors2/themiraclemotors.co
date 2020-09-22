@@ -89,6 +89,11 @@
     background: #32bbff !important;
     color: $white !important;
   }
+  &__Submit:hover {
+    height: 3.45em;
+    background: #425486 !important;
+    color: $white !important;
+  }
 }
 
 .BookingCard {
@@ -389,18 +394,20 @@
     margin-bottom: 1.09em;
     text-align: center;
     
+    
 
     @include sm {
       margin-bottom: 21px;
       width: 70%;
       
-      border-radius: 10px;
+      
 
       &:nth-of-type(odd) {
         margin-right: 10%;
       }
     }
     &__img {
+      border-radius: 10px;
       width: 60px;
       height: 60px;
     }  
