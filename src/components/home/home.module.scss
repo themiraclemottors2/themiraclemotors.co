@@ -122,14 +122,15 @@
       width: 50%;
       height: 100%;
       border-radius: 5px;
-      background: transparent;
+      background: #425486;
+      ;
       outline: 0;
       border: 0;
       display: block;
       font-weight: 600;
       font-size: 0.88em;
       line-height: 125%;
-      color: #425486;
+      color: #fff;
 
       @include sm {
         font-weight: 600;
@@ -139,7 +140,7 @@
       }
 
       &__active {
-        background: $white;
+        background:#32bbff !important;
         border: 0.5px solid #425486;
       }
     }
