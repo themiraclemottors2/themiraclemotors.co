@@ -11,7 +11,7 @@
     width: 100%;
     height: max-content;
     // background: rgba(0, 0, 0, 0.05);
-    background-image: url("../../assets/images/tm.png");
+    background-image: url("../../assets/images/banner.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -27,11 +27,11 @@
       display: block;
       padding: 0;
       
-      padding-bottom: 193px;
+      padding-bottom: 153px;
     }
 
     &__Overlay {
-      position: relative;
+      position: absolute;
       background-color: rgba(64, 64, 64, 0.5);
       top: 0;
       left: 0;
@@ -345,7 +345,7 @@
 }
 
 .PopularTrips {
-  background: #425486;
+  background: #f4f4f4;
   padding: 5.277em 6.05em;
 
   @include sm {
@@ -355,7 +355,7 @@
 
   &__Heading {
     text-align: center;
-    color: $white;
+    color: #007BFF;
     margin-bottom: 1.84em;
 
     @include sm {
@@ -394,7 +394,9 @@
     margin-bottom: 1.09em;
     text-align: center;
     
-    
+    &__Trip img{
+      border-radius: 10px 10px 10px 10px;
+    }
 
     @include sm {
       margin-bottom: 21px;
@@ -406,15 +408,12 @@
         margin-right: 10%;
       }
     }
-    &__img {
-      border-radius: 10px;
-      width: 60px;
-      height: 60px;
-    }  
+    
     &>a {
-      font-size: 0.89em;
+      font-size: 20px;
       line-height: 125%;
-      color: #ffffff;
+      color: #007BFF;
+      font-weight: 500;
       padding-bottom: 0.13em;
 
       @include sm {
