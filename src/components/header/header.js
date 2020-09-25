@@ -7,6 +7,7 @@ import logo_white from "../../assets/images/logo-white.png"
 import styles from "./header.module.scss"
 import { logout } from "store/actions/auth"
 
+
 const Header = ({ location, topOffset, isHome }) => {
   const isAuthenticated = useSelector(
     ({ common: { isAuthenticated } }) => isAuthenticated
@@ -48,6 +49,14 @@ const Header = ({ location, topOffset, isHome }) => {
                       to="/register"
                     >
                       <p className={styles.Header__NavItem__text}>Register</p>
+                    </Link>
+                  </li>
+                  <li className={styles.Header__NavItem}>
+                    <Link
+                      activeClassName={styles.Header__NavItem__Active}
+                      to="../about"
+                    >
+                      <p className={styles.Header__NavItem__text}>About</p>
                     </Link>
                   </li>
                   <li className={styles.Header__NavItem}>
