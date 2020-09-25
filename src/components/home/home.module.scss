@@ -401,13 +401,14 @@
 
     @include sm {
       margin-bottom: 21px;
-      width: 80%;
+      width: 90%;
       margin: auto;
       
       
 
       &:nth-of-type(odd) {
-        margin-right: 10%;
+       
+        
       }
     }
     
