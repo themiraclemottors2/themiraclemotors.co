@@ -392,11 +392,11 @@
 
   &__Trip {
     margin-bottom: 1.09em;
-    border-radius: 10px 10px 0 0;
+   
     margin: auto;
     
     &__Trip img{
-      border-radius: 10px 10px 10px 10px;
+    
     }
 
     @include sm {
@@ -415,7 +415,7 @@
     &>a {
       font-size: 20px;
       line-height: 125%;
-      color: #007BFF;
+      color: #425486;
       font-weight: 500;
      
       
