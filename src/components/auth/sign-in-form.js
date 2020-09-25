@@ -76,6 +76,7 @@ const SignInForm = props => {
         Forgot password? Reset password <Link to="/password-reset">here.</Link>
         <br />
         Do not have an account? Register <Link to="/register">here.</Link>
+         
       </p>
       <p>
         Why sign up on themiraclemotorsng.com?
