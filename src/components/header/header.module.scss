@@ -56,7 +56,7 @@
       align-items: center;
       position: relative;
       
-      
+      z-index: 10;
 
     }
 
@@ -144,7 +144,7 @@
 
       @include sm {
         position: absolute;
-       overflow: hidden;
+       overflow: visible;
         display: block;
         background: $white;
         top: 150%;
@@ -155,7 +155,7 @@
         padding-bottom: 15px;
       
         opacity: 0;
-        transition: all ease-in-out 0.2s;
+        transition: all ease-in-out 0.1s;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       }
     }
