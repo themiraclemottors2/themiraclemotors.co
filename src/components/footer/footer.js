@@ -52,6 +52,7 @@ const Footer = () => {
           </li>
           <li>
             <Link to="https://instagram.com/Themiraclemotorsng">Instagram</Link>
+            
           </li>
           <li>
             <Link to="https://twitter.com/Themiraclemoto2"> Twitter</Link>
