@@ -58,7 +58,7 @@ const PopularTrips = () => {
             <Link to="/#">Lagos to Warri</Link>
           </li>
           <li className={styles.PopularTrips__Trip}>
-          <img src={delta} style={{ width: "250px", height: "200px" }} alt="" />
+          <img src={delta} style={{ width: "250px",  height: "200px" }} alt="" />
             <Link to="/#">Lagos to Aba</Link>
           </li>
           <li className={styles.PopularTrips__Trip}>
