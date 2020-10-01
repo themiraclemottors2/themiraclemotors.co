@@ -47,7 +47,7 @@ const Header = ({ location, topOffset, isHome }) => {
                       activeClassName={styles.Header__NavItem__Active}
                       to="/register"
                     >
-                      <p className={styles.Header__NavItem__text}>Register</p>
+                      <p className={styles.Header__NavItem__text}>Register now</p>
                     </Link>
                   </li>
                   <li className={styles.Header__NavItem}>
