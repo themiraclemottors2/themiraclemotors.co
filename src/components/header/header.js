@@ -42,6 +42,16 @@ const Header = ({ location, topOffset, isHome }) => {
             <ul className={styles.Header__NavList}>
               {!isAuthenticated && (
                 <Fragment>
+
+                  <li className={styles.Header__NavItem}>
+                    <Link
+                      activeClassName={styles.Header__NavItem__Active}
+                      to="/"
+                    >
+                      <p className={styles.Header__NavItem__text}>Home</p>
+                    </Link>
+                  </li>
+
                   <li className={styles.Header__NavItem}>
                     <Link
                       activeClassName={styles.Header__NavItem__Active}
