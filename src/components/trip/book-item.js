@@ -16,6 +16,7 @@ const BookItem = ({
   },
   viewDetails,
 }) => {
+  const discount = amount * 0.05
   return (
     <div className={styles.BookItem}>
       <div className={styles.BookItem__Details}>
@@ -31,7 +32,7 @@ const BookItem = ({
         </div>
 
         <div className={styles.BookItem__Details__booking}>
-          <h3>NGN {amount}</h3>
+          <h3>NGN {discount}</h3>
           <p>{seats} seat(s)</p>
           <Button
             onClick={() => viewDetails(bookingId)}

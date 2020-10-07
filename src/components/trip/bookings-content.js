@@ -65,13 +65,13 @@ const BookingContent = () => {
             },
             index
           ) => {
-            const discount = amount * 0.5
+           
             const booking = {
               bookingId,
               departureTerminal: capitalize(departureTerminal),
               arrivalTerminal: capitalize(arrivalTerminal),
               vehicle: vehicle.toUpperCase(),
-              amount: formatCurrency(discount) ,
+              amount: formatCurrency(amount) ,
               seats: seats.length,
               departureTime: departureTimestamp,
             }
