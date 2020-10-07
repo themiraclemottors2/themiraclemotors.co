@@ -69,9 +69,7 @@ const Header = ({ location, topOffset, isHome }) => {
                       <p className={styles.Header__NavItem__text}>Register Now </p>
                     </Link>
                   </li>
-
                   
-
                   <li className={styles.Header__NavItem}>
                     <Link
                       activeClassName={styles.Header__NavItem__Active}

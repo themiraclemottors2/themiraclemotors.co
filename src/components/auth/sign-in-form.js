@@ -23,7 +23,7 @@ const SignInForm = props => {
     try {
       const urlSearchParams = new URLSearchParams(window.location.search)
       const redirectTo = urlSearchParams.get("redirect") || null
-      await dispatch(loginRequest({ phoneNumber: phone, password }, redirectTo))
+      await dispatch(({ phoneNumber: phone, password }, redirectTo))
       toast.success("Signed In Successfully")
       setPassword("")
       setPhone("")
@@ -83,8 +83,11 @@ const SignInForm = props => {
           <li>Get 5% discount if you sign up</li>
           <li>Get other special offers and deals</li>
         </ul>
-      </p>
 
+      </p>
+      <p>
+        Continue without sign in? Continue <Link to="/trip/search-results">here.</Link>
+      </p>
       {/* <p>
         Continue without login? Continue{" "}
         <Link to="../trip/search-results">here.</Link>

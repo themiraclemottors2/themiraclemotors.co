@@ -8,9 +8,11 @@ import SeatBookingForm from "./seat-booking-form"
 import HireBusForm from "./hire-bus-form"
 import FormContainer from "../common/form-container"
 import BookingCardLoader from "./booking-card-loader"
+
 import { getSearchData } from "../../store/actions/trips"
 
 const BookingCard = () => {
+  
   const stateExtractor = ({
     terminals,
     common: { isAuthenticated },
@@ -31,8 +33,10 @@ const BookingCard = () => {
   const [bookingType, setBookingType] = useState(
     (searchData.bookingType && searchData.bookingType) || ""
   )
+  
 
   const handleSubmit = async formData => {
+
     if (!isAuthenticated && activeTab === "seat") {
       await dispatch(getSearchData({ ...formData, bookingType }))
       return navigate("/sign-in?redirect=/trip/search-results")
@@ -42,6 +46,9 @@ const BookingCard = () => {
       await dispatch(getSearchData({ ...formData, bookingType }))
       return navigate("/trip/search-results")
     }
+
+    
+  
   }
 
   const handleBookingType = () => {
@@ -50,6 +57,7 @@ const BookingCard = () => {
   }
 
   return (
+
     <FormContainer
       className={styles.BookingCard}
       header="Make a booking for your next trip here."
@@ -91,6 +99,7 @@ const BookingCard = () => {
           terminals={terminalsList}
           onSubmit={handleSubmit}
           searchData={searchData}
+          
         />
       )}
       {activeTab === "bus" && !terminalsListLoading && (
@@ -98,9 +107,11 @@ const BookingCard = () => {
           roundTrip={bookingType === "round_trip"}
           terminals={terminalsList}
           onSubmit={handleSubmit}
+         
         />
       )}
       {terminalsListLoading && <BookingCardLoader />}
+     
     </FormContainer>
   )
 }

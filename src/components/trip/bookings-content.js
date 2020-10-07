@@ -53,7 +53,7 @@ const BookingContent = () => {
             {
               id: bookingId,
               seats,
-              payment: { amount },
+              payment: { amount  },
               trip: {
                 departureTimestamp,
                 vehicle: {
@@ -65,12 +65,13 @@ const BookingContent = () => {
             },
             index
           ) => {
+            const discount = amount * 0.5
             const booking = {
               bookingId,
               departureTerminal: capitalize(departureTerminal),
               arrivalTerminal: capitalize(arrivalTerminal),
               vehicle: vehicle.toUpperCase(),
-              amount: formatCurrency(amount),
+              amount: formatCurrency(discount) ,
               seats: seats.length,
               departureTime: departureTimestamp,
             }

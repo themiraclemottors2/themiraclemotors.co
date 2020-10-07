@@ -6,6 +6,7 @@ import { Locator, Calendar, User } from "../../assets/svg"
 import { capitalize } from "lib"
 import { toast } from "react-toastify"
 import moment from "moment"
+
 import isEqual from "../../../node_modules/lodash/isEqual"
 
 class SeatBookingForm extends Component {
@@ -17,6 +18,7 @@ class SeatBookingForm extends Component {
   static propTypes = {
     roundTrip: PropTypes.bool.isRequired,
     terminals: PropTypes.array,
+   
   }
 
   state = {
@@ -25,6 +27,7 @@ class SeatBookingForm extends Component {
     departureTimestamp: "",
     returnTimestamp: "",
     numberOfTravellers: "",
+   
   }
 
   componentDidMount() {
@@ -42,6 +45,12 @@ class SeatBookingForm extends Component {
 
   _handleSubmit = e => {
     e.preventDefault()
+    const { onSubmit } = this.props
+
+    
+  
+
+    // console.log(e.target.value)
     const {
       departureTerminalId,
       arrivalTerminalId,
@@ -49,7 +58,7 @@ class SeatBookingForm extends Component {
       returnTimestamp,
       numberOfTravellers,
     } = this.state
-    const { onSubmit } = this.props
+    
     if (
       departureTerminalId.length <= 0 ||
       arrivalTerminalId.length <= 0 ||
@@ -57,13 +66,15 @@ class SeatBookingForm extends Component {
     ) {
       return toast.warn("Field(s) can not be empty")
     }
-    return onSubmit({
+    return onSubmit(
+      {
       departureTerminalId,
       arrivalTerminalId,
       departureTimestamp,
       returnTimestamp,
       numberOfTravellers,
-    })
+    }
+    )
   }
 
   _handleInputChange = data => this.setState({ ...data })
@@ -147,6 +158,7 @@ class SeatBookingForm extends Component {
         <Button onClick={() => null} className={styles.BookingCard__Submit}>
           Search
         </Button>
+      
       </form>
     )
   }
