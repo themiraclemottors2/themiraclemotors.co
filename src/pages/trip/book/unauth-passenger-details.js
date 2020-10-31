@@ -1,14 +1,10 @@
 import React, { Component } from "react"
-import { AuthenticatedLayout } from "components/layout"
 import SEO from "components/seo"
-import {
-  ResultWrapper,
-  BookHeader,
-  BookSidebar,
-  PassengerDetailsContent,
-  CompletingBookingContent,
-  BookingFooter,
-} from "components/trip"
+import Header from "components/header"
+import { StickyContainer } from "react-sticky"
+
+import UnAuthResultWrapper from "../../../components/trip/unauth-result"
+
 import { connect } from "react-redux"
 import omit from "../../../../node_modules/lodash/omit"
 import isEmpty from "../../../../node_modules/lodash/isEmpty"
@@ -17,8 +13,33 @@ import { navigate } from "gatsby"
 import { setPassengers } from "../../../store/actions/trips"
 import { bookTripRequest } from "../../../store/actions/bookings"
 import { toast } from "react-toastify"
+import Grid from "@material-ui/core/Grid"
 
-class PassengersDetails extends Component {
+import withStyles from "@material-ui/core/styles/withStyles"
+
+import BookSide from "../../../components/trip/book-side"
+import { CompletingBookingContent, BookingFooter } from "components/trip"
+import UnAuthPassengerDetails from "../../../components/trip/unauth-passenger-details"
+
+const style = theme => ({
+  grid: {
+    position: "relative",
+    top: "8rem",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0",
+    },
+  },
+  side: {
+    marginLeft: "1rem",
+    [theme.breakpoints.down("sm")]: {
+      width: "95%",
+      marginLeft: "1rem",
+      marginRight: ".5rem",
+      marginBottom: "1rem",
+    },
+  },
+})
+class UnAuthPassenger extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -29,6 +50,8 @@ class PassengersDetails extends Component {
       numberOfTravellers: 0,
       type: "",
       trip: {},
+      email: null,
+      fullName: null,
       details: {},
       open: false,
     }
@@ -38,13 +61,13 @@ class PassengersDetails extends Component {
     const {
       searchData: { departureTerminalId },
     } = this.props
+    this.setState({ stage: 0 })
     this._prepStateFromProps()
     if (!departureTerminalId.length) {
       navigate("/")
       return null
     }
   }
-
   _prepStateFromProps = () => {
     const {
       outgoingTrip,
@@ -69,11 +92,11 @@ class PassengersDetails extends Component {
         departureTimestamp: outgoingTrip.departureTimestamp,
         departureTerminal: extractTerminalName(
           terminals,
-          searchData.departureTerminalId
+          searchData.arrivalTerminalId
         ),
         arrivalTerminal: extractTerminalName(
           terminals,
-          searchData.arrivalTerminalId
+          searchData.departureTerminalId
         ),
       },
     }
@@ -106,7 +129,6 @@ class PassengersDetails extends Component {
       type: bookingType,
     })
   }
-
   _handleStateChange = (state, value) => {
     return this.setState({
       [state]: value,
@@ -122,7 +144,17 @@ class PassengersDetails extends Component {
   }
 
   _handlePassengerDetails = async passengers => {
-    this.setState({ details: passengers })
+    const name = `${passengers.firstName} ${passengers.lastName}`
+    let mail = passengers.map(item => item.email)
+    let info = { ...passengers }
+    console.log(mail)
+    this.setState({
+      email: passengers[0].email,
+      fullName: name,
+
+      details: info,
+    })
+    console.log(this.state.details)
     await this.props.setPassengers(passengers)
   }
 
@@ -170,11 +202,14 @@ class PassengersDetails extends Component {
       paymentMethod,
       trip,
       numberOfTravellers,
+      fullName,
     } = this.state
-    const { passengers, bookings } = this.props
+    let { passengers, bookings } = this.props
+
     const paymentConfig = {
-      publicKey: process.env.GATSBY_PAYSTACK_PUBLIC_KEY,
-      email: passengers[0].email,
+      // publicKey: process.env.GATSBY_PAYSTACK_PUBLIC_KEY,
+      publicKey: "pk_test_d8b15464638f89fcdfb8d554f6b9d68e075170ee",
+      email: this.state.email,
       amount: (trip.ticketsCost + trip.serviceCharge) * 100,
       channels: ["card"],
     }
@@ -193,7 +228,6 @@ class PassengersDetails extends Component {
       />
     )
   }
-
   render() {
     const {
       breadCrumbs,
@@ -203,55 +237,45 @@ class PassengersDetails extends Component {
       numberOfTravellers,
     } = this.state
 
-    const { user, passengers } = this.props
+    const { classes, passengers } = this.props
 
     return (
-      <AuthenticatedLayout {...this.props}>
+      <StickyContainer>
         <SEO title={breadCrumbs[stage]} />
-        <BookHeader stage={stage} breadCrumbs={breadCrumbs} />
-        <ResultWrapper
-          sidebar={!isEmpty(trip) ? <BookSidebar trip={trip} /> : null}
-          footer={this._renderFooter()}
-        >
-          {stage === 0 && (
-            <PassengerDetailsContent
-              user={user}
-              numberOfTravellers={numberOfTravellers}
-              onDone={this._handlePassengerDetails}
-              open={this.openModal}
-            />
-          )}
-          {stage === 1 && (
-            <CompletingBookingContent
-              paymentMethod={paymentMethod}
-              changePaymentMethod={this.changePaymentMethod}
-              passengers={passengers}
-            />
-          )}
-        </ResultWrapper>
-      </AuthenticatedLayout>
+        <Header />
+        <Grid container className={classes.grid}>
+          <Grid item xs={12} md={5} className={classes.side}>
+            {!isEmpty(trip) ? <BookSide trip={trip} /> : null}
+          </Grid>
+          <Grid item xs={12} md={5} className={classes.side}>
+            {stage === 0 && (
+              <UnAuthPassengerDetails
+                numberOfTravellers={numberOfTravellers}
+                onDone={this._handlePassengerDetails}
+                open={this.openModal}
+              />
+            )}
+            {stage === 1 && (
+              <CompletingBookingContent
+                paymentMethod={paymentMethod}
+                changePaymentMethod={this.changePaymentMethod}
+                passengers={passengers}
+              />
+            )}
+          </Grid>
+        </Grid>
+        <UnAuthResultWrapper footer={this._renderFooter()} />
+      </StickyContainer>
     )
   }
 }
 
 const mapStateToProps = ({
-  common: { user },
   trips: { returnTrip, outgoingTrip, searchData, passengers },
   terminals: { data: terminals },
   settings: { serviceCharge },
   bookings,
 }) => ({
-  user: {
-    ...omit(user, [
-      "id",
-      "refreshToken",
-      "roles",
-      "createdAt",
-      "updatedAt",
-      "profile",
-    ]),
-    ...omit(user.profile, ["id", "createdAt", "updatedAt"]),
-  },
   outgoingTrip,
   returnTrip,
   searchData,
@@ -262,5 +286,5 @@ const mapStateToProps = ({
 })
 
 export default connect(mapStateToProps, { setPassengers, bookTripRequest })(
-  PassengersDetails
+  withStyles(style)(UnAuthPassenger)
 )

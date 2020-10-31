@@ -23,7 +23,7 @@ const style = theme => ({
   },
 })
 
-const Results = ({
+const UnAuthResults = ({
   loading,
   data,
   onContinue,
@@ -33,7 +33,7 @@ const Results = ({
   const [openSeats, setOpenSeats] = useState(false)
   const [selectedSeats, setSelectedSeats] = useState([])
   const seats = [...data.seats.sort((a, b) => a.seatNumber - b.seatNumber)]
-  console.log(seats)
+
   const availableSeats =
     data.seats.filter(item => item.status === "available").length - 2
   const vehicleModel = data.vehicle.type.model
@@ -71,7 +71,7 @@ const Results = ({
               <p>6:00Am</p>
             </div>
             <div className={styles.Result__Details__booking}>
-              <h3>NGN {formatCurrency(Number(data.price * 0.95))}</h3>
+              <h3>NGN {formatCurrency(Number(data.price))}</h3>
               <p>{availableSeats - selectedSeats.length} seat(s) remaining</p>
               <Button
                 onClick={() =>
@@ -92,8 +92,6 @@ const Results = ({
                   {seats.splice(0, 1).map((item, index) => {
                     return (
                       <div
-                        role="button"
-                        tabIndex="0"
                         key={index}
                         onClick={() => handleSeatSelection(item)}
                         className={cx({
@@ -113,8 +111,6 @@ const Results = ({
                   {seats.splice(0, 2).map((item, index) => {
                     return (
                       <div
-                        role="button"
-                        tabIndex="-1"
                         key={index}
                         onClick={() => handleSeatSelection(item)}
                         className={cx({
@@ -134,8 +130,6 @@ const Results = ({
                   {seats.splice(0, 2).map((item, index) => {
                     return (
                       <div
-                        role="button"
-                        tabIndex="-2"
                         key={index}
                         onClick={() => handleSeatSelection(item)}
                         className={cx({
@@ -190,7 +184,7 @@ const Results = ({
   )
 }
 
-Results.defaultProps = {
+UnAuthResults.defaultProps = {
   data: {
     seats: [],
     price: 0,
@@ -204,4 +198,4 @@ Results.defaultProps = {
   loading: false,
 }
 
-export default withStyles(style)(Results)
+export default withStyles(style)(UnAuthResults)

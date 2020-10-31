@@ -32,6 +32,7 @@ const RegisterForm = props => {
         })
       )
       toast.success("Signed Up Successfully, please Sign In to continue")
+
       setPassword("")
       setPhone("")
       setEmail("")

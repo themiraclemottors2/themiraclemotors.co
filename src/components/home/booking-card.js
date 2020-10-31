@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { useDispatch, useSelector, shallowEqual } from "react-redux"
 import styles from "./home.module.scss"
 import cx from "classnames"
@@ -10,7 +10,7 @@ import FormContainer from "../common/form-container"
 import BookingCardLoader from "./booking-card-loader"
 import { getSearchData } from "../../store/actions/trips"
 
-const BookingCard = () => {
+const BookingCard = ({ search }) => {
   const stateExtractor = ({
     terminals,
     common: { isAuthenticated },
@@ -31,7 +31,6 @@ const BookingCard = () => {
   const [bookingType, setBookingType] = useState(
     (searchData.bookingType && searchData.bookingType) || ""
   )
-
   const handleSubmit = async formData => {
     if (!isAuthenticated && activeTab === "seat") {
       await dispatch(getSearchData({ ...formData, bookingType }))
@@ -91,6 +90,7 @@ const BookingCard = () => {
           terminals={terminalsList}
           onSubmit={handleSubmit}
           searchData={searchData}
+          search={search}
         />
       )}
       {activeTab === "bus" && !terminalsListLoading && (

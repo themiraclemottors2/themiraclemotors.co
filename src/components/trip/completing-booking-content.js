@@ -3,11 +3,13 @@ import React from "react"
 import styles from "./trip.module.scss"
 import { WrapperCard, RadioButton } from "../common"
 import card_vendors from "../../assets/images/cards-vendo.png"
+import { connect } from "react-redux"
 
 const CompletingBookingContent = ({
   paymentMethod,
   changePaymentMethod,
   passengers,
+  user,
 }) => {
   return (
     <div className={styles.CompletingBookingContent}>
@@ -32,7 +34,7 @@ const CompletingBookingContent = ({
                     styles.CompletingBookingContent__profile__info__value
                   }
                 >
-                  {item.name}
+                  {item.name ? item.name : `${item.firstName} ${item.lastName}`}
                 </p>
               </div>
               <div className={styles.CompletingBookingContent__profile__info}>
@@ -102,13 +104,15 @@ const CompletingBookingContent = ({
             />
             <img src={card_vendors} alt="Card Vendors" />
           </div>
-          <RadioButton
-            name="payment"
-            label="Pay on Arrival"
-            onChange={() => changePaymentMethod("arrival")}
-            checked={paymentMethod === "arrival"}
-            className={styles.CompletingBookingContent__payment__radio}
-          />
+          {user && (
+            <RadioButton
+              name="payment"
+              label="Pay on Arrival"
+              onChange={() => changePaymentMethod("arrival")}
+              checked={paymentMethod === "arrival"}
+              className={styles.CompletingBookingContent__payment__radio}
+            />
+          )}
         </form>
       </WrapperCard>
     </div>
@@ -118,5 +122,7 @@ const CompletingBookingContent = ({
 CompletingBookingContent.defaultProps = {
   passengers: [],
 }
-
-export default CompletingBookingContent
+const MapStateToProps = ({ common: { user } }) => ({
+  user,
+})
+export default connect(MapStateToProps)(CompletingBookingContent)

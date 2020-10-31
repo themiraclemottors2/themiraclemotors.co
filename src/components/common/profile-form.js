@@ -3,7 +3,6 @@ import cx from "classnames"
 import styles from "./common.module.scss"
 import { Input, Button, Select } from "./index"
 import { toast } from "react-toastify"
-import isEqual from "../../../node_modules/lodash/isEqual"
 import { emptyObjProps } from "lib"
 
 class ProfileForm extends Component {
@@ -35,6 +34,7 @@ class ProfileForm extends Component {
     if (emptyObjProps(this.state).length) {
       return toast.warn("Field(s) can not be empty")
     }
+
     return onSubmit(this.state)
   }
 
@@ -53,12 +53,7 @@ class ProfileForm extends Component {
   }
 
   render() {
-    const {
-      className,
-      buttonText,
-      disableEssentials,
-      forwardedRef,
-    } = this.props
+    const { className, buttonText, forwardedRef } = this.props
 
     const {
       firstName,
@@ -89,7 +84,6 @@ class ProfileForm extends Component {
             }
             required
             name="firstName"
-            
           />
           <Input
             className={styles.ProfileForm__Input__half}
@@ -101,7 +95,6 @@ class ProfileForm extends Component {
             }
             required
             name="lastName"
-            
           />
         </div>
         <div className={styles.ProfileForm__Input__group}>
@@ -116,7 +109,6 @@ class ProfileForm extends Component {
             }
             required
             name="email"
-            
           />
           <Input
             type="phone"
@@ -127,7 +119,6 @@ class ProfileForm extends Component {
             onChange={this._handlePhoneInput}
             required
             name="phoneNumber"
-           
           />
         </div>
         <div className={styles.ProfileForm__Input__group}>

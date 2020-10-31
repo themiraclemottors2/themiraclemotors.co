@@ -9,8 +9,21 @@ import { useDispatch } from "react-redux"
 import { loginRequest } from "../../store/actions/auth"
 import { toast } from "react-toastify"
 import { window } from "browser-monads"
+import withStyles from "@material-ui/core/styles/withStyles"
 
-const SignInForm = props => {
+const style = theme => ({
+  btn: {
+    marginTop: "1rem",
+    margin: "auto",
+    background: "#32bbff",
+    width: "100%",
+    color: "#fff",
+    padding: "10px",
+    borderRadius: "5px",
+  },
+})
+
+const SignInForm = ({ classes }) => {
   const dispatch = useDispatch()
   const [phone, setPhone] = useState("")
   const [password, setPassword] = useState("")
@@ -77,22 +90,15 @@ const SignInForm = props => {
         <br />
         Do not have an account? Register <Link to="/register">here.</Link>
       </p>
-      <p>
-        Why sign up on themiraclemotorsng.com?
-        <ul style={{ listStyle: "none" }}>
-          <li>Get 5% discount if you sign up</li>
-          <li>Get other special offers and deals</li>
-        </ul>
-      </p>
-
-      {/* <p>
-        Continue without login? Continue{" "}
-        <Link to="../trip/search-results">here.</Link>
-      </p> */}
+      <p> Sign up and get 5% discount</p>
+      <p>Get other special offers and deals</p>
+      <button className={(styles.SignInForm__Submit, classes.btn)}>
+        <Link to="../trip/unAuth-search">Continue without signup</Link>
+      </button>
     </FormContainer>
   )
 }
 
 SignInForm.propTypes = {}
 
-export default SignInForm
+export default withStyles(style)(SignInForm)

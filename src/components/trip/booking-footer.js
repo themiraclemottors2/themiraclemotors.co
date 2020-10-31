@@ -2,6 +2,7 @@ import React from "react"
 import styles from "./trip.module.scss"
 import { Button } from "../common"
 import { usePaystackPayment } from "react-paystack"
+import { toast } from "react-toastify"
 
 const BookingFooter = ({
   makeBooking,
@@ -11,6 +12,8 @@ const BookingFooter = ({
   payBtn,
   onCompleteBookingClick,
   loading,
+  details,
+  open,
 }) => {
   const buttonTextRender = () => {
     if (paymentMethod === "card" && payBtn) return "Pay Now"
@@ -20,6 +23,16 @@ const BookingFooter = ({
   const initializePayment = usePaystackPayment(paymentConfig)
   const handleOnClick = e => {
     e.preventDefault()
+    // const msg = "please fill all fields"
+    // if (!details.length) {
+    //   return toast.error(msg)
+    // }
+    //
+    // const { email, address, phoneNumber, name } = details[0]
+    // if (email === "" || address === "" || phoneNumber === "" || name === "") {
+    //   return toast.error(msg)
+    // }
+
     if (completeBookingBtn && !payBtn) {
       onCompleteBookingClick()
       return
@@ -30,6 +43,7 @@ const BookingFooter = ({
     }
     if (paymentMethod === "arrival" && payBtn) {
       makeBooking()
+      console.log("hello")
       return null
     }
   }
@@ -42,14 +56,16 @@ const BookingFooter = ({
             <br />- I accept the terms and conditions of The Miracle Motors.
           </p>
         )}
-        <Button
-          className={styles.BookingFooter__button}
-          onClick={handleOnClick}
-          id={completeBookingBtn && !payBtn ? "complete-booking-btn" : ""}
-          loading={loading}
-        >
-          {buttonTextRender()}
-        </Button>
+        {open && (
+          <Button
+            className={styles.BookingFooter__button}
+            onClick={handleOnClick}
+            id={completeBookingBtn && !payBtn ? "complete-booking-btn" : ""}
+            loading={loading}
+          >
+            {buttonTextRender()}
+          </Button>
+        )}
       </div>
     )
   )

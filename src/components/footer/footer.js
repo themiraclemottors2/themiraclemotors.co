@@ -1,68 +1,158 @@
 import React from "react"
-import styles from "./footer.module.scss"
 import logo_white from "../../assets/images/logo-white.png"
 import { Link } from "gatsby"
+import Grid from "@material-ui/core/Grid"
+import withStyles from "@material-ui/core/styles/withStyles"
+import Typograhy from "@material-ui/core/Typography"
+import Typography from "@material-ui/core/Typography"
 
-const Footer = () => {
+const style = theme => ({
+  head: {
+    border: "1px solid transparent",
+    background: "#425486",
+  },
+  main: {
+    margin: "3rem 5rem",
+    [theme.breakpoints.down("sm")]: {
+      margin: "2rem",
+    },
+  },
+  img: {
+    width: "12rem",
+    marginLeft: "6rem",
+    [theme.breakpoints.down("sm")]: {
+      width: "5rem",
+      marginLeft: "0",
+    },
+  },
+  typo: {
+    fontSize: ".8rem",
+    textAlign: "center",
+    color: "#fff",
+    marginTop: "1rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: ".5rem",
+    },
+  },
+  legal: {
+    color: "#fff",
+    margin: "3rem 0",
+    textAlign: "center",
+  },
+  lega: {
+    margin: "0 0 2rem 0",
+    fontSize: "1.5rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1rem",
+    },
+  },
+  leg: {
+    fontSize: "1rem",
+    marginBottom: "1rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: ".5rem",
+    },
+  },
+  span: {
+    margin: "0 1rem",
+    [theme.breakpoints.down("md")]: {
+      margin: "0 .5rem",
+      fontSize: ".7rem",
+    },
+  },
+  hor: {
+    borderTop: "1px solid #fff",
+    borderColor: "#fff",
+    margin: "1rem 4rem",
+  },
+  foot: {
+    color: "#fff",
+    textAlign: "center",
+    margin: "1rem 0",
+  },
+})
+
+const Footer = ({ classes }) => {
   return (
-    <footer className={styles.Footer}>
-      <div className={styles.Footer__About}>
-        <img src={logo_white} alt="" />
-        <p>
-          Km 33 Lekki/Epe express way, opposite Golden park estate, Sangotedo,
-          Lagos, Nigeria.
-        </p>
-        <p>
-          Miracle Motors is a registered Delaware C Corporation company, with RC
-          Number 1635067.
-        </p>
-      </div>
-      <div className={styles.Footer__UsefullLinks}>
-        <ul className={styles.Footer__LinksList}>
-          <li>
-            <strong>Legal</strong>
-          </li>
-          <li>
+    <div className={classes.head}>
+      <Grid container>
+        <Grid item xs={3} className={classes.main}>
+          <img src={logo_white} alt="miraclemotors" className={classes.img} />
+          <Typograhy variant="h6" className={classes.typo}>
+            {" "}
+            Km 33 Lekki/Epe express way, opposite Golden park estate, Sangotedo,
+            Lagos, Nigeria.
+          </Typograhy>
+          {/* <Typograhy variant="h3" className={classes.typo}>
+            Miracle Motors is a registered Delaware C Corporation company, with
+            RC Number 1635067.
+          </Typograhy> */}
+        </Grid>
+        <Grid item xs={3} className={classes.legal}>
+          <Typograhy variant="h3" className={classes.lega}>
+            Legal
+          </Typograhy>
+          <Typograhy variant="h5" className={classes.leg}>
+            {" "}
             <Link to="/terms">Terms &amp; Conditions</Link>
-          </li>
-          <li>
+          </Typograhy>
+          <Typograhy variant="h5" className={classes.leg}>
+            {" "}
             <Link to="/privacy-policy">Privacy Policy</Link>
-          </li>
-        </ul>
-        <ul className={styles.Footer__LinksList}>
-          <li>
-            <strong>Company</strong>
-          </li>
-          <li>
+          </Typograhy>
+        </Grid>
+        <Grid item xs={2} className={classes.legal}>
+          <Typograhy variant="h4" className={classes.lega}>
+            Company
+          </Typograhy>
+          <Typograhy variant="h6" className={classes.leg}>
             <Link to="/about">About</Link>
-          </li>
-          <li>
+          </Typograhy>
+          <Typograhy variant="h6" className={classes.leg}>
             <Link to="/careers">Careers</Link>
-          </li>
-          <li>
-            <Link to="/">Help Center!</Link>
-          </li>
-        </ul>
-        <ul className={styles.Footer__LinksList}>
-          <li>
-            <strong>Social</strong>
-          </li>
-          <li>
-            <Link to="https://facebook.com/Themiraclemotorsng">Facebook</Link>
-          </li>
-          <li>
-            <Link to="https://instagram.com/Themiraclemotorsng">Instagram</Link>
-          </li>
-          <li>
-            <Link to="https://twitter.com/Themiraclemoto2"> Twitter</Link>
-          </li>
-          <li>
-            <Link to="/">LinkedIn</Link>
-          </li>
-        </ul>
+          </Typograhy>
+          <Typograhy variant="h6" className={classes.leg}>
+            <Link to="/">Help Center</Link>
+          </Typograhy>
+        </Grid>
+        <Grid item xs={2} className={classes.legal}>
+          <Typograhy variant="h3" className={classes.lega}>
+            Connect with us
+          </Typograhy>
+          <Typograhy variant="h6">
+            <span className={classes.span}>
+              <Link
+                to="https://facebook.com/Themiraclemotorsng"
+                target="_blank"
+              >
+                {" "}
+                <i className="fa fa-facebook" aria-hidden="true"></i>
+              </Link>
+            </span>
+            <span className={classes.span}>
+              <Link
+                to="https://instagram.com/Themiraclemotorsng"
+                target="_blank"
+              >
+                {" "}
+                <i className="fa fa-instagram" aria-hidden="true"></i>
+              </Link>
+            </span>
+            <span className={classes.span}>
+              <Link to="https://twitter.com/Themiraclemoto2">
+                <i className="fa fa-twitter" aria-hidden="true"></i>{" "}
+              </Link>
+            </span>
+          </Typograhy>
+        </Grid>
+      </Grid>
+      <div className={classes.hor}>
+        <Typography variant="h6" className={classes.foot}>
+          2020 &copy; <span>themiraclemotorng.com. All Right Reserved.</span>
+        </Typography>
       </div>
-    </footer>
+    </div>
   )
 }
 
-export default Footer
+export default withStyles(style)(Footer)

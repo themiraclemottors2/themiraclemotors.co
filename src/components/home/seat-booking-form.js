@@ -1,12 +1,34 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import styles from "./home.module.scss"
-import { Select, Button, DatePicker } from "../common"
+import { Select, Button, DatePicker, DateKeyBoard } from "../common"
 import { Locator, Calendar, User } from "../../assets/svg"
 import { capitalize } from "lib"
 import { toast } from "react-toastify"
 import moment from "moment"
 import isEqual from "../../../node_modules/lodash/isEqual"
+import withStyles from "@material-ui/core/styles/withStyles"
+
+const style = theme => ({
+  date: {
+    width: "99%",
+    margin: " 0  0 2rem 0",
+    background: "#f1f2f6",
+    borderColor: "#425486",
+    "& input": {
+      padding: "2rem",
+      color: "#425486",
+      borderColor: "#425486",
+    },
+
+    "& label": {
+      color: "#425486",
+    },
+    "& button": {
+      color: "rgb(161, 169, 195)",
+    },
+  },
+})
 
 class SeatBookingForm extends Component {
   static defaultProps = {
@@ -49,6 +71,7 @@ class SeatBookingForm extends Component {
       returnTimestamp,
       numberOfTravellers,
     } = this.state
+
     const { onSubmit } = this.props
     if (
       departureTerminalId.length <= 0 ||
@@ -57,6 +80,7 @@ class SeatBookingForm extends Component {
     ) {
       return toast.warn("Field(s) can not be empty")
     }
+
     return onSubmit({
       departureTerminalId,
       arrivalTerminalId,
@@ -65,22 +89,29 @@ class SeatBookingForm extends Component {
       numberOfTravellers,
     })
   }
+  handleDateChange = date => {
+    this.setState({
+      departureTimestamp: moment(date._d).format("YYYY-MM-DDTHH:mm"),
+    })
+  }
 
-  _handleInputChange = data => this.setState({ ...data })
-
+  _handleInputChange = data => {
+    console.log(this.props.terminals, this.props.search)
+    this.setState({ ...data })
+  }
   render() {
     const {
       departureTerminalId,
       arrivalTerminalId,
-      departureTimestamp,
       returnTimestamp,
       numberOfTravellers,
     } = this.state
-    let { roundTrip, terminals } = this.props
+    let { roundTrip, terminals, search } = this.props
     terminals = terminals.map(item => ({
       text: capitalize(item.name),
       value: item.id,
     }))
+
     const passengersInputData = Array(6)
       .fill(1)
       .map((item, index) => {
@@ -110,17 +141,8 @@ class SeatBookingForm extends Component {
           }
           value={arrivalTerminalId}
         />
-        <DatePicker
-          icon={Calendar}
-          className={styles.BookingCard__Input}
-          label="Departure Date"
-          onChange={date =>
-            this._handleInputChange({
-              departureTimestamp: moment(date).format("YYYY-MM-DDTHH:mm"),
-            })
-          }
-          value={departureTimestamp}
-        />
+        <DateKeyBoard data={this.handleDateChange} />
+
         {roundTrip && (
           <DatePicker
             icon={Calendar}
@@ -152,4 +174,4 @@ class SeatBookingForm extends Component {
   }
 }
 
-export default SeatBookingForm
+export default withStyles(style)(SeatBookingForm)

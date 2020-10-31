@@ -7,7 +7,7 @@ import { navigate } from "gatsby"
 import { window } from "browser-monads"
 import omit from "../../../node_modules/lodash/omit"
 
-const PassengerDetailsContent = ({ onDone, numberOfTravellers }) => {
+const PassengerDetailsContent = ({ onDone, numberOfTravellers, open }) => {
   const [passengerCount, setPassengerCount] = useState(0)
   const [passengersData, setPassengersData] = useState([])
 
@@ -19,10 +19,12 @@ const PassengerDetailsContent = ({ onDone, numberOfTravellers }) => {
     }
     if (numberOfTravellers === 1) {
       onDone([data])
+      open([data])
       return navigate(`${window.location.pathname}/#complete-booking-btn`)
     }
     if (numberOfTravellers === passengersData.length + 1) {
       onDone([...passengersData, data])
+      open([data])
       return navigate(`${window.location.pathname}/#complete-booking-btn`)
     }
     setPassengersData([...passengersData, data])
