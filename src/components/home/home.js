@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 // import PropTypes from "prop-types"
 import styles from "./home.module.scss"
 import BookingCard from "./booking-card"
@@ -8,6 +8,15 @@ import PopularTrips from "./popular-trips"
 import Newsletter from "./newsletter"
 
 const Home = props => {
+  const [terminal, setTerminal] = useState("")
+  const find = data => {
+    if (data) {
+      setTerminal(data)
+    } else {
+      setTerminal("")
+    }
+    console.log(terminal)
+  }
   return (
     <div className={styles.Home}>
       <div className={styles.Home__Fold}>
@@ -19,11 +28,11 @@ const Home = props => {
             staffs well-being as a priority over profit.
           </p>
         </div>
-        <BookingCard />
+        <BookingCard search={terminal} />
         <AppStoreAction className={styles.AppStoreAction} />
       </div>
       <Features />
-      <PopularTrips />
+      <PopularTrips find={find} />
       <Newsletter />
     </div>
   )

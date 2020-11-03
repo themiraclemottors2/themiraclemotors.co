@@ -5,6 +5,8 @@ import {
   SET_BOOKED_TRIP,
   RESET_BOOKINGS,
   GET_BOOKINGS,
+  GET_UNAUTH_BOOKINGS,
+  SET_UNAUTH_BOOKED_TRIP,
 } from "../types"
 
 const initState = {
@@ -31,6 +33,18 @@ export default (
       return {
         ...state,
         bookedTrip,
+        loading: false,
+      }
+    case SET_UNAUTH_BOOKED_TRIP:
+      return {
+        ...state,
+        bookedTrip,
+        loading: false,
+      }
+    case GET_UNAUTH_BOOKINGS:
+      return {
+        ...state,
+        data,
         loading: false,
       }
     case RESET_BOOKINGS:

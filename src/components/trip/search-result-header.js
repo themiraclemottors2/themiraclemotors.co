@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import styles from "./trip.module.scss"
 import { Button } from "../common"
 
@@ -13,9 +12,5 @@ const SearchResultHeader = ({ header, btnOnClick, date, returnTrip }) => {
     </div>
   )
 }
-
-// SearchResultHeader.propTypes = {
-//   header: PropTypes.string,
-// }
 
 export default SearchResultHeader

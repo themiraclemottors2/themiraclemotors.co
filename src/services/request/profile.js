@@ -5,4 +5,8 @@ export default {
     serviceInstance
       .put(`/profiles/me`, { ...body })
       .then(({ data: { data } }) => data),
+  create: body =>
+    serviceInstance
+      .post(`/profiles`, { ...body })
+      .then(({ data: { data } }) => data),
 }

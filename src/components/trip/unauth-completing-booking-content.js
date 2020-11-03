@@ -5,16 +5,17 @@ import { WrapperCard, RadioButton } from "../common"
 import card_vendors from "../../assets/images/cards-vendo.png"
 import { connect } from "react-redux"
 
-const CompletingBookingContent = ({
+const UnAuthCompleteBookingContent = ({
   paymentMethod,
   changePaymentMethod,
   passengers,
-  user,
 }) => {
+  const newPassenger = [passengers]
+
   return (
     <div className={styles.CompletingBookingContent}>
-      {passengers &&
-        passengers.map((item, index) => (
+      {newPassenger &&
+        newPassenger.map((item, index) => (
           <WrapperCard
             key={index}
             title={index === 0 ? "Main Passenger" : `Other Passenger ${index}`}
@@ -82,7 +83,7 @@ const CompletingBookingContent = ({
                     styles.CompletingBookingContent__profile__info__value
                   }
                 >
-                  {`${item.address}, ${item.region}`}
+                  {item.address}
                 </p>
               </div>
             </div>
@@ -117,11 +118,4 @@ const CompletingBookingContent = ({
     </div>
   )
 }
-
-CompletingBookingContent.defaultProps = {
-  passengers: [],
-}
-const MapStateToProps = ({ common: { user } }) => ({
-  user,
-})
-export default connect(MapStateToProps)(CompletingBookingContent)
+export default UnAuthCompleteBookingContent

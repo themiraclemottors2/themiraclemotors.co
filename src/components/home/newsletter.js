@@ -1,30 +1,62 @@
 import React from "react"
-import styles from "./home.module.scss"
+import withStyles from "@material-ui/core/styles/withStyles"
+import TextField from "@material-ui/core/TextField"
+import Typography from "@material-ui/core/Typography"
+import Button from "@material-ui/core/Button"
 
-import { Input, Button } from "../../components/common"
+// import { Input, Button } from "../../components/common"
+const style = theme => ({
+  sub: {
+    textAlign: "center",
 
-const Newsletter = () => {
+    fontSize: "1.4rem",
+    fontFamily: "auto",
+    fontWeight: "bold",
+    color: "#589ccb",
+  },
+  form: {
+    margin: "4rem 1rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  main: {
+    textAlign: "center",
+    fontSize: "1.7rem",
+    color: "#007bff",
+    textTransform: "capitalize",
+    fontWeight: "bold",
+    marginTop: "1rem",
+  },
+
+  btn: {
+    margin: "1rem",
+  },
+})
+
+const Newsletter = ({ classes }) => {
   return (
-    <div className={styles.Newsletter}>
-      <p className={styles.Newsletter__SubHeading}>STAY IN TOUCH</p>
-      <h1 className={styles.Newsletter__Heading}>
+    <>
+      <Typography variant="h5" className={classes.sub}>
+        Stay in Touch
+      </Typography>
+      <Typography variant="h3" className={classes.main}>
+        {" "}
         Be the first to get our handpicked discounts and deals, straight to your
         inbox.
-      </h1>
-      <form
-        className={styles.NewsletterForm}
-        action=""
-        onSubmit={e => e.preventDefault()}
-      >
-        <Input
-          className={styles.NewsletterForm__Input}
-          label="Email Address"
-          placeholder="Enter your email address"
+      </Typography>
+      <form className={classes.form}>
+        <TextField
+          id="outlined-basic"
+          label="Enter your Email Address"
+          variant="outlined"
         />
-        <Button className={styles.NewsletterForm__Submit}>Subscribe</Button>
+        <Button variant="contained" color="primary" className={classes.btn}>
+          Subscribe
+        </Button>
       </form>
-    </div>
+    </>
   )
 }
 
-export default Newsletter
+export default withStyles(style)(Newsletter)

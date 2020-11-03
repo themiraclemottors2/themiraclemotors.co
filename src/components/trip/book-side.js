@@ -2,17 +2,34 @@ import React from "react"
 import styles from "./trip.module.scss"
 import moment from "moment"
 import { formatCurrency } from "lib"
+import withStyles from "@material-ui/core/styles/withStyles"
+import Typography from "@material-ui/core/Typography"
 
-const BookSidebar = ({ trip }) => {
+const style = theme => ({
+  head: {
+    [theme.breakpoints.down("sm")]: {
+      width: "95%",
+    },
+  },
+  main: {
+    color: "blue",
+    fontFamily: "auto",
+  },
+})
+const BookSide = ({ trip, classes }) => {
+  console.log(trip)
   return (
-    <div className={styles.BookSidebar}>
+    <div className={(styles.BookSidebar, classes.head)}>
+      <Typography variant="h4" className={classes.main}>
+        TRIP SUMMARY
+      </Typography>
       <div className={styles.BookSidebar__Card}>
         <div className={styles.BookSidebar__TripDetails}>
           <h2>OUTGOING</h2>
           <h3>
             {moment(trip.outgoing.departureTimestamp).format(
-              "ddd, MMMM DD, YYYY - hh:mm A"
-            )}
+              "ddd, MMMM DD, YYYY"
+            )}{" "}
             6:00 am
           </h3>
           <p>
@@ -37,7 +54,7 @@ const BookSidebar = ({ trip }) => {
         <div className={styles.BookSidebar__Cost}>
           <div>
             <p>Tickets({trip.ticketsCount} Passengers)</p>
-            <p>NGN {formatCurrency(trip.ticketsCost * 0.95)}</p>
+            <p>NGN {formatCurrency(trip.ticketsCost)}</p>
           </div>
           <div>
             <p>Service Fee</p>
@@ -51,9 +68,7 @@ const BookSidebar = ({ trip }) => {
               <br />
               <span>(tax included)</span>
             </p>
-            <p>
-              NGN {formatCurrency(trip.serviceCharge + trip.ticketsCost * 0.95)}
-            </p>
+            <p>NGN {formatCurrency(trip.serviceCharge + trip.ticketsCost)}</p>
           </div>
         </div>
       </div>
@@ -61,4 +76,4 @@ const BookSidebar = ({ trip }) => {
   )
 }
 
-export default BookSidebar
+export default withStyles(style)(BookSide)

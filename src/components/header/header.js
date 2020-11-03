@@ -6,16 +6,41 @@ import { useSelector, useDispatch } from "react-redux"
 import logo_white from "../../assets/images/logo-white.png"
 import styles from "./header.module.scss"
 import { logout } from "store/actions/auth"
-
-const Header = ({ location, topOffset, isHome }) => {
+import Avatar from "@material-ui/core/Avatar"
+import withStyles from "@material-ui/core/styles/withStyles"
+import Tooltip from "@material-ui/core/Tooltip"
+import { connect } from "react-redux"
+const style = theme => ({
+  purple: {
+    backgroundColor: "#ced3df",
+    textTransform: "uppercase",
+    fontWeight: "bold",
+    fontSize: ".9rem",
+    outline: "none",
+    border: "none",
+  },
+  link: {
+    marginTop: "-.5rem",
+  },
+})
+const Header = ({ location, topOffset, isHome, classes, user }) => {
   const isAuthenticated = useSelector(
     ({ common: { isAuthenticated } }) => isAuthenticated
   )
+
   const dispatch = useDispatch()
   const pathname = location.pathname
   const _handleLogout = e => {
     e.preventDefault()
     dispatch(logout())
+  }
+
+  let name
+  let avatar
+  if (isAuthenticated) {
+    const { firstName, lastName } = user
+    name = firstName
+    avatar = `${firstName.charAt(0)}${lastName.charAt(0)}`
   }
 
   return (
@@ -37,7 +62,7 @@ const Header = ({ location, topOffset, isHome }) => {
             <img src={logo_white} alt="" />
           </Link>
           <div className={styles.Header__Nav}>
-            <input type="checkbox" id="menu" onClick={() => null} />
+            <input type="checkbox" id="menu" name="menu" onClick={() => null} />
             <label htmlFor="menu" className={styles.Header__Nav__icon} />
             <ul className={styles.Header__NavList}>
               {!isAuthenticated && (
@@ -47,7 +72,15 @@ const Header = ({ location, topOffset, isHome }) => {
                       activeClassName={styles.Header__NavItem__Active}
                       to="/register"
                     >
-                      <p className={styles.Header__NavItem__text}>Register here</p>
+                      <p className={styles.Header__NavItem__text}>Register</p>
+                    </Link>
+                  </li>
+                  <li className={styles.Header__NavItem}>
+                    <Link
+                      activeClassName={styles.Header__NavItem__Active}
+                      to="../about"
+                    >
+                      <p className={styles.Header__NavItem__text}>About Us</p>
                     </Link>
                   </li>
                   <li className={styles.Header__NavItem}>
@@ -83,6 +116,12 @@ const Header = ({ location, topOffset, isHome }) => {
                       <p className={styles.Header__NavItem__text}>Logout</p>
                     </Link>
                   </li>
+
+                  <li className={classes.link}>
+                    <Tooltip title={name}>
+                      <Avatar className={classes.purple}>{avatar}</Avatar>
+                    </Tooltip>
+                  </li>
                 </Fragment>
               )}
             </ul>
@@ -98,5 +137,8 @@ Header.defaultProps = {
   topOffset: 0,
   isHome: false,
 }
+const MapStateToProps = ({ common: { user } }) => ({
+  user,
+})
 
-export default Header
+export default connect(MapStateToProps)(withStyles(style)(Header))
