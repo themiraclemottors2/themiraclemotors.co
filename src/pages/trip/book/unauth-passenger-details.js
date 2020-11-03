@@ -235,8 +235,8 @@ class UnAuthPassenger extends Component {
     let { passengers, bookings } = this.props
 
     const paymentConfig = {
-      // publicKey: process.env.GATSBY_PAYSTACK_PUBLIC_KEY,
-      publicKey: "pk_test_d8b15464638f89fcdfb8d554f6b9d68e075170ee",
+      publicKey: process.env.GATSBY_PAYSTACK_PUBLIC_KEY,
+      // publicKey: "pk_test_d8b15464638f89fcdfb8d554f6b9d68e075170ee",
       email: this.props.data.email,
       amount: (trip.ticketsCost + trip.serviceCharge) * 100,
       channels: ["card"],
