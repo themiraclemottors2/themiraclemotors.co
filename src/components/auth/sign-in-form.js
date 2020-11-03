@@ -20,6 +20,11 @@ const style = theme => ({
     color: "#fff",
     padding: "10px",
     borderRadius: "5px",
+    border: "none",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.5rem",
+      padding: "1.5rem 0",
+    },
   },
 })
 
@@ -92,9 +97,11 @@ const SignInForm = ({ classes }) => {
       </p>
       <p> Sign up and get 5% discount</p>
       <p>Get other special offers and deals</p>
-      <button className={(styles.SignInForm__Submit, classes.btn)}>
-        <Link to="../trip/unAuth-search">Continue without signup</Link>
-      </button>
+      <Link to="../trip/unAuth-search">
+        <button className={(styles.SignInForm__Submit, classes.btn)}>
+          Continue without signup
+        </button>
+      </Link>
     </FormContainer>
   )
 }

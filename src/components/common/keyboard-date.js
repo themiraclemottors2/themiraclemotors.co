@@ -11,17 +11,34 @@ const style = theme => ({
     margin: " 0  0 2rem 0",
     background: "#f1f2f6",
     borderColor: "#425486",
+    [theme.breakpoints.down("sm")]: {
+      background: "white",
+      "& label": {
+        fontSize: "1.5rem",
+      },
+      "& input": {
+        fontSize: "1.5rem",
+      },
+    },
     "& input": {
       padding: "2rem",
       color: "#425486",
       borderColor: "#425486",
+      fontWeight: "bold",
     },
 
     "& label": {
       color: "#425486",
+      fontWeight: "bold",
     },
     "& button": {
       color: "rgb(161, 169, 195)",
+    },
+    "& active:": {
+      border: "none",
+    },
+    "& icon": {
+      fontSize: "2rem",
     },
   },
 })

@@ -4,7 +4,7 @@ import { Button } from "../common"
 import { usePaystackPayment } from "react-paystack"
 import { toast } from "react-toastify"
 
-const BookingFooter = ({
+const UnAuthBookingFooter = ({
   makeBooking,
   paymentMethod,
   paymentConfig,
@@ -12,7 +12,9 @@ const BookingFooter = ({
   payBtn,
   onCompleteBookingClick,
   loading,
+  details,
   open,
+  error,
 }) => {
   const buttonTextRender = () => {
     if (paymentMethod === "card" && payBtn) return "Pay Now"
@@ -33,10 +35,12 @@ const BookingFooter = ({
     }
     if (paymentMethod === "arrival" && payBtn) {
       makeBooking()
-
+      console.log(makeBooking())
+      console.log("hello")
       return null
     }
   }
+
   return (
     completeBookingBtn && (
       <div className={styles.BookingFooter}>
@@ -56,9 +60,9 @@ const BookingFooter = ({
             {buttonTextRender()}
           </Button>
         )}
+        {error && <p>{error}</p>}
       </div>
     )
   )
 }
-
-export default BookingFooter
+export default UnAuthBookingFooter

@@ -9,6 +9,10 @@ export default {
     serviceInstance
       .post(`/bookings/unauth`, { ...body })
       .then(({ data: { data } }) => data),
+  passenger: body =>
+    serviceInstance
+      .post(`/bookings/passenger`, { ...body })
+      .then(({ data: { data } }) => data),
   list: params =>
     serviceInstance
       .get(`/bookings/me`, { params })

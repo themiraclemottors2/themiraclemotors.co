@@ -16,21 +16,32 @@ const style = theme => ({
     [theme.breakpoints.down("xs")]: {
       display: "flex",
       flexDirection: "column",
+      textAlign: "-webkit-center",
     },
   },
   text: {
     margin: "1rem 1.5rem",
     background: "#f1f2f6",
     borderRadius: "4px",
-    width: "15rem",
+    width: "17rem",
+    [theme.breakpoints.down("xs")]: {
+      width: "91%",
+      background: "white",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "80%",
+    },
+    [theme.breakpoints.up("xl")]: {
+      width: "80%",
+    },
   },
 })
 class Form extends Component {
   state = {
     email: "",
-    kin: "",
+    kinFullName: "",
     address: "",
-    phoneNumber: "",
+    KinPhoneNumber: "",
   }
   static contextType = UnAuthContext
   handleChange = () => {
@@ -44,10 +55,10 @@ class Form extends Component {
   }
 
   _handlePhoneInput = ({ target: { value, name } }) => {
-    const { phoneNumber } = this.state
+    const { KinPhoneNumber } = this.state
     if (isNaN(Number(value))) {
       return this.handle({
-        [name]: name === "phoneNumber" ? phoneNumber : null,
+        [name]: name === "KinPhoneNumber" ? KinPhoneNumber : null,
       })
     }
     return this.handle({ [name]: value })
@@ -56,7 +67,7 @@ class Form extends Component {
     this.setState({ ...data })
   }
   render() {
-    const { email, kin, address, phoneNumber } = this.state
+    const { email, kinFullName, address, KinPhoneNumber } = this.state
     const { classes } = this.props
 
     sessionStorage.setItem("data", JSON.stringify(this.state))
@@ -92,10 +103,12 @@ class Form extends Component {
           <Input
             className={(styles.ProfileForm__Input__half, classes.text)}
             label="Next of kin"
-            value={kin}
+            value={kinFullName}
             placeholder="Next of kin Name"
-            onChange={({ target: { value: kin } }) => this.handle({ kin })}
-            name="kin"
+            onChange={({ target: { value: kinFullName } }) =>
+              this.handle({ kinFullName })
+            }
+            name="kinFullName"
             className={classes.text}
             required
           />
@@ -104,9 +117,9 @@ class Form extends Component {
             type="number"
             label=" phone number"
             placeholder="Next of kin Phone number"
-            value={phoneNumber}
+            value={KinPhoneNumber}
             onChange={this._handlePhoneInput}
-            name="phoneNumber"
+            name="KinPhoneNumber"
             className={classes.text}
             required
           />

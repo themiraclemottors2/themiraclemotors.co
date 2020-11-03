@@ -11,14 +11,21 @@ import isEmpty from "../../../../node_modules/lodash/isEmpty"
 import { extractTerminalName } from "../../../lib"
 import { navigate } from "gatsby"
 import { setPassengers } from "../../../store/actions/trips"
-import { bookTripRequest } from "../../../store/actions/bookings"
+import { CreateUser } from "../../../store/actions/common"
+import {
+  unAuthBookTripRequest,
+  fetchUnAuthBookingsRequest,
+} from "../../../store/actions/bookings"
 import { toast } from "react-toastify"
 import Grid from "@material-ui/core/Grid"
 
 import withStyles from "@material-ui/core/styles/withStyles"
 
 import BookSide from "../../../components/trip/book-side"
-import { CompletingBookingContent, BookingFooter } from "components/trip"
+import {
+  UnAuthBookingFooter,
+  UnAuthCompleteBookingContent,
+} from "components/trip"
 import UnAuthPassengerDetails from "../../../components/trip/unauth-passenger-details"
 
 const style = theme => ({
@@ -54,6 +61,7 @@ class UnAuthPassenger extends Component {
       fullName: null,
       details: {},
       open: false,
+      error: "",
     }
   }
 
@@ -144,49 +152,70 @@ class UnAuthPassenger extends Component {
   }
 
   _handlePassengerDetails = async passengers => {
-    const name = `${passengers.firstName} ${passengers.lastName}`
-    let mail = passengers.map(item => item.email)
+    const name = `${passengers[0].firstName} ${passengers[0].lastName}`
+    let mail = passengers.map(item => item.email).join()
     let info = { ...passengers }
-    console.log(mail)
-    this.setState({
-      email: passengers[0].email,
-      fullName: name,
 
+    this.setState({
+      email: mail,
+      fullName: name,
       details: info,
     })
-    console.log(this.state.details)
-    await this.props.setPassengers(passengers)
+
+    const Passengers = {
+      name,
+      email: passengers[0].email,
+      address: passengers[0].address,
+      phoneNumber: passengers[0].phoneNumber,
+      gender: passengers[0].gender,
+      ageBracket: "adult",
+      booking: this.state.bookings,
+    }
+    const profile = {
+      kinFullName: passengers[0].kinFullName,
+      kinPhoneNumber: passengers[0].KinPhoneNumber,
+      address: passengers[0].address,
+    }
+    await this.props.CreateUser(profile)
+
+    await this.props.fetchUnAuthBookingsRequest(Passengers)
   }
 
   _handleBooking = async paymentResponse => {
     const {
-      passengers,
-      bookTripRequest: bookTrip,
+      data,
+      unAuthBookTripRequest,
       bookings: bookingsFromGlobalState,
     } = this.props
+
     const { bookings, numberOfTravellers, paymentMethod, type } = this.state
 
     if (bookingsFromGlobalState.loading) {
       return null
     }
     const requestBody = {
-      passengers,
+      passengers: data,
       bookings,
       numberOfTravellers,
       type,
       paymentType: paymentMethod === "card" ? "online" : "offline",
     }
+
+    console.log(requestBody)
     if (paymentResponse && paymentMethod === "card") {
       requestBody.paymentRef = paymentResponse.reference
     }
     try {
-      const bookingResp = await bookTrip(requestBody)
-      if (bookingResp) return navigate("/trip/book/complete")
+      const bookingResp = await unAuthBookTripRequest(requestBody)
+      if (bookingResp) return navigate("/trip/book/unAuthcomplete")
     } catch (error) {
       toast.error(
         (error.response && error.response.data.message) ||
-          "Sorry, your booking not successful"
+          "Sorry, your booking was not successful"
       )
+      this.setState({
+        error: error.response.data.message,
+      })
     }
   }
   openModal = data => {
@@ -202,20 +231,19 @@ class UnAuthPassenger extends Component {
       paymentMethod,
       trip,
       numberOfTravellers,
-      fullName,
     } = this.state
     let { passengers, bookings } = this.props
 
     const paymentConfig = {
       // publicKey: process.env.GATSBY_PAYSTACK_PUBLIC_KEY,
       publicKey: "pk_test_d8b15464638f89fcdfb8d554f6b9d68e075170ee",
-      email: this.state.email,
+      email: this.props.data.email,
       amount: (trip.ticketsCost + trip.serviceCharge) * 100,
       channels: ["card"],
     }
 
     return (
-      <BookingFooter
+      <UnAuthBookingFooter
         paymentMethod={paymentMethod}
         makeBooking={this._handleBooking}
         paymentConfig={paymentConfig}
@@ -225,6 +253,7 @@ class UnAuthPassenger extends Component {
         loading={bookings.loading}
         details={this.state.details}
         open={this.state.open}
+        error={this.state.error}
       />
     )
   }
@@ -237,8 +266,8 @@ class UnAuthPassenger extends Component {
       numberOfTravellers,
     } = this.state
 
-    const { classes, passengers } = this.props
-
+    const { classes, data } = this.props
+    console.log(this.state.error)
     return (
       <StickyContainer>
         <SEO title={breadCrumbs[stage]} />
@@ -256,10 +285,10 @@ class UnAuthPassenger extends Component {
               />
             )}
             {stage === 1 && (
-              <CompletingBookingContent
+              <UnAuthCompleteBookingContent
                 paymentMethod={paymentMethod}
                 changePaymentMethod={this.changePaymentMethod}
-                passengers={passengers}
+                passengers={data}
               />
             )}
           </Grid>
@@ -271,9 +300,11 @@ class UnAuthPassenger extends Component {
 }
 
 const mapStateToProps = ({
+  bookings: { data, bookedTrip },
   trips: { returnTrip, outgoingTrip, searchData, passengers },
   terminals: { data: terminals },
   settings: { serviceCharge },
+
   bookings,
 }) => ({
   outgoingTrip,
@@ -283,8 +314,13 @@ const mapStateToProps = ({
   passengers,
   bookings,
   serviceCharge,
+  data,
+  bookedTrip,
 })
 
-export default connect(mapStateToProps, { setPassengers, bookTripRequest })(
-  withStyles(style)(UnAuthPassenger)
-)
+export default connect(mapStateToProps, {
+  setPassengers,
+  unAuthBookTripRequest,
+  fetchUnAuthBookingsRequest,
+  CreateUser,
+})(withStyles(style)(UnAuthPassenger))

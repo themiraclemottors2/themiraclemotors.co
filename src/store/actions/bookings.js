@@ -4,6 +4,7 @@ import {
   RESET_BOOKINGS,
   GET_BOOKINGS,
   GET_UNAUTH_BOOKINGS,
+  SET_UNAUTH_BOOKED_TRIP,
 } from "../types"
 import { BookingsRequestService } from "../../services"
 import { resetTrips } from "./trips"
@@ -11,6 +12,10 @@ import { resetTrips } from "./trips"
 const getBookings = data => ({
   type: GET_BOOKINGS,
   data,
+})
+const setUnAuthBookings = bookedTrip => ({
+  type: SET_UNAUTH_BOOKED_TRIP,
+  bookedTrip,
 })
 const getUnAuthBookings = data => ({
   type: GET_UNAUTH_BOOKINGS,
@@ -47,17 +52,18 @@ export const fetchBookingsRequest = params => async (dispatch, getState) => {
     throw error
   }
 }
-export const fetchUnAuthBookingsRequest = params => async (
+export const fetchUnAuthBookingsRequest = body => async (
   dispatch,
   getState
 ) => {
   const {
-    UnAuthbookings: { identifier },
+    bookings: { identifier },
   } = getState()
 
   dispatch(asyncStart(identifier))
   try {
-    const data = await BookingsRequestService.list(params)
+    const data = await BookingsRequestService.passenger(body)
+
     dispatch(getUnAuthBookings(data))
     return data
   } catch (error) {
@@ -67,17 +73,19 @@ export const fetchUnAuthBookingsRequest = params => async (
 }
 export const unAuthBookTripRequest = body => async (dispatch, getState) => {
   const {
-    unAuthbookings: { identifier },
+    bookings: { identifier },
   } = getState()
 
   dispatch(asyncStart(identifier))
   try {
     const [data] = await BookingsRequestService.unAuthBook(body)
     console.log(data)
-    dispatch(setBookedTrip(data))
+    dispatch(setUnAuthBookings(data))
     dispatch(resetTrips())
+    return data
   } catch (error) {
-    dispatch(setBookedTrip({}))
+    const data = error.response.data
+    dispatch(setUnAuthBookings(data))
     throw error
   }
 }

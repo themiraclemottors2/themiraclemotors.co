@@ -6,6 +6,7 @@ import {
   LOGIN,
   UPDATE_USER,
   GET_TERMINALS,
+  CREATE_USER,
 } from "../types"
 
 const initState = {
@@ -36,6 +37,11 @@ export default (
         popularTrips,
       }
     case UPDATE_USER:
+      return {
+        ...state,
+        user,
+      }
+    case CREATE_USER:
       return {
         ...state,
         user,
