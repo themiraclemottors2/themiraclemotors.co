@@ -17,7 +17,6 @@ const style = theme => ({
   },
 })
 const BookSide = ({ trip, classes }) => {
-  console.log(trip)
   return (
     <div className={(styles.BookSidebar, classes.head)}>
       <Typography variant="h4" className={classes.main}>
