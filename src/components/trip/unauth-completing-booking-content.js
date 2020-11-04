@@ -3,7 +3,6 @@ import React from "react"
 import styles from "./trip.module.scss"
 import { WrapperCard, RadioButton } from "../common"
 import card_vendors from "../../assets/images/cards-vendo.png"
-import { connect } from "react-redux"
 
 const UnAuthCompleteBookingContent = ({
   paymentMethod,

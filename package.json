@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "gatsby-plugin-root-import": "^2.0.5",
+    "mini-css-extract-plugin": "^0.11.3",
     "prettier": "^1.19.1"
   },
   "keywords": [
