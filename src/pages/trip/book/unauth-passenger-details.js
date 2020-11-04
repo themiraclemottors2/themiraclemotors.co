@@ -267,7 +267,7 @@ class UnAuthPassenger extends Component {
     } = this.state
 
     const { classes, data } = this.props
-    console.log(this.state.error)
+
     return (
       <StickyContainer>
         <SEO title={breadCrumbs[stage]} />
@@ -324,3 +324,8 @@ export default connect(mapStateToProps, {
   fetchUnAuthBookingsRequest,
   CreateUser,
 })(withStyles(style)(UnAuthPassenger))
+
+//  pk_live_43e3e9dd19ff0be6493ba515e8a7ee0d8000294f
+//  pk_live_43e3e9dd19ff0be6493ba515e8a7ee0d8000294f
+
+//  GATSBY_PAYSTACK_PUBLIC_KEY

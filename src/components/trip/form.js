@@ -1,14 +1,12 @@
 import React, { Component } from "react"
 import withStyles from "@material-ui/core/styles/withStyles"
-import TextField from "@material-ui/core/TextField"
 import { toast } from "react-toastify"
-import isEqual from "../../../node_modules/lodash/isEqual"
+
 import { emptyObjProps } from "lib"
 import { UnAuthContext } from "../../context"
 import { Input } from "../common/index"
 import styles from "../common/common.module.scss"
-import cx from "classnames"
-
+import { window } from "browser-monads"
 const style = theme => ({
   form: {
     background: "#fff",
@@ -70,7 +68,7 @@ class Form extends Component {
     const { email, kinFullName, address, KinPhoneNumber } = this.state
     const { classes } = this.props
 
-    sessionStorage.setItem("data", JSON.stringify(this.state))
+    window.sessionStorage.setItem("data", JSON.stringify(this.state))
 
     return (
       <form onKeyUp={this.handleChange} className={classes.form}>
