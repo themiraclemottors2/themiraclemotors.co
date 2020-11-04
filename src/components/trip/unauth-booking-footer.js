@@ -2,7 +2,6 @@ import React from "react"
 import styles from "./trip.module.scss"
 import { Button } from "../common"
 import { usePaystackPayment } from "react-paystack"
-import { toast } from "react-toastify"
 
 const UnAuthBookingFooter = ({
   makeBooking,
