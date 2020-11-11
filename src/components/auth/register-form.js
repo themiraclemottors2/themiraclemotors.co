@@ -3,7 +3,7 @@ import FormContainer from "../common/form-container"
 import styles from "./auth.module.scss"
 import cx from "classnames"
 import { Input, Button } from "../common"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import { useDispatch } from "react-redux"
 import { registerRequest } from "../../store/actions/auth"
 import { toast } from "react-toastify"
@@ -38,6 +38,7 @@ const RegisterForm = props => {
       setEmail("")
       setFirstName("")
       setLastName("")
+      navigate("/sign-in")
     } catch (error) {
       let err = "Something went wrong, please try again"
       if (error.response) {

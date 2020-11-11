@@ -194,7 +194,7 @@ const SearchResult = props => {
     }
 
     if (!departureTerminalId.length) {
-      navigate("../")
+      navigate("/")
       return undefined
     }
   }, [dispatch, departureTerminalId])
@@ -220,7 +220,7 @@ const SearchResult = props => {
           )} to ${extractTerminalName(terminals, arrivalTerminalId)}`
         }
         date={moment(departureTimestamp).format("DD MM, YYYY")}
-        btnOnClick={() => navigate("../")}
+        btnOnClick={() => navigate("/")}
       />
       <ResultWrapper>
         {searchResult.length <= 0 && !loading && (

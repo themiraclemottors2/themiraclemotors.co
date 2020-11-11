@@ -31,7 +31,7 @@ const style = theme => ({
     color: "#fff",
     marginTop: "1rem",
     [theme.breakpoints.down("sm")]: {
-      fontSize: ".5rem",
+      fontSize: ".8rem",
     },
   },
   legal: {
@@ -50,14 +50,14 @@ const style = theme => ({
     fontSize: "1rem",
     marginBottom: "1rem",
     [theme.breakpoints.down("sm")]: {
-      fontSize: ".5rem",
+      fontSize: ".9rem",
     },
   },
   span: {
     margin: "0 1rem",
     [theme.breakpoints.down("md")]: {
       margin: "0 .5rem",
-      fontSize: ".7rem",
+      fontSize: ".9rem",
     },
   },
   hor: {

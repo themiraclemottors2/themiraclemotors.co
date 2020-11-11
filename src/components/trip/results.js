@@ -57,6 +57,7 @@ const Results = ({
     })
   }
 
+  console.log(data.departureTimestamp)
   return (
     <div className={styles.Result}>
       {!loading && (
@@ -68,7 +69,7 @@ const Results = ({
             </div>
             <div className={styles.Result__Details__time}>
               <AlarmClock />
-              <p>6:00Am</p>
+              <p>{moment(data.departureTimestamp).format("hh:mm A")}</p>
             </div>
             <div className={styles.Result__Details__booking}>
               <h3>NGN {formatCurrency(Number(data.price * 0.95))}</h3>

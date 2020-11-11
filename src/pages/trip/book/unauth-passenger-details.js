@@ -194,7 +194,7 @@ class UnAuthPassenger extends Component {
       return null
     }
     const requestBody = {
-      passengers: data,
+      passengers: [data],
       bookings,
       numberOfTravellers,
       type,
@@ -213,9 +213,6 @@ class UnAuthPassenger extends Component {
         (error.response && error.response.data.message) ||
           "Sorry, your booking was not successful"
       )
-      this.setState({
-        error: error.response.data.message,
-      })
     }
   }
   openModal = data => {
@@ -235,8 +232,8 @@ class UnAuthPassenger extends Component {
     let { passengers, bookings } = this.props
 
     const paymentConfig = {
-      publicKey: process.env.GATSBY_PAYSTACK_PUBLIC_KEY,
-      // publicKey: "pk_test_d8b15464638f89fcdfb8d554f6b9d68e075170ee",
+      // publicKey: process.env.GATSBY_PAYSTACK_PUBLIC_KEY,
+      publicKey: "pk_test_d8b15464638f89fcdfb8d554f6b9d68e075170ee",
       email: this.props.data.email,
       amount: (trip.ticketsCost + trip.serviceCharge) * 100,
       channels: ["card"],
