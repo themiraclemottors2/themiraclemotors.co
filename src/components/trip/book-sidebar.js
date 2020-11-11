@@ -13,7 +13,6 @@ const BookSidebar = ({ trip }) => {
             {moment(trip.outgoing.departureTimestamp).format(
               "ddd, MMMM DD, YYYY - hh:mm A"
             )}
-            6:00 am
           </h3>
           <p>
             {trip.outgoing.arrivalTerminal} - {trip.outgoing.departureTerminal}

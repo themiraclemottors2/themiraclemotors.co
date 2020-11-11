@@ -52,7 +52,7 @@ const style = theme => ({
     },
   },
   img: {
-    width: "20rem",
+    width: "17rem",
     height: "15rem",
     borderRadius: "12px",
     [theme.breakpoints.down("sm")]: {
