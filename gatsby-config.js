@@ -25,7 +25,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         custom: {
-          families: ["HelveticaNeue"],
+          families: ["Helvetica Neue"],
           urls: ["src/assets/fonts/stylesheet.css"],
         },
       },

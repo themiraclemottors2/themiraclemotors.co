@@ -41,6 +41,7 @@ const SignInForm = ({ classes }) => {
     try {
       const urlSearchParams = new URLSearchParams(window.location.search)
       const redirectTo = urlSearchParams.get("redirect") || null
+      console.log(redirectTo, urlSearchParams)
       await dispatch(loginRequest({ phoneNumber: phone, password }, redirectTo))
       toast.success("Signed In Successfully")
       setPassword("")
