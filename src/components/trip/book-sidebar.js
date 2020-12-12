@@ -36,7 +36,7 @@ const BookSidebar = ({ trip }) => {
         <div className={styles.BookSidebar__Cost}>
           <div>
             <p>Tickets({trip.ticketsCount} Passengers)</p>
-            <p>NGN {formatCurrency(trip.ticketsCost * 0.95)}</p>
+            <p>NGN {formatCurrency(trip.ticketsCost)}</p>
           </div>
           <div>
             <p>Service Fee</p>

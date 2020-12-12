@@ -72,7 +72,7 @@ const Results = ({
               <p>{moment(data.departureTimestamp).format("hh:mm A")}</p>
             </div>
             <div className={styles.Result__Details__booking}>
-              <h3>NGN {formatCurrency(Number(data.price * 0.95))}</h3>
+              <h3>NGN {formatCurrency(Number(data.price))}</h3>
               <p>{availableSeats - selectedSeats.length} seat(s) remaining</p>
               <Button
                 onClick={() =>
