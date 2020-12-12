@@ -50,9 +50,7 @@ const BookSidebar = ({ trip }) => {
               <br />
               <span>(tax included)</span>
             </p>
-            <p>
-              NGN {formatCurrency(trip.serviceCharge + trip.ticketsCost * 0.95)}
-            </p>
+            <p>NGN {formatCurrency(trip.serviceCharge + trip.ticketsCost)}</p>
           </div>
         </div>
       </div>
