@@ -15,7 +15,7 @@ const BookSidebar = ({ trip }) => {
             )}
           </h3>
           <p>
-            {trip.outgoing.arrivalTerminal} - {trip.outgoing.departureTerminal}
+            {trip.outgoing.departureTerminal} - {trip.outgoing.arrivalTerminal}
           </p>
         </div>
         {trip.return && (
@@ -36,7 +36,7 @@ const BookSidebar = ({ trip }) => {
         <div className={styles.BookSidebar__Cost}>
           <div>
             <p>Tickets({trip.ticketsCount} Passengers)</p>
-            <p>NGN {formatCurrency(trip.ticketsCost)}</p>
+            <p>NGN {formatCurrency(trip.ticketsCost) * 0.95}</p>
           </div>
           <div>
             <p>Service Fee</p>
@@ -50,7 +50,9 @@ const BookSidebar = ({ trip }) => {
               <br />
               <span>(tax included)</span>
             </p>
-            <p>NGN {formatCurrency(trip.serviceCharge + trip.ticketsCost)}</p>
+            <p>
+              NGN {formatCurrency(trip.serviceCharge + trip.ticketsCost) * 0.95}
+            </p>
           </div>
         </div>
       </div>
