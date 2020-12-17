@@ -1,5 +1,4 @@
 export const serviceRoot = "https://miracle-api.herokuapp.com/api/v1"
-//
 
 // "https://miraclemotor.herokuapp.com/api/v1"
 
