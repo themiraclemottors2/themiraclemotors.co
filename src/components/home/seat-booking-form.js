@@ -112,6 +112,14 @@ class SeatBookingForm extends Component {
       value: item.id,
     }))
 
+    const newTerminal = []
+
+    const lag = terminals.find(item => item.text === "Lagos ( Sangotedo )")
+    const uyo = terminals.find(item => item.text === "Uyo")
+    const warri = terminals.find(item => item.text === "Warri ( Airport Road )")
+    const abj = terminals.find(item => item.text === "Abuja ( Utako )")
+    newTerminal.push(lag, uyo, warri, abj)
+
     const passengersInputData = Array(6)
       .fill(1)
       .map((item, index) => {
@@ -123,7 +131,7 @@ class SeatBookingForm extends Component {
       <form onSubmit={this._handleSubmit}>
         <Select
           className={styles.BookingCard__Input}
-          options={terminals}
+          options={terminals.length !== 0 ? newTerminal : terminals}
           label="Departure Terminal"
           icon={Locator}
           onChange={value =>
