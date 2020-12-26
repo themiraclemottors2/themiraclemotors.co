@@ -22,6 +22,7 @@ const Home = props => {
       <div className={styles.Home__Fold}>
         <div className={styles.Home__Fold__Overlay} />
         <div className={styles.Home__Caption}>
+          <h3>SEASONS GREETING FROM TMM</h3>
           <h4>The safest way to travel on road in Nigeria.</h4>
           <p>
             When it comes to safety, no better company places it customers and

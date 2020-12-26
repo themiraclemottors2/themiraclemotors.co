@@ -174,7 +174,6 @@ class PassengersDetails extends Component {
     const { passengers, bookings } = this.props
     const paymentConfig = {
       publicKey: process.env.GATSBY_PAYSTACK_PUBLIC_KEY,
-      // publicKey: "pk_test_d8b15464638f89fcdfb8d554f6b9d68e075170ee",
       email: passengers[0].email,
       amount: (trip.ticketsCost + trip.serviceCharge) * 100 * 0.95,
       channels: ["card"],

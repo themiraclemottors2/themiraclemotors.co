@@ -46,7 +46,7 @@ const style = theme => ({
 function DateKeyBoard({ data, classes }) {
   let date = new Date()
   const minDate = new Date().setDate(date.getDate() + 1)
-  const maxDate = date.setDate(date.getDate() + 2)
+  const maxDate = date.setDate(date.getDate() + 3)
   const [selected, selectedDate] = useState(minDate)
 
   return (
